@@ -1,0 +1,37 @@
+
+@font-face {
+  font-family: 'websymbolsligaregular';
+  src: url('/static/fonts/websymbolsligaregular.eot');
+  src: url('/static/fonts/websymbolsligaregular.eot?#iefix') format('embedded-opentype'),
+       url('/static/fonts/websymbolsligaregular.woff') format('woff'),
+       url('/static/fonts/websymbolsligaregular.ttf') format('truetype'),
+       url('/static/fonts/websymbolsligaregular.svg#WebSymbolsRegular') format('svg');
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: local('Rubik Regular'), local('Rubik-Regular'),
+      url('/static/fonts/subset-Rubik-Regular.woff2') format('woff2'),
+      url('/static/fonts/subset-Rubik-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: local('Rubik Medium'), local('Rubik-Medium'),
+      url('/static/fonts/subset-Rubik-Medium.woff2') format('woff2'),
+      url('/static/fonts/subset-Rubik-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rubik';
+  src: local('Rubik Bold'), local('Rubik-Bold'),
+      url('/static/fonts/subset-Rubik-Bold.woff2') format('woff2'),
+      url('/static/fonts/subset-Rubik-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+

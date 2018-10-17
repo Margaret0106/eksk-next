@@ -1,56 +1,34 @@
-import Layout from '../components/MyLayout.js'
+import Layout from '../app/common/MyLayout.js'
+import TopMain from '../app/pages/MainPage/TopMain.js'
+import Problems from '../app/pages/MainPage/Problems.js'
+import Steps from '../app/pages/MainPage/Steps.js'
+import Reviews from '../app/pages/MainPage/Reviews.js'
+import Facts from '../app/pages/MainPage/Facts.js'
+import CheckKsk from '../app/pages/MainPage/CheckKsk.js'
+import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
 import "../styles/main.scss"
 
-function getPosts () {
-  return [
-    { id: 'hello-nextjs', title: 'Hello Next.js'},
-    { id: 'learn-nextjs', title: 'Learn Next.js is awesome'},
-    { id: 'deploy-nextjs', title: 'Deploy apps with ZEIT'},
-  ]
+const Page = (props) => (
+  <Layout>
+    <TopMain/>
+    <main className="main">
+      <div className="container">
+        <Problems/>
+        <Steps/>
+        <Reviews/>
+        <Facts data={props.data}/>
+        <CheckKsk/>
+      </div>
+    </main>
+  </Layout>
+);
+
+Page.getInitialProps = async ({ req }) => {
+  const res = await fetch('http://dev.e-kck.kz/api/v1/landing/')
+  const json = await res.json()
+  console.log('cities', json.data)
+  return {data: json.data}
 }
 
-const PostLink = ({ post }) => (
-    <li>
-      <Link as={`/p/${post.id}`} href={`/post?title=${post.title}`}>
-        <a>{post.title}</a>
-      </Link>
-      <style jsx>{`
-        li {
-          list-style: none;
-          margin: 5px 0;
-        }
-  
-        a {
-          text-decoration: none;
-          color: blue;
-          font-family: "Arial";
-        }
-  
-        a:hover {
-          opacity: 0.6;
-        }
-      `}</style>
-    </li>
-  )
-
-export default () => (
-  <Layout>
-    <h1>My Blog</h1>
-    <ul>
-      {getPosts().map((post) => (
-        <PostLink key={post.id} post={post}/>
-      ))}
-    </ul>
-    <style jsx>{`
-      h1, a {
-        font-family: "Arial";
-      }
-
-      ul {
-        padding: 0;
-      }
-      
-    `}</style>
-  </Layout>
-)
+export default Page;

@@ -1,0 +1,45 @@
+
+.title--primary {
+	font-family: $font-primary-regular;
+	font-size: 24px;
+	line-height: 32px;
+	font-weight: normal;
+	font-style: normal;
+}
+
+.title--secondary {
+	font-family: $font-primary-regular;
+	font-size: 20px;
+	line-height: 26px;
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+h2 {
+	font-size: 35px;
+	line-height: 43px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	@media (max-width: 1170px) {
+		font-size: 32px;
+		line-height: 40px;
+	}
+	@media (max-width: 991px) {
+		margin-top: 5px;
+		font-size: 30px;
+		line-height: 35px;
+	}
+	@media (max-width: 767px) {
+		font-size: 26px;
+		line-height: 32px;
+	}
+	@media (max-width: 640px) {
+		font-size: 23px;
+		line-height: 28px;
+		br {
+			display: none;
+		}
+	}
+	
+}

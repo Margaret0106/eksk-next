@@ -1,0 +1,173 @@
+.nav-link {
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration: none !important;
+	transition: .3s;
+	outline: none !important;
+	color: #000;
+	font-weight: normal;
+	line-height: 1;
+
+	&:focus {
+		color: #000;
+	}
+
+	&:hover,
+	&:active {
+		color: $color-primary;
+		transition: none;
+	}
+}
+
+
+.main-tabs {
+	margin-right: auto;
+	@media (max-width: 767px) {
+		margin-right: auto;
+		margin-left: auto;
+		ul.main-tabs-ul {
+			display: none;
+		}
+	}
+	@media (max-width: 480px) {
+		width: 100%;
+		order: 3;
+		margin-top: 10px;
+	}
+	ul {
+		margin-bottom: 0;
+		display: flex;
+		list-style: none;
+
+		li {
+			border: 1px solid rgba(#89CFAC, .5);
+			border-left: none;
+			border-right: none;
+			font-size: 14px;
+			color: #D6DFDB;
+
+			a {
+				display: block;
+				padding: 10px 20px 9px;
+				color: inherit;
+			}
+
+			&:first-child {
+				border: 1px solid rgba(#89CFAC, .5);
+				border-right: none;
+				border-radius: 5px 0 0 5px;
+			}
+
+			&:last-child {
+				border: 1px solid rgba(#89CFAC, .5);
+				border-left: none;
+				border-radius: 0 5px 5px 0;
+			}
+
+			&.active {
+				border-color: #51bc89;
+				pointer-events: none;
+
+				a {
+					font-weight: 500;
+					color: rgba(#56BB8A, .8)
+				}
+			}
+
+			&:hover,
+			&:active,
+			&:focus {
+				border-color: #51bc89;
+
+				a {
+					color: rgba(#56BB8A, .8)
+				}
+			}
+
+			a:hover,
+			a:focus,
+			a:active {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+.lang-menu {
+	font-weight: 500;
+
+	ul {
+		margin-bottom: 0;
+		display: flex;
+		list-style: none;
+
+		li {
+			color: rgba(#45584F, .8);
+
+			&.active {
+				pointer-events: none;
+				color: rgba(#56BB8A, .8);
+			}
+
+			a {
+				color: inherit;
+
+				&:hover,
+				&:active,
+				&:focus {
+					color: #7CD2A9;
+					text-decoration: none;
+				}
+			}
+		}
+
+		li+li {
+			margin-left: 10px;
+		}
+	}
+}
+
+.footer-menu {
+	margin-left: auto;
+	margin-right: 25px;
+	display: flex;
+	margin-bottom: 0;
+	list-style: none;
+	font-size: 20px;
+	color: #45584F;
+
+	@media (max-width: 1170px) {
+		font-size: 18px;
+	}
+
+	@media (max-width: 767px) {
+		font-size: 16px;
+	}
+
+	@media (max-width: 640px) {
+		font-size: 14px;
+	}
+
+	li {
+		margin-right: 35px;
+
+		&:hover {
+			color: #96DBBA;
+
+			a {
+				text-decoration: none;
+			}
+		}
+	}
+
+	a {
+		color: inherit;
+
+		&:hover,
+		&:focus,
+		&:active {
+			text-decoration: none;
+		}
+	}
+}
