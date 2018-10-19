@@ -120,11 +120,17 @@
 .svg-icon-apple {
 	width: 18px;
 	height: 22px;
+	vertical-align: baseline;
+	top: 2px;
+    position: relative;
 }
 
 .svg-icon-google {
 	width: 15px;
-	height: 17px;
+    height: 17px;
+    vertical-align: baseline;
+    top: 2px;
+    position: relative;
 }
 
 .svg-icon-arrow {
@@ -132,7 +138,8 @@
     height: 24px;
     margin-left: 20px;
     position: relative;
-    top: 6px;
+	top: 6px;
+	vertical-align: baseline
 }
 
 .svg-icon-round-border {

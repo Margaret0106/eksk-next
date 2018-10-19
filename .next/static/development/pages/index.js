@@ -283,6 +283,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var svg_react_loader_name_Icon_static_images_svg_plants_svg__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(svg_react_loader_name_Icon_static_images_svg_plants_svg__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var svg_react_loader_name_Icon_static_images_svg_neighbours_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! svg-react-loader?name=Icon!../../static/images/svg/neighbours.svg */ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/neighbours.svg");
 /* harmony import */ var svg_react_loader_name_Icon_static_images_svg_neighbours_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(svg_react_loader_name_Icon_static_images_svg_neighbours_svg__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_arrow_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! svg-react-loader?name=Icon!../../static/images/svg/arrow.svg */ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/arrow.svg");
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_arrow_svg__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(svg_react_loader_name_Icon_static_images_svg_arrow_svg__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_apple_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! svg-react-loader?name=Icon!../../static/images/svg/apple.svg */ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/apple.svg");
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_apple_svg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(svg_react_loader_name_Icon_static_images_svg_apple_svg__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_google_svg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! svg-react-loader?name=Icon!../../static/images/svg/google.svg */ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/google.svg");
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_google_svg__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(svg_react_loader_name_Icon_static_images_svg_google_svg__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_city_svg__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! svg-react-loader?name=Icon!../../static/images/svg/city.svg */ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/city.svg");
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_city_svg__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(svg_react_loader_name_Icon_static_images_svg_city_svg__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_alert_svg__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! svg-react-loader?name=Icon!../../static/images/svg/alert.svg */ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/alert.svg");
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_alert_svg__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(svg_react_loader_name_Icon_static_images_svg_alert_svg__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_orange_svg__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! svg-react-loader?name=Icon!../../static/images/svg/orange.svg */ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/orange.svg");
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_orange_svg__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(svg_react_loader_name_Icon_static_images_svg_orange_svg__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_ok_svg__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! svg-react-loader?name=Icon!../../static/images/svg/ok.svg */ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/ok.svg");
+/* harmony import */ var svg_react_loader_name_Icon_static_images_svg_ok_svg__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(svg_react_loader_name_Icon_static_images_svg_ok_svg__WEBPACK_IMPORTED_MODULE_14__);
+
+
+
+
+
+
+
 
 
 
@@ -298,14 +319,122 @@ var ICONS = {
   garbage: svg_react_loader_name_Icon_static_images_svg_garbage_svg__WEBPACK_IMPORTED_MODULE_4___default.a,
   repair: svg_react_loader_name_Icon_static_images_svg_repair_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
   plants: svg_react_loader_name_Icon_static_images_svg_plants_svg__WEBPACK_IMPORTED_MODULE_6___default.a,
-  neighbours: svg_react_loader_name_Icon_static_images_svg_neighbours_svg__WEBPACK_IMPORTED_MODULE_7___default.a
+  neighbours: svg_react_loader_name_Icon_static_images_svg_neighbours_svg__WEBPACK_IMPORTED_MODULE_7___default.a,
+  arrow: svg_react_loader_name_Icon_static_images_svg_arrow_svg__WEBPACK_IMPORTED_MODULE_8___default.a,
+  apple: svg_react_loader_name_Icon_static_images_svg_apple_svg__WEBPACK_IMPORTED_MODULE_9___default.a,
+  google: svg_react_loader_name_Icon_static_images_svg_google_svg__WEBPACK_IMPORTED_MODULE_10___default.a,
+  city: svg_react_loader_name_Icon_static_images_svg_city_svg__WEBPACK_IMPORTED_MODULE_11___default.a,
+  alert: svg_react_loader_name_Icon_static_images_svg_alert_svg__WEBPACK_IMPORTED_MODULE_12___default.a,
+  orange: svg_react_loader_name_Icon_static_images_svg_orange_svg__WEBPACK_IMPORTED_MODULE_13___default.a,
+  ok: svg_react_loader_name_Icon_static_images_svg_ok_svg__WEBPACK_IMPORTED_MODULE_14___default.a
 };
 /* harmony default export */ __webpack_exports__["default"] = (function (name) {
   var Icon = ICONS[name];
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Icon, {
-    className: "icon"
+    className: "svg-icon svg-icon-".concat(name)
   });
 });
+
+/***/ }),
+
+/***/ "./app/pages/MainPage/AddKsk.js":
+/*!**************************************!*\
+  !*** ./app/pages/MainPage/AddKsk.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Icons */ "./app/components/Icons.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var CheckKsk =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(CheckKsk, _Component);
+
+  function CheckKsk(props) {
+    _classCallCheck(this, CheckKsk);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(CheckKsk).call(this, props));
+  }
+
+  _createClass(CheckKsk, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "section section6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "feedback-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "section-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u0421\u0434\u0435\u043B\u0430\u0439\u0442\u0435 \u0441\u0432\u043E\u044E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u0436\u0438\u0437\u043D\u044C \u043F\u0440\u043E\u0449\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0421 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043C \u0441\u0442\u0430\u043D\u0435\u0442 \u0433\u043E\u0440\u0430\u0437\u0434\u0435 \u043B\u0435\u0433\u0447\u0435 \u0440\u0435\u0448\u0430\u0442\u044C \u0431\u044B\u0442\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0431\u043B\u0435\u043C\u044B"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "download-apps"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0421\u043A\u0430\u0447\u0430\u0439\u0442\u0435 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435, \u043E\u043D\u043E \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u043E\u0435"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "app-links"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "",
+        className: "app-link"
+      }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('apple'), "  App Store"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "",
+        className: "app-link"
+      }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('google'), " Google Play")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "section-right"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C, \u0435\u0441\u043B\u0438 \u0432\u0430\u0448\u0435\u0433\u043E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u041A\u0421\u041A \u043D\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "form-transparent form-flex"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group form-group--half"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        placeholder: "\u041F\u043E\u0447\u0442\u0430"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group form-group--half"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        placeholder: "\u0413\u043E\u0440\u043E\u0434"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "form-control",
+        placeholder: "\u0423\u043B\u0438\u0446\u0430"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn--transparent"
+      }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443 ", Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('arrow'), " "))))));
+    }
+  }]);
+
+  return CheckKsk;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (CheckKsk);
 
 /***/ }),
 
@@ -1024,6 +1153,8 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Icons */ "./app/components/Icons.js");
+
 
 
 var TopMain = function TopMain() {
@@ -1047,10 +1178,10 @@ var TopMain = function TopMain() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "",
     className: "app-link"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('apple'), "  App Store"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "",
     className: "app-link"
-  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('google'), "  Google Play")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "tab-pane represent-block",
     id: "represent-page"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041F\u0440\u0438\u0441\u043E\u0435\u0434\u0438\u043D\u044F\u0439\u0442\u0435\u0441\u044C \u043A \u0446\u0438\u0444\u0440\u043E\u0432\u0438\u0437\u0430\u0446\u0438\u0438!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1114,8 +1245,6 @@ var TopMain = function TopMain() {
     "data-aos": "fade-up",
     "data-aos-duration": "1000"
   }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "city-svg"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "svg-border"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "phone-messages"
@@ -1127,7 +1256,7 @@ var TopMain = function TopMain() {
     "data-aos": "fade",
     "data-aos-delay": "1000",
     "data-aos-duration": "1000"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('alert'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message-text"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0412\u0430\u0448\u0443 \u0437\u0430\u044F\u0432\u043A\u0443 \u0432\u0437\u044F\u043B\u0438 \u0432 \u0440\u0430\u0431\u043E\u0442\u0443"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u041A\u0421\u041A \"\u0410\u0439\u0434\u0430\u0440\""))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message process",
@@ -1135,7 +1264,7 @@ var TopMain = function TopMain() {
     "data-aos": "fade-left",
     "data-aos-delay": "1100",
     "data-aos-duration": "1000"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('orange'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message-text"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0421\u0433\u043E\u0440\u0435\u043B\u0430 \u043B\u0430\u043C\u043F\u043E\u0447\u043A\u0430"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u0440\u0430\u0441\u0441\u043C\u0430\u0442\u0440\u0438\u0432\u0430\u0435\u043C"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message done",
@@ -1143,7 +1272,7 @@ var TopMain = function TopMain() {
     "data-aos": "fade-down",
     "data-aos-delay": "1200",
     "data-aos-duration": "1000"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('ok'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "message-text"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0414\u0430\u0432\u0430\u0439\u0442\u0435 \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u043C \u0448\u043B\u0430\u0433\u0431\u0430\u0443\u043C \u0432\u043E \u0434\u0432\u043E\u0440\u0435, \u043D\u0430\u0434\u043E\u0435\u043B\u043E!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u0438\u0441\u043F\u043E\u043B\u043D\u0435\u043D\u043E"))))));
 };
@@ -20830,6 +20959,94 @@ if (hadRuntime) {
 
 /***/ }),
 
+/***/ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/alert.svg":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/alert.svg ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+function Icon (props) {
+    return React.createElement("svg",props,React.createElement("path",{"fillRule":"evenodd","clipRule":"evenodd","d":"M10.9924 10.899C10.9924 11.4015 10.4511 11.8851 10.0001 11.8851C9.54912 11.8851 9.00781 11.4015 9.00781 10.899V4.9887C9.00781 4.48712 9.45496 4.00297 10.0001 4.00513C10.5453 4.0073 10.9924 4.48712 10.9924 4.9887V10.899ZM9.99951 15.8063C9.4514 15.8063 9.00781 15.3644 9.00781 14.8226C9.00781 14.2796 9.4514 13.8389 9.99951 13.8389C10.5476 13.8389 10.9924 14.2796 10.9924 14.8226C10.9924 15.3644 10.5476 15.8063 9.99951 15.8063ZM0 9.90499C0 15.328 4.485 19.7399 9.999 19.7399C15.514 19.7399 20 15.328 20 9.90499C20 4.48201 15.514 0.0700684 9.999 0.0700684C4.486 0.0700684 0 4.48201 0 9.90499Z","fill":"#1365AA"}));
+}
+
+Icon.defaultProps = {"width":"20","height":"20","viewBox":"0 0 20 20","fill":"none"};
+
+module.exports = Icon;
+
+Icon.default = Icon;
+
+
+/***/ }),
+
+/***/ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/apple.svg":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/apple.svg ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+function Icon (props) {
+    return React.createElement("svg",props,[React.createElement("path",{"d":"M0.928913 7.87075C-0.93319 11.0983 0.250583 15.9962 2.30976 18.966C3.33762 20.4507 4.37826 21.7835 5.8036 21.7835C5.83046 21.7835 5.8574 21.783 5.88499 21.7819C6.55465 21.7552 7.03857 21.5493 7.50646 21.3503C8.03177 21.1267 8.57505 20.8955 9.42721 20.8955C10.2379 20.8955 10.7553 21.1192 11.2556 21.3354C11.7487 21.5485 12.2566 21.7689 13.0071 21.7548C14.6126 21.725 15.5983 20.2868 16.468 19.0181C17.3756 17.6934 17.8308 16.4073 17.9844 15.9158L17.9906 15.8962C18.0199 15.8089 17.9786 15.7135 17.8947 15.6751C17.8924 15.674 17.8839 15.6704 17.8815 15.6694C17.5988 15.5539 15.1187 14.455 15.0927 11.4599C15.0685 9.02643 16.9532 7.73781 17.3312 7.50425L17.3488 7.49329C17.3897 7.46696 17.4183 7.42519 17.4279 7.37744C17.4376 7.32976 17.4275 7.28014 17.4001 7.24003C16.0991 5.33851 14.1052 5.05193 13.3025 5.01746C13.186 5.00584 13.0658 5 12.945 5C12.0022 5 11.0989 5.35568 10.3733 5.64146C9.87242 5.83874 9.43977 6.00911 9.14137 6.00911C8.80607 6.00911 8.37097 5.83665 7.86711 5.63699C7.19333 5.36989 6.42964 5.06723 5.62118 5.06723C5.6019 5.06723 5.58291 5.06744 5.5642 5.0678C3.68441 5.09543 1.90817 6.16961 0.928913 7.87075Z","fill":"currentColor","key":0}),React.createElement("path",{"d":"M13.304 0.000138595C12.1656 0.0464468 10.8001 0.746335 9.98389 1.70121C9.29025 2.50381 8.61264 3.84199 8.79116 5.19084C8.80235 5.27523 8.8711 5.34037 8.9561 5.34693C9.03294 5.35292 9.11137 5.35595 9.18951 5.35602C10.3026 5.35602 11.5033 4.74096 12.3233 3.7506C13.1864 2.70484 13.6228 1.36277 13.4908 0.16063C13.4804 0.0664271 13.3974 -0.00354009 13.304 0.000138595Z","fill":"currentColor","key":1})]);
+}
+
+Icon.defaultProps = {"width":"18","height":"22","viewBox":"0 0 18 22","fill":"none"};
+
+module.exports = Icon;
+
+Icon.default = Icon;
+
+
+/***/ }),
+
+/***/ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/arrow.svg":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/arrow.svg ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+function Icon (props) {
+    return React.createElement("svg",props,[React.createElement("defs",{"key":0}),React.createElement("g",{"id":"Page-1","stroke":"none","strokeWidth":"1","fill":"none","fillRule":"evenodd","key":1},React.createElement("g",{"id":"arrow","transform":"translate(0.000000, 1.000000)","stroke":"currentColor","strokeWidth":"3"},React.createElement("path",{"d":"M0,7.5 L21.5,7.5 M22.5,8.5 L14,0 M22.5,6.5 L14,15","id":"Shape"})))]);
+}
+
+Icon.defaultProps = {"width":"24px","height":"17px","viewBox":"0 0 24 17","version":"1.1"};
+
+module.exports = Icon;
+
+Icon.default = Icon;
+
+
+/***/ }),
+
+/***/ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/city.svg":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/city.svg ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+function Icon (props) {
+    return React.createElement("svg",props,[React.createElement("path",{"d":"M1494.7 231.976L1.00013 786.847","stroke":"#72DDAF","strokeWidth":"5","key":0}),React.createElement("path",{"d":"M1519 254.153L25.3014 809.024","stroke":"#72DDAF","strokeWidth":"5","key":1}),React.createElement("path",{"d":"M452.86 634.061C452.86 641.138 458.585 646.866 465.636 646.866C472.688 646.866 478.412 641.138 478.412 634.061C478.412 626.984 472.688 621.255 465.636 621.255C458.585 621.255 452.86 626.984 452.86 634.061Z","fill":"#51BB8F","stroke":"#72DDAF","strokeWidth":"5","key":2}),React.createElement("path",{"d":"M427.862 634.061C427.862 641.138 433.587 646.866 440.638 646.866C447.69 646.866 453.415 641.138 453.415 634.061C453.415 626.984 447.69 621.255 440.638 621.255C433.587 621.255 427.862 626.984 427.862 634.061Z","fill":"#51BB8F","stroke":"#72DDAF","strokeWidth":"5","key":3}),React.createElement("rect",{"x":"-2.5","y":"2.5","width":"92.2114","height":"111.879","rx":"3.5","transform":"matrix(-1 0 0 1 495.577 647.149)","fill":"#51BB8F","stroke":"#72DDAF","strokeWidth":"5","key":4}),React.createElement("rect",{"width":"11.1099","height":"47.308","rx":"2","transform":"matrix(-1 0 0 1 470.025 663.585)","fill":"#72DDAF","key":5}),React.createElement("rect",{"width":"11.1099","height":"47.308","rx":"2","transform":"matrix(-1 0 0 1 445.027 663.585)","fill":"#72DDAF","key":6}),React.createElement("rect",{"x":"1258.97","y":"680.754","width":"103.532","height":"165.926","rx":"2.5","fill":"#4EBA94","stroke":"#72DDAF","strokeWidth":"5","key":7}),React.createElement("rect",{"x":"1033.76","y":"767.574","width":"103.532","height":"165.926","rx":"2.5","stroke":"#72DDAF","strokeWidth":"5","key":8}),React.createElement("rect",{"x":"966.93","y":"680.754","width":"103.532","height":"165.926","rx":"2.5","fill":"#4FBA92","stroke":"#72DDAF","strokeWidth":"5","key":9}),React.createElement("rect",{"x":"1101.6","y":"555.951","width":"163.225","height":"290.73","rx":"2.5","fill":"#4EBA94","stroke":"#72DDAF","strokeWidth":"5","key":10}),React.createElement("rect",{"x":"1204.92","y":"591.434","width":"24.4198","height":"24.418","rx":"2","fill":"#72DDAF","key":11}),React.createElement("rect",{"x":"1139.8","y":"642.984","width":"24.4198","height":"24.418","rx":"2","fill":"#72DDAF","key":12}),React.createElement("rect",{"x":"1204.92","y":"710.812","width":"24.4198","height":"24.418","rx":"2","fill":"#72DDAF","key":13}),React.createElement("path",{"d":"M797.918 800.344L968.846 801.701","stroke":"#72DDAF","strokeWidth":"5","key":14}),React.createElement("path",{"d":"M572.5 724C572.5 722.619 573.619 721.5 575 721.5H635.5V844C635.5 845.381 634.381 846.5 633 846.5H575C573.619 846.5 572.5 845.381 572.5 844V724Z","stroke":"#72DDAF","strokeWidth":"5","key":15}),React.createElement("path",{"d":"M615.913 657.549C615.913 656.168 617.032 655.049 618.413 655.049H703.379C704.76 655.049 705.879 656.168 705.879 657.549V715.377C705.879 716.758 704.76 717.877 703.379 717.877H615.913V657.549Z","stroke":"#72DDAF","strokeWidth":"5","key":16}),React.createElement("path",{"d":"M706.452 680.754H793.918C795.299 680.754 796.418 681.873 796.418 683.254V844.18C796.418 845.561 795.299 846.68 793.918 846.68H708.952C707.571 846.68 706.452 845.561 706.452 844.18V680.754Z","stroke":"#72DDAF","strokeWidth":"5","key":17}),React.createElement("rect",{"x":"624","y":"711","width":"60","height":"94","fill":"#51BB90","key":18}),React.createElement("rect",{"x":"623","y":"702","width":"157","height":"103","fill":"#51BB90","key":19}),React.createElement("rect",{"x":"618","y":"658","width":"59","height":"147","fill":"#51BB90","key":20}),React.createElement("rect",{"x":"670","y":"754","width":"118","height":"95","fill":"#51BB90","key":21}),React.createElement("rect",{"x":"614","y":"787","width":"37","height":"70","fill":"#51BB90","key":22}),React.createElement("rect",{"x":"684","y":"683","width":"49","height":"71","fill":"#51BB90","key":23}),React.createElement("rect",{"x":"678.533","y":"735.229","width":"27.1331","height":"24.418","rx":"2","fill":"#72DDAF","key":24}),React.createElement("rect",{"x":"633","y":"681","width":"27.1331","height":"24.418","rx":"2","fill":"#72DDAF","key":25})]);
+}
+
+Icon.defaultProps = {"viewBox":"0 0 1520 847","fill":"none"};
+
+module.exports = Icon;
+
+Icon.default = Icon;
+
+
+/***/ }),
+
 /***/ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/garbage.svg":
 /*!***********************************************************************************************!*\
   !*** ./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/garbage.svg ***!
@@ -20852,6 +21069,28 @@ Icon.default = Icon;
 
 /***/ }),
 
+/***/ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/google.svg":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/google.svg ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+function Icon (props) {
+    return React.createElement("svg",props,[React.createElement("path",{"d":"M8.71815 8.5015L0.601797 16.722C0.22172 16.4488 -0.00393826 15.9944 5.20501e-05 15.5102V1.49279C-0.00393826 1.0086 0.22172 0.554155 0.601797 0.280945L8.71815 8.5015Z","fill":"currentColor","key":0}),React.createElement("path",{"d":"M11.5584 5.6301L8.7184 8.5015L0.602051 0.280952C0.632632 0.256023 0.664485 0.23283 0.69744 0.211483C1.1264 -0.0619806 1.6622 -0.070809 2.0991 0.188327L11.5584 5.6301Z","fill":"currentColor","key":1}),React.createElement("path",{"d":"M15 8.5015C15.0053 9.0481 14.7229 9.55299 14.2662 9.81371L11.5583 11.3729L8.71826 8.5015L11.5583 5.6301L14.2662 7.18929C14.7229 7.45002 15.0053 7.9549 15 8.5015Z","fill":"currentColor","key":2}),React.createElement("path",{"d":"M11.5584 11.3729L2.0991 16.8147C1.66124 17.0698 1.12746 17.061 0.69744 16.7915C0.664485 16.7702 0.632632 16.747 0.602051 16.722L8.71844 8.5015L11.5584 11.3729Z","fill":"currentColor","key":3})]);
+}
+
+Icon.defaultProps = {"width":"15","height":"17","viewBox":"0 0 15 17","fill":"none"};
+
+module.exports = Icon;
+
+Icon.default = Icon;
+
+
+/***/ }),
+
 /***/ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/neighbours.svg":
 /*!**************************************************************************************************!*\
   !*** ./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/neighbours.svg ***!
@@ -20866,6 +21105,50 @@ function Icon (props) {
 }
 
 Icon.defaultProps = {"width":"47","height":"40","viewBox":"0 0 47 40","fill":"none"};
+
+module.exports = Icon;
+
+Icon.default = Icon;
+
+
+/***/ }),
+
+/***/ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/ok.svg":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/ok.svg ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+function Icon (props) {
+    return React.createElement("svg",props,[React.createElement("path",{"d":"M26 15.5688C26 22.7058 20.3779 28.4443 13.5 28.4443C6.62212 28.4443 1 22.7058 1 15.5688C1 8.43187 6.62212 2.69336 13.5 2.69336C20.3779 2.69336 26 8.43187 26 15.5688Z","stroke":"#56BB85","strokeWidth":"2","key":0}),React.createElement("path",{"d":"M12.6628 21.112L13.7119 22.1442L14.7757 21.1267L30 6.56461L27.9022 4.44141L12.6779 19.0035L14.7909 19.0181L9.12809 13.4465L7 15.5403L12.6628 21.112Z","fill":"white","stroke":"white","strokeWidth":"5","key":1}),React.createElement("path",{"d":"M13.1704 20.2433L14.1283 21.1608L15.0996 20.2563L29 7.31233L27.0846 5.42505L13.1842 18.369L15.1134 18.3821L9.94304 13.4295L8 15.2907L13.1704 20.2433Z","fill":"#56BB85","key":2})]);
+}
+
+Icon.defaultProps = {"width":"34","height":"30","viewBox":"0 0 34 30","fill":"none"};
+
+module.exports = Icon;
+
+Icon.default = Icon;
+
+
+/***/ }),
+
+/***/ "./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/orange.svg":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/svg-react-loader/lib/loader.js?name=Icon!./static/images/svg/orange.svg ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+function Icon (props) {
+    return React.createElement("svg",props,[React.createElement("path",{"opacity":"0.3","fillRule":"evenodd","clipRule":"evenodd","d":"M7 14.3449C10.866 14.3449 14 11.2435 14 7.41774C14 3.59199 10.866 0.490601 7 0.490601C3.13401 0.490601 0 3.59199 0 7.41774C0 11.2435 3.13401 14.3449 7 14.3449Z","fill":"#FFA149","key":0}),React.createElement("path",{"fillRule":"evenodd","clipRule":"evenodd","d":"M7 11.3768C9.20914 11.3768 11 9.60457 11 7.41843C11 5.2323 9.20914 3.46008 7 3.46008C4.79086 3.46008 3 5.2323 3 7.41843C3 9.60457 4.79086 11.3768 7 11.3768Z","fill":"#FFA149","key":1})]);
+}
+
+Icon.defaultProps = {"width":"14","height":"15","viewBox":"0 0 14 15","fill":"none"};
 
 module.exports = Icon;
 
@@ -29860,18 +30143,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_pages_MainPage_Reviews_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../app/pages/MainPage/Reviews.js */ "./app/pages/MainPage/Reviews.js");
 /* harmony import */ var _app_pages_MainPage_Facts_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../app/pages/MainPage/Facts.js */ "./app/pages/MainPage/Facts.js");
 /* harmony import */ var _app_pages_MainPage_CheckKsk_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../app/pages/MainPage/CheckKsk.js */ "./app/pages/MainPage/CheckKsk.js");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../styles/main.scss */ "./styles/main.scss");
-/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_styles_main_scss__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _app_pages_MainPage_AddKsk_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../app/pages/MainPage/AddKsk.js */ "./app/pages/MainPage/AddKsk.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../styles/main.scss */ "./styles/main.scss");
+/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_styles_main_scss__WEBPACK_IMPORTED_MODULE_12__);
 
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 
@@ -29891,7 +30176,7 @@ var Page = function Page(props) {
     className: "container"
   }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_Problems_js__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_Steps_js__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_Reviews_js__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_Facts_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
     data: props.data
-  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_CheckKsk_js__WEBPACK_IMPORTED_MODULE_8__["default"], null))));
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_CheckKsk_js__WEBPACK_IMPORTED_MODULE_8__["default"], null)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_AddKsk_js__WEBPACK_IMPORTED_MODULE_9__["default"], null)));
 };
 
 Page.getInitialProps =
@@ -29907,7 +30192,11 @@ function () {
           case 0:
             req = _ref.req;
             _context.next = 3;
-            return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()('http://dev.e-kck.kz/api/v1/landing/');
+            return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10___default()('http://dev.e-kck.kz/api/v1/landing/', {
+              headers: {
+                'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N'
+              }
+            });
 
           case 3:
             res = _context.sent;

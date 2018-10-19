@@ -1,3 +1,5 @@
+import Icons from '../../components/Icons';
+
 const TopMain = () => (
     
     <div className="top-main-wrapper">
@@ -12,10 +14,10 @@ const TopMain = () => (
                     <p>Скачайте приложение, оно бесплатное</p>
                     <div className="app-links">
                         <a href="" className="app-link">
-                        {/* {{icon('apple')}} App Store */}
+                            {Icons('apple')}  App Store
                         </a>
                         <a href="" className="app-link">
-                        {/* {{icon('google')}} Google Play */}
+                            {Icons('google')}  Google Play
                         </a>
                     </div>
                     </div>
@@ -104,28 +106,26 @@ const TopMain = () => (
             </div>
             </div>
         </div>
-        <div className="city-svg">
-            {/* {{icon('city')}} */}
-        </div>
+        
         <div className="svg-border"></div>
         <div className="phone-messages">
             <div className="container">
             <div className="message accepted" id="message1" data-aos="fade" data-aos-delay="1000" data-aos-duration="1000">
-                {/* {{icon('alert')}} */}
+                {Icons('alert')}
                 <div className="message-text">
                 <p>Вашу заявку взяли в работу</p>
                 <span>КСК "Айдар"</span>
                 </div>
             </div>
             <div className="message process" id="message2" data-aos="fade-left" data-aos-delay="1100" data-aos-duration="1000">
-                {/* {{icon('orange')}} */}
+                {Icons('orange')}
                 <div className="message-text">
                 <p>Сгорела лампочка</p>
                 <span>рассматриваем</span>
                 </div>
             </div>
             <div className="message done" id="message3" data-aos="fade-down" data-aos-delay="1200" data-aos-duration="1000">
-                {/* {{icon('ok')}} */}
+                {Icons('ok')}
                 <div className="message-text">
                 <p>Давайте установим шлагбаум во дворе, надоело!</p>
                 <span>исполнено</span>

@@ -6,6 +6,14 @@ import garbage from 'svg-react-loader?name=Icon!../../static/images/svg/garbage.
 import repair from 'svg-react-loader?name=Icon!../../static/images/svg/repair.svg';
 import plants from 'svg-react-loader?name=Icon!../../static/images/svg/plants.svg';
 import neighbours from 'svg-react-loader?name=Icon!../../static/images/svg/neighbours.svg';
+import arrow from 'svg-react-loader?name=Icon!../../static/images/svg/arrow.svg';
+import apple from 'svg-react-loader?name=Icon!../../static/images/svg/apple.svg';
+import google from 'svg-react-loader?name=Icon!../../static/images/svg/google.svg';
+import city from 'svg-react-loader?name=Icon!../../static/images/svg/city.svg';
+import alert from 'svg-react-loader?name=Icon!../../static/images/svg/alert.svg';
+import orange from 'svg-react-loader?name=Icon!../../static/images/svg/orange.svg';
+import ok from 'svg-react-loader?name=Icon!../../static/images/svg/ok.svg';
+
 
 const ICONS = {
     road,
@@ -14,10 +22,17 @@ const ICONS = {
     garbage,
     repair,
     plants,
-    neighbours
+    neighbours,
+    arrow, 
+    apple,
+    google, 
+    city, 
+    alert, 
+    orange, 
+    ok
 };
 
 export default (name) => {
     let Icon = ICONS[name];
-    return <Icon className = 'icon' / > ;
+    return <Icon className = {`svg-icon svg-icon-${name}`} / > ;
 }
