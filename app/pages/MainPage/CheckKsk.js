@@ -1,43 +1,123 @@
 import React, {Component} from 'react';
+import Autosuggest from 'react-autosuggest';
 
+// Imagine you have a list of languages that you'd like to autosuggest.
+const languages = [
+  {
+    name: 'C',
+    year: 1972
+  }, {
+    name: 'Elm',
+    year: 2012
+  }
+
+];
+
+// Teach Autosuggest how to calculate suggestions for any given input value.
+const getSuggestions = (data, value) => {
+  const inputValue = value
+    .trim()
+    .toLowerCase();
+  const inputLength = inputValue.length;
+
+  return inputLength === 0
+    ? []
+    : data.filter(lang => lang.title.toLowerCase().slice(0, inputLength) === inputValue);
+};
+
+// When suggestion is clicked, Autosuggest needs to populate the input based on
+// the clicked suggestion. Teach Autosuggest how to calculate the input value
+// for every given suggestion.
+const getSuggestionValue = suggestion => suggestion.title;
+
+// Use your imagination to render suggestions.
+const renderSuggestion = suggestion => (
+  <div>
+    {suggestion.title}
+  </div>
+);
 
 class CheckKsk extends Component {
-    constructor(props) {
-        super(props);          
-    }    
-     
-    render() {  
+  constructor(props) {
+    super(props);
+    // Autosuggest is a controlled component. This means that you need to provide an
+    // input value and an onChange handler that updates this value (see below).
+    // Suggestions also need to be provided to the Autosuggest, and they are
+    // initially empty because the Autosuggest is closed.
+    this.state = {
+      value: '',
+      cities: this.props.data.cities,
+      suggestions: []
+    };
+  }
 
-        return (
-            <section className="section section5">
-                <div className="map">
-                    <img src="/static/images/map.png" alt=""/>
-                </div>
-                <div className="check-form">
-                    <p>Проверьте поддержку <br/>приложения в вашем КСК</p>
-                    <form className="form-inline">
-                        <div className="form-group">
-                            {/* <select name="" id="" title="Город" data-placeholder="Город" className="selectpicker">
-                            <option value="Астана">Астана</option>
-                            <option value="Алматы">Алматы</option>
-                            <option value="Актобе">Актобе</option>
-                            </select> */}
-                            <input className="form-control selectpicker" placeholder="Город"/>
-                            {/* <script> */}
-                            {/* let options = {
-                                data: ["Алматы", "Астана", "Караганда", "Актау"]
-                            } */}
-                            {/* </script> */}
-                        </div>
-                        <div className="form-group">
-                            <input type="text" className="form-control" id="" placeholder="Адрес"/>
-                        </div>
-                        <button type="submit" className="btn btn--primary">Проверить</button>
-                    </form>
-                </div>
-            </section>
-        )
+  componentDidMount() {
+    // let {cities} = this.props.data;
+    console.log('cities', this.state.cities)
+  }
+
+  onChange = (event, {newValue, method}) => {
+    this.setState({value: newValue});
+  };
+
+  onSuggestionSelected = (event, { method }) => {
+      console.log('here')
+    if (method === 'enter') {
+      event.preventDefault();
     }
+  };
+
+  // Autosuggest will call this function every time you need to update
+  // suggestions. You already implemented this logic above, so just use it.
+  onSuggestionsFetchRequested = ({value}) => {
+    this.setState({suggestions: getSuggestions(this.state.cities, value)});
+  };
+
+  // Autosuggest will call this function every time you need to clear suggestions.
+  onSuggestionsClearRequested = () => {
+    this.setState({suggestions: []});
+  };
+
+  render() {
+
+    const { value, suggestions } = this.state;
+    const inputProps = {
+      placeholder: 'Город',
+      value,
+      className: 'form-control',
+      onChange: this.onChange,
+      autoComplete: 'off'
+    };
+
+    return (
+      <section className="section section5">
+        <div className="map">
+          <img src="/static/images/map.png" alt=""/>
+        </div>
+        <div className="check-form">
+          <p>Проверьте поддержку
+            <br/>приложения в вашем КСК</p>
+          <form className="form-inline">
+            <div className="form-group">
+              {/* <input className="form-control selectpicker" placeholder="Город"/>  */}
+              <Autosuggest 
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                onSuggestionSelected={this.onSuggestionSelected}
+                getSuggestionValue={getSuggestionValue}
+                renderSuggestion={renderSuggestion}
+                inputProps={inputProps} />
+            </div>
+            <div className="form-group">
+              <input type="text" className="form-control" id="" placeholder="Адрес"/>
+            </div>
+            <button type="submit" className="btn btn--primary">Проверить</button>
+          </form>
+        </div>
+      </section>
+    )
+  }
 }
 
 export default CheckKsk

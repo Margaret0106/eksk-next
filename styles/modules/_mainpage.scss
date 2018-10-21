@@ -564,17 +564,17 @@
 
 }
 
-.easy-autocomplete {
+.react-autosuggest__container {
     position: relative;
     max-width: 100%;
-
+    width: 100%;
     input {
         position: relative;
         z-index: 2;
     }
 }
 
-.easy-autocomplete-container {
+.react-autosuggest__suggestions-container {
     position: absolute;
     z-index: 1;
     background: #fff;
@@ -589,7 +589,6 @@
             padding-top: 0px;
             padding-bottom: 0px;
         }
-
         padding-top: 10px;
         padding-bottom: 10px;
         margin-bottom: 0;
@@ -600,16 +599,17 @@
             cursor: pointer;
             font-size: 18px;
 
-            .eac-item {
+            div {
                 padding: 10px 15px;
             }
         }
 
-        li.selected {
+        li.react-autosuggest__suggestion--highlighted, li:hover {
             background: #BDEAD4;
         }
     }
 }
+
 
 .section6 {
     padding: 100px 0;

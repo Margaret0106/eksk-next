@@ -1,7 +1,7 @@
 import RfLink from './RfLink'
 
 const Footer = () => (
-    <div>
+    
         <footer className="footer">
             <div className="container">
                 <div className="footer-content">
@@ -19,8 +19,8 @@ const Footer = () => (
                 </div>
 
             </div>
-            </footer>
-    </div>
+        </footer>
+
 )
 
 export default Footer
