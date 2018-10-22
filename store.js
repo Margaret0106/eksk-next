@@ -27,17 +27,26 @@ export const reducer = (state = initialState, action) => {
 
 // ACTIONS
 
-export const representClass = () => dispatch => {
-  return dispatch({type: actionTypes.REPRESENT})
+// export const representClass = () => dispatch => {
+//   return dispatch({type: actionTypes.REPRESENT})
+// }
+export const representClass = () => {
+  return {type: actionTypes.REPRESENT}
 }
-export const citizenClass = () => dispatch => {
-  return dispatch({type: actionTypes.CITIZEN})
+// export const citizenClass = () => dispatch => {
+//   return dispatch({type: actionTypes.CITIZEN})
+// }
+export const citizenClass = () => {
+  return {type: actionTypes.CITIZEN}
 }
-export const partnerClass = () => dispatch => {
-  return dispatch({type: actionTypes.PARTNER})
-}
+// export const partnerClass = () => dispatch => {
+//   return dispatch({type: actionTypes.PARTNER})
+// }
+export const partnerClass = () => (
+  {type: actionTypes.PARTNER}
+)
 
-export const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)))
+// export const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)))
 
 export function initializeStore(initialState = initialState) {
   return createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)))   

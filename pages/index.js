@@ -18,17 +18,22 @@ import {connect} from 'react-redux';
 class Page extends Component {
   
   constructor(props){
-    super(props);   
+    super(props);      
   }
   componentDidMount(){
+    console.log('props', this.props)
     AOS.init({
       duration : 2000
     })
   }
 
+  componentDidUpdate(prevProps) {
+    console.log('prevProps', prevProps)
+  }
 
 
   render () {
+    console.log('page props', this.props.activeClass)
     return (
     <Layout>
       <TopMain/>
@@ -47,9 +52,8 @@ class Page extends Component {
   }  
 };
 
-Page.getInitialProps = async ({ reduxStore, req }) => {
-  // let ads = encodeURI('Астана')
-  // let das = encodeURI('Сарыарка')
+Page.getInitialProps = async ({ req }) => {
+  
   // const res = await fetch(`http://dev.e-kck.kz/api/v1/landing/search/?city=${ads}&address=${das}`, {
   const res = await fetch(`http://dev.e-kck.kz/api/v1/data`, {
     headers: {
@@ -61,4 +65,9 @@ Page.getInitialProps = async ({ reduxStore, req }) => {
   return {data: json.data}
 }
 
-export default connect() (Page);
+function mapStateToProps(state) {
+  return {activeClass: state.activeClass};
+}
+
+
+export default connect(mapStateToProps) (Page);

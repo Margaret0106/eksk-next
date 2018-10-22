@@ -7175,7 +7175,12 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
-  -webkit-box-shadow: 0 0 0px 1000px #fff inset !important; }
+  -webkit-box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1); }
+
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-box-shadow: 0 0 transparent; }
 
 .form-group {
   width: 100%; }
@@ -8382,7 +8387,10 @@ h2 {
     width: calc(100% + 30px);
     margin-left: -15px;
     border-top: 1px solid rgba(154, 176, 165, 0.3);
-    border-bottom: 1px solid rgba(154, 176, 165, 0.3); } }
+    border-bottom: 1px solid rgba(154, 176, 165, 0.3);
+    margin-bottom: 30px; }
+  .problems-list {
+    margin-left: 0; } }
 
 .tab-pane.active {
   animation-name: fadeIn;
@@ -8394,6 +8402,34 @@ h2 {
     opacity: 0; }
   to {
     opacity: 1; } }
+
+.css-10nd86i {
+  width: 250px;
+  z-index: 10000; }
+
+.css-xp4uvy {
+  font-weight: 500;
+  padding: 10px 5px;
+  font-size: 14px; }
+
+.css-vj8t7z {
+  border-color: rgba(137, 207, 172, 0.5) !important; }
+
+.css-xp4uvy {
+  color: #56bb8a !important; }
+
+.css-vj8t7z:hover {
+  border-color: #56bb8a !important; }
+
+.css-2o5izw {
+  border-color: #56bb8a !important;
+  box-shadow: 0 0 transparent !important; }
+  .css-2o5izw:hover {
+    border-color: #56bb8a !important;
+    box-shadow: 0 0 transparent !important; }
+
+.css-15k3avv .selected {
+  background: #000; }
 
 /***  цвет иконки с ракетой. задаем отдельно от всех остальных элементов ***/
 .rf-link {
@@ -8543,7 +8579,6 @@ body {
       flex-wrap: wrap; } }
 
 .main {
-  margin: 30px 0;
   position: relative;
   z-index: 5; }
   .main-page .main {

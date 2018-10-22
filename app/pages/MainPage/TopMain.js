@@ -11,30 +11,18 @@ class TopMain extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
+      ...props,
       activeClass: 'citizen-page'
     };
   }
 
-  representClass = () => {
-    const {dispatch} = this.props
-    dispatch(representClass())
-  }
-  citizenClass = () => {
-    const {dispatch} = this.props
-    dispatch(citizenClass())
-  }
-  partnerClass = () => {
-    const {dispatch} = this.props
-    dispatch(partnerClass())
-  }
 
   componentDidMount() {
-    const activeClass = store.getState();
-    this.setState({activeClass: activeClass.activeClass});
-    console.log(this.state.activeClass)
+    console.log('state', this.state);
   }
 
   render() {
+    const { activeClass } = this.props
     return (
       <div className="top-main-wrapper">
         <div className="top-main">
@@ -43,7 +31,7 @@ class TopMain extends Component {
               <div className="section-left">
                 <div
                   className={classnames('tab-pane', 'citizen-block', {
-                  active: this.state.activeClass === 'citizen-page'
+                  active: activeClass === 'citizen-page'
                 })}
                   id="citizen-page">
                   <h2>Упрощаем общение
@@ -66,7 +54,7 @@ class TopMain extends Component {
                 </div>
                 <div
                   className={classnames('tab-pane', 'represent-block', {
-                  active: this.state.activeClass === 'represent-page'
+                  active: activeClass === 'represent-page'
                 })}
                   id="represent-page">
                   <h2>Присоединяйтесь к цифровизации!</h2>
@@ -117,7 +105,7 @@ class TopMain extends Component {
                 </div>
                 <div
                   className={classnames('tab-pane', 'partner-block', {
-                  active: this.state.activeClass === 'partner-page'
+                  active: activeClass === 'partner-page'
                 })}
                   id="partner-page">
                   <h2>Сотрудничаем с бизнесом</h2>

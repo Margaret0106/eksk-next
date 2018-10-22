@@ -1,28 +1,78 @@
 import React, {Component} from 'react';
+import Select from 'react-select';
 import Link from 'next/link'
-import {initializeStore} from '../../store'
-import {store, actionTypes, reducer} from '../../store'
+import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux' 
+import classnames from 'classnames'
+import {representClass, citizenClass, partnerClass} from '../../store'
 
 
 const linkStyle = {
   marginRight: 15
 }
 
-const stateRedux = store.getState();
+const selectOptions = [
+  { value: 'citizen-page', label: 'Жителям' },
+  { value: 'represent-page', label: 'Представителям' },
+  { value: 'partner-page', label: 'Партнерам' }
+];
+
+const customStyles = {
+  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+    const color = 'rgba(137,207,172,.5)'
+    return {
+      ...styles,
+      color: '#56bb8a',
+      backgroundColor:  isDisabled
+      ? null
+      : isSelected ? color : isFocused ? color : null,
+    }  
+   
+  }  
+}
 
 class Header extends Component {
-
   constructor(props) {
     super(props);
     this.changeBodyClass = this
       .changeBodyClass
       .bind(this);
     this.state = {
-      activeClass: 'citizen-page',      
+      activeClass: 'citizen-page',
+      isDesktop: true, 
+      selectedOption: {value: "citizen-page", label: "Жителям"}      
     };
   }
 
+  /**
+   * Calculate & Update state of new dimensions
+   */
+  updateDimensions() {
+    if (window.innerWidth < 767) {
+      this.setState({isDesktop: false});
+    } else {
+      this.setState({isDesktop: true});
+    }
+  }
+  /**
+   * Add event listener
+   */
+  componentDidMount() {
+    this.updateDimensions();
+    window.addEventListener("resize", this.updateDimensions.bind(this));
+  }
+
+  /**
+   * Remove event listener
+   */
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensions.bind(this));
+  }
+  
+
   changeBodyClass = (className) => {
+    const { representClass, citizenClass, partnerClass, activeClass } = this.props
+    console.log('ACTIVE CLASS', activeClass)
     document.body.classList.remove('partner-page', 'represent-page', 'citizen-page');
     document.body.classList.add(className);
     if (this.state.activeClass !== className) {
@@ -31,21 +81,59 @@ class Header extends Component {
         });
         console.log(className)
         if (className === 'represent-page') {
-            store.dispatch({type: actionTypes.REPRESENT});
-            console.log(store.getState())
+            representClass()
+            console.log('here')
+            // store.dispatch({type: actionTypes.REPRESENT});
+            // console.log(store.getState())
         }
         else if (className === 'partner-page') {
-            store.dispatch({type: actionTypes.PARTNER});
-            console.log(store.getState())
+            partnerClass()
+            console.log('there')
+            // store.dispatch({type: actionTypes.PARTNER});
+            // console.log(store.getState())
         }
         else if (className === 'citizen-page') {
-            store.dispatch({type: actionTypes.CITIZEN});
-            console.log(store.getState())
+            citizenClass()
+            // store.dispatch({type: actionTypes.CITIZEN});
+            // console.log(store.getState())
         }        
     }
   }
 
+  handleChange = (selectedOption) => {
+    this.setState({ selectedOption });   
+    const { representClass, citizenClass, partnerClass, activeClass } = this.props
+    console.log('selectedOption', selectedOption)
+    document.body.classList.remove('partner-page', 'represent-page', 'citizen-page');
+    document.body.classList.add(selectedOption.value);
+    if (this.state.activeClass !== selectedOption.value) {
+        this.setState({
+            activeClass: selectedOption.value
+        });
+        console.log(selectedOption.value)
+        if (selectedOption.value === 'represent-page') {
+            representClass()
+            console.log('here')
+            // store.dispatch({type: actionTypes.REPRESENT});
+            // console.log(store.getState())
+        }
+        else if (selectedOption.value === 'partner-page') {
+            partnerClass()
+            console.log('there')
+            // store.dispatch({type: actionTypes.PARTNER});
+            // console.log(store.getState())
+        }
+        else if (selectedOption.value === 'citizen-page') {
+            citizenClass()
+            // store.dispatch({type: actionTypes.CITIZEN});
+            // console.log(store.getState())
+        }        
+    } 
+  }
+
   render() {
+    const {activeClass} = this.props;
+    const { selectedOption, isDesktop } = this.state;    
     return (
       <div>
         {/* <Link href="/">
@@ -120,28 +208,29 @@ class Header extends Component {
                 Зу-зу етiп жөндейміз
               </div>
               <div className="main-tabs">
+              {isDesktop ? (
                 <ul className="main-tabs-ul">
-                  <li className="active" onClick={() => {this.changeBodyClass('citizen-page')}}>                  
-                    <a href="#citizen-page">Жителям</a>
+                  <li className={classnames({active: activeClass === 'citizen-page'})} onClick={() => {this.changeBodyClass('citizen-page')}}>                  
+                    <a href="#">Жителям</a>
                   </li>
-                  <li onClick={() => {this.changeBodyClass('represent-page')}}>
-                    <a href="#represent-page">Представителям КСК</a>
+                  <li className={classnames({active: activeClass === 'represent-page'})}  onClick={() => {this.changeBodyClass('represent-page')}}>
+                    <a href="#">Представителям КСК</a>
                   </li>
-                  <li onClick={() => {this.changeBodyClass('partner-page')}}>
-                    <a href="#partner-page">Партнерам</a>
+                  <li className={classnames({active: activeClass === 'partner-page'})}  onClick={() => {this.changeBodyClass('partner-page')}}>
+                    <a href="#">Партнерам</a>
                   </li>
                 </ul>
-                <select className="select" name="" id="">
-                  <option value="#citizen-page">
-                    Жителям
-                  </option>
-                  <option value="#represent-page">
-                    Представителям КСК
-                  </option>
-                  <option value="#partner-page">
-                    Партнерам
-                  </option>
-                </select>
+              ) : (
+                <Select
+                  value={selectedOption}
+                  onChange={this.handleChange}
+                  options={selectOptions}
+                  isSearchable={false}
+                  styles={customStyles}
+                  defaultMenuIsOpen={true}
+                />
+              )}               
+                
               </div>
               <div className="lang-menu">
                 <ul>
@@ -162,4 +251,10 @@ class Header extends Component {
 
 }
 
-export default Header
+export default connect(({activeClass}) => ({
+  activeClass
+}), (dispatch) => ({
+  representClass: bindActionCreators(representClass, dispatch),
+  citizenClass: bindActionCreators(citizenClass, dispatch),
+  partnerClass: bindActionCreators(partnerClass, dispatch),
+}))(Header)
