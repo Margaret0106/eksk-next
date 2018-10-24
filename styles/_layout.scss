@@ -82,7 +82,7 @@ body {
 }
 
 .footer {
-  padding: 25px 0;
+  padding: 20px 0;
 }
 
 .footer-content {
@@ -112,4 +112,8 @@ body {
   @media (max-width: 640px) {
 		font-size: 12px;
 	}
+}
+
+.map {
+	position: relative;
 }

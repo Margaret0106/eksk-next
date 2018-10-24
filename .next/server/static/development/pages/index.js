@@ -343,12 +343,10 @@ function (_Component) {
     /**
      * Remove event listener
      */
+    // componentWillUnmount() {
+    //   window.removeEventListener("resize", this.updateDimensions.bind(this));
+    // }
 
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      window.removeEventListener("resize", this.updateDimensions.bind(this));
-    }
   }, {
     key: "render",
     value: function render() {
@@ -463,8 +461,7 @@ function (_Component) {
         onChange: this.handleChange,
         options: selectOptions,
         isSearchable: false,
-        styles: customStyles,
-        defaultMenuIsOpen: true
+        styles: customStyles
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "lang-menu"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -709,110 +706,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Icons */ "./app/components/Icons.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-var CheckKsk =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(CheckKsk, _Component);
-
-  function CheckKsk(props) {
-    _classCallCheck(this, CheckKsk);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(CheckKsk).call(this, props));
-  }
-
-  _createClass(CheckKsk, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-        className: "section section6"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "feedback-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "section-left"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u0421\u0434\u0435\u043B\u0430\u0439\u0442\u0435 \u0441\u0432\u043E\u044E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u0436\u0438\u0437\u043D\u044C \u043F\u0440\u043E\u0449\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0421 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043C \u0441\u0442\u0430\u043D\u0435\u0442 \u0433\u043E\u0440\u0430\u0437\u0434\u0435 \u043B\u0435\u0433\u0447\u0435 \u0440\u0435\u0448\u0430\u0442\u044C \u0431\u044B\u0442\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0431\u043B\u0435\u043C\u044B"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "download-apps"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0421\u043A\u0430\u0447\u0430\u0439\u0442\u0435 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435, \u043E\u043D\u043E \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u043E\u0435"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "app-links"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "",
-        className: "app-link"
-      }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('apple'), "  App Store"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "",
-        className: "app-link"
-      }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('google'), " Google Play")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "section-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C, \u0435\u0441\u043B\u0438 \u0432\u0430\u0448\u0435\u0433\u043E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u041A\u0421\u041A \u043D\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "form-transparent form-flex"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group form-group--half"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        placeholder: "\u041F\u043E\u0447\u0442\u0430"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group form-group--half"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        placeholder: "\u0413\u043E\u0440\u043E\u0434"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        className: "form-control",
-        placeholder: "\u0423\u043B\u0438\u0446\u0430"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        className: "btn btn--transparent"
-      }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443 ", Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('arrow'), " "))))));
-    }
-  }]);
-
-  return CheckKsk;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (CheckKsk);
-
-/***/ }),
-
-/***/ "./app/pages/MainPage/CheckKsk.js":
-/*!****************************************!*\
-  !*** ./app/pages/MainPage/CheckKsk.js ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "classnames");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_autosuggest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-autosuggest */ "react-autosuggest");
-/* harmony import */ var react_autosuggest__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_autosuggest__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "classnames");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
 /* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "lodash");
@@ -843,21 +738,180 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
- // Imagine you have a list of languages that you'd like to autosuggest.
 
-var languages = [{
-  name: 'C',
-  year: 1972
-}, {
-  name: 'Elm',
-  year: 2012
-}]; // Teach Autosuggest how to calculate suggestions for any given input value.
+
+var AddKsk =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(AddKsk, _Component);
+
+  function AddKsk(props) {
+    var _this;
+
+    _classCallCheck(this, AddKsk);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AddKsk).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleChange", function (event) {
+      var formValues = _this.state.formValues;
+
+      _this.setState({
+        formValues: _objectSpread({}, formValues, _defineProperty({}, event.target.getAttribute('name'), event.target.value))
+      }, function () {
+        console.log('onchange', this.state.formValues);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleSubmit", function (event) {
+      event.preventDefault();
+      var formData = new FormData(event.target);
+      console.log('formValues', JSON.stringify(formData));
+      fetch("http://eksk-landing.rocketfirm.net/api/v1/feedback/create", {
+        method: 'post',
+        headers: {
+          'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N'
+        } //   body: JSON.stringify(formData)
+
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        console.log('data', data);
+      });
+    });
+
+    _this.state = {
+      formValues: {}
+    };
+    return _this;
+  }
+
+  _createClass(AddKsk, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "section section6"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "feedback-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "section-left"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u0421\u0434\u0435\u043B\u0430\u0439\u0442\u0435 \u0441\u0432\u043E\u044E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u0436\u0438\u0437\u043D\u044C \u043F\u0440\u043E\u0449\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0421 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043C \u0441\u0442\u0430\u043D\u0435\u0442 \u0433\u043E\u0440\u0430\u0437\u0434\u0435 \u043B\u0435\u0433\u0447\u0435 \u0440\u0435\u0448\u0430\u0442\u044C \u0431\u044B\u0442\u043E\u0432\u044B\u0435 \u043F\u0440\u043E\u0431\u043B\u0435\u043C\u044B"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "download-apps"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0421\u043A\u0430\u0447\u0430\u0439\u0442\u0435 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435, \u043E\u043D\u043E \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u043E\u0435"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "app-links"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "",
+        className: "app-link"
+      }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('apple'), "  App Store"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "",
+        className: "app-link"
+      }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('google'), " Google Play")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "section-right"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C, \u0435\u0441\u043B\u0438 \u0432\u0430\u0448\u0435\u0433\u043E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u041A\u0421\u041A \u043D\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "form-transparent form-flex",
+        onSubmit: this._handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group form-group--half"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this._handleChange,
+        type: "text",
+        name: "email",
+        className: "form-control",
+        placeholder: "\u041F\u043E\u0447\u0442\u0430"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group form-group--half"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this._handleChange,
+        type: "text",
+        name: "city",
+        className: "form-control",
+        placeholder: "\u0413\u043E\u0440\u043E\u0434"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this._handleChange,
+        type: "text",
+        name: "street",
+        className: "form-control",
+        placeholder: "\u0423\u043B\u0438\u0446\u0430"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn--transparent"
+      }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443 ", Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('arrow'), " "))))));
+    }
+  }]);
+
+  return AddKsk;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AddKsk);
+
+/***/ }),
+
+/***/ "./app/pages/MainPage/CheckKsk.js":
+/*!****************************************!*\
+  !*** ./app/pages/MainPage/CheckKsk.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "classnames");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_autosuggest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-autosuggest */ "react-autosuggest");
+/* harmony import */ var react_autosuggest__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_autosuggest__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-select */ "react-select");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_select__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Icons */ "./app/components/Icons.js");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var downshift__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! downshift */ "downshift");
+/* harmony import */ var downshift__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(downshift__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _node_modules_ansi_colors__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../node_modules/ansi-colors */ "./node_modules/ansi-colors/index.js");
+/* harmony import */ var _node_modules_ansi_colors__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ansi_colors__WEBPACK_IMPORTED_MODULE_8__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+ // Teach Autosuggest how to calculate suggestions for any given input value.
 
 var getSuggestions = function getSuggestions(data, value) {
   var inputValue = value.trim().toLowerCase();
   var inputLength = inputValue.length;
-  return inputLength === 0 ? [] : data.filter(function (lang) {
-    return lang.title.toLowerCase().slice(0, inputLength) === inputValue;
+  return inputLength === 0 ? [] : data.filter(function (city) {
+    return city.title.toLowerCase().slice(0, inputLength) === inputValue;
   });
 }; // When suggestion is clicked, Autosuggest needs to populate the input based on
 // the clicked suggestion. Teach Autosuggest how to calculate the input value
@@ -883,10 +937,7 @@ function (_Component) {
 
     _classCallCheck(this, CheckKsk);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(CheckKsk).call(this, props)); // Autosuggest is a controlled component. This means that you need to provide an
-    // input value and an onChange handler that updates this value (see below).
-    // Suggestions also need to be provided to the Autosuggest, and they are
-    // initially empty because the Autosuggest is closed.
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CheckKsk).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setStatePromise", function (state) {
       return new Promise(function (resolve) {
@@ -894,9 +945,9 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "hideSuccesModal", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "hideKskModal", function () {
       _this.setState({
-        successModalOpen: false
+        kskModalOpen: false
       });
     });
 
@@ -907,15 +958,37 @@ function (_Component) {
       _this.setState({
         value: newValue
       });
+
+      if (getSuggestions(_this.state.cities, newValue).length) {
+        _this.setState({
+          noMatchesMessage: false
+        });
+      } else {
+        _this.setState({
+          noMatchesMessage: true
+        });
+      }
+
+      if (newValue.length == 0) {
+        _this.setState({
+          noMatchesMessage: false
+        });
+      }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSuggestionSelected", function (event, _ref2) {
-      var method = _ref2.method;
-      console.log('here');
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (event, _ref2) {
+      var highlightedSuggestion = _ref2.highlightedSuggestion;
+      console.log('highlightedSuggestion', highlightedSuggestion);
 
-      if (method === 'enter') {
-        event.preventDefault();
+      if (_this.state.noMatchesMessage) {
+        _this.setState({
+          value: ''
+        });
       }
+
+      _this.setState({
+        noMatchesMessage: false
+      });
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSuggestionsFetchRequested", function (_ref3) {
@@ -924,6 +997,15 @@ function (_Component) {
       _this.setState({
         suggestions: getSuggestions(_this.state.cities, value)
       });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSuggestionSelected", function (event, _ref4) {
+      var method = _ref4.method;
+      console.log('here');
+
+      if (method === 'enter') {
+        event.preventDefault();
+      }
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSuggestionsClearRequested", function () {
@@ -937,15 +1019,18 @@ function (_Component) {
 
       _this.setState({
         formData: _objectSpread({}, formData, _defineProperty({}, event.target.getAttribute('name'), event.target.value))
+      }, function () {
+        console.log('onchange', this.state.formData.street);
       });
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleSubmit", function (event) {
       event.preventDefault();
+      console.log('beforesend', _this.state.value, _this.state.formData.street);
       var city = encodeURI(_this.state.value);
-      var address = encodeURI(_this.state.formData.address);
-      console.log('formData', city, address);
-      fetch("https://dev.e-kck.kz/api/v1/landing/search/?city=".concat(city, "&address=").concat(address), {
+      var street = encodeURI(_this.state.formData.street);
+      var number = encodeURI(_this.state.formData.house);
+      fetch("https://dev.e-kck.kz/api/v1/landing/search/?city=".concat(city, "&street=").concat(street, "&number=").concat(number), {
         method: 'get',
         headers: {
           'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N'
@@ -953,7 +1038,25 @@ function (_Component) {
       }).then(function (res) {
         return res.json();
       }).then(function (data) {
-        console.log(data);
+        console.log('data', data);
+        data.data && data.data.ksk ? _this.setState({
+          successKsk: true,
+          ksk: data.data.ksk.title,
+          kskCityId: data.data.city.id
+        }) : _this.setState({
+          successKsk: false,
+          ksk: null,
+          kskCityId: null
+        });
+        data.data ? _this.setState({
+          kskModalOpen: true,
+          kskCityId: lodash__WEBPACK_IMPORTED_MODULE_6___default.a.findKey(_this.props.cities, {
+            'title': 'Астана'
+          })
+        }) : _this.setState({
+          kskModalOpen: false
+        });
+        console.log('kskModalOpen', _this.state.kskModalOpen, _this.state.ksk);
       });
     });
 
@@ -970,13 +1073,17 @@ function (_Component) {
     _this.state = {
       value: '',
       cities: _this.props.data.cities,
+      noMatchesMessage: false,
       suggestions: [],
       submitting: false,
       submitted: false,
       formData: {},
-      successModalOpen: false,
+      kskModalOpen: false,
       states: _this.inputs,
-      fetching: false
+      fetching: false,
+      ksk: null,
+      successKsk: false,
+      kskCityId: null
     };
     return _this;
   }
@@ -984,7 +1091,6 @@ function (_Component) {
   _createClass(CheckKsk, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // let {cities} = this.props.data;
       console.log('cities', this.state.cities);
     }
   }, {
@@ -1011,13 +1117,20 @@ function (_Component) {
           loading = _this$state.loading,
           autoComplete = _this$state.autoComplete;
       var _this$state2 = this.state,
-          successModalOpen = _this$state2.successModalOpen,
+          selectedOption = _this$state2.selectedOption,
+          kskCityId = _this$state2.kskCityId,
+          noMatchesMessage = _this$state2.noMatchesMessage,
+          kskModalOpen = _this$state2.kskModalOpen,
           states = _this$state2.states,
-          fetching = _this$state2.fetching;
+          fetching = _this$state2.fetching,
+          value = _this$state2.value,
+          suggestions = _this$state2.suggestions,
+          ksk = _this$state2.ksk,
+          successKsk = _this$state2.successKsk;
 
-      var inputClasses = lodash__WEBPACK_IMPORTED_MODULE_4___default.a.mapValues(states, function (_ref4) {
-        var error = _ref4.error,
-            success = _ref4.success;
+      var inputClasses = lodash__WEBPACK_IMPORTED_MODULE_6___default.a.mapValues(states, function (_ref5) {
+        var error = _ref5.error,
+            success = _ref5.success;
         return classnames__WEBPACK_IMPORTED_MODULE_1___default()('input-container', {
           error: error,
           success: success
@@ -1027,15 +1140,13 @@ function (_Component) {
       var buttonClass = classnames__WEBPACK_IMPORTED_MODULE_1___default()({
         fetching: fetching
       });
-      var _this$state3 = this.state,
-          value = _this$state3.value,
-          suggestions = _this$state3.suggestions;
       var inputProps = {
         placeholder: 'Город',
         name: 'city',
         value: value,
         className: 'form-control',
         onChange: this.onChange,
+        onBlur: this.onBlur,
         autoComplete: 'off'
       };
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
@@ -1045,7 +1156,22 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/static/images/map.png",
         alt: ""
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('ksk-modal', {
+          'ksk-modal--open': kskModalOpen == true
+        }, {
+          'ksk-modal--success': successKsk == true,
+          'ksk-modal--error': successKsk == false
+        }, _defineProperty({}, "ksk-modal--city".concat(kskCityId), this.state.kskCityId))
+      }, successKsk ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u041A\u0421\u041A \xAB", ksk, "\xBB ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442"), "  \u0441 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "app-links app-links--dark"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "",
+        className: "app-link"
+      }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_4__["default"])('apple'), "App Store"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "",
+        className: "app-link"
+      }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_4__["default"])('google'), "Google Play"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0412\u0430\u0448 \u041A\u0421\u041A  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u043D\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442"), "  \u0441 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043C")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "check-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0443", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0432 \u0432\u0430\u0448\u0435\u043C \u041A\u0421\u041A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "form-inline",
@@ -1060,14 +1186,25 @@ function (_Component) {
         getSuggestionValue: getSuggestionValue,
         renderSuggestion: renderSuggestion,
         inputProps: inputProps
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), noMatchesMessage && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "no-matches"
+      }, "\u0413\u043E\u0440\u043E\u0434\u0430 \u043D\u0435\u0442 \u0432 \u0441\u043F\u0438\u0441\u043A\u0435")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        name: "address",
+        name: "street",
         type: "text",
         className: "form-control",
         id: "",
-        placeholder: "\u0410\u0434\u0440\u0435\u0441",
+        placeholder: "\u0423\u043B\u0438\u0446\u0430",
+        onChange: this._handleChange
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "house",
+        type: "text",
+        className: "form-control",
+        id: "",
+        placeholder: "\u0414\u043E\u043C",
         onChange: this._handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
@@ -1319,12 +1456,10 @@ function (_Component) {
     /**
      * Remove event listener
      */
+    // componentWillUnmount() {
+    //   window.removeEventListener("resize", this.updateDimensions.bind(this));
+    // }
 
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      window.removeEventListener("resize", this.updateDimensions.bind(this));
-    }
   }, {
     key: "render",
     value: function render() {
@@ -1864,7 +1999,7 @@ function (_Component) {
         className: "fact-item__number"
       }, "900"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "fact-item__text"
-      }, "\u0436\u0438\u043B\u044C\u0446\u043E\u0432", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), "\u0437\u0430\u0440\u0435\u0433\u0435\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u043E")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "\u0436\u0438\u043B\u044C\u0446\u043E\u0432", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("br", null), "\u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043E\u0432\u0430\u043D\u043E")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "fact-item"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "fact-item__number"
@@ -2071,6 +2206,187 @@ var steps = [{
   image: '/static/images/step1.jpg'
 }];
 /* harmony default export */ __webpack_exports__["default"] = (steps);
+
+/***/ }),
+
+/***/ "./node_modules/ansi-colors/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/ansi-colors/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+const colors = { enabled: true, visible: true, styles: {}, keys: {} };
+
+if ('FORCE_COLOR' in process.env) {
+  colors.enabled = process.env.FORCE_COLOR !== '0' ? true : false;
+}
+
+const ansi = codes => {
+  codes.open = `\u001b[${codes[0]}m`;
+  codes.close = `\u001b[${codes[1]}m`;
+  codes.regex = new RegExp(`\\u001b\\[${codes[1]}m`, 'g');
+  return codes;
+};
+
+const wrap = (style, str, nl) => {
+  let { open, close, regex } = style;
+  str = open + (str.includes(close) ? str.replace(regex, open) : str) + close;
+  // see https://github.com/chalk/chalk/pull/92, thanks to the
+  // chalk contributors for this fix. However, we've confirmed that
+  // this issue is also present in Windows terminals
+  return nl ? str.replace(/\r?\n/g, `${close}$&${open}`) : str;
+};
+
+const style = (input, stack) => {
+  if (input === '' || input == null) return '';
+  if (colors.enabled === false) return input;
+  if (colors.visible === false) return '';
+  let str = '' + input;
+  let nl = str.includes('\n');
+  let n = stack.length;
+  while (n-- > 0) str = wrap(colors.styles[stack[n]], str, nl);
+  return str;
+};
+
+const define = (name, codes, type) => {
+  colors.styles[name] = ansi(codes);
+  let t = colors.keys[type] || (colors.keys[type] = []);
+  t.push(name);
+
+  Reflect.defineProperty(colors, name, {
+    get() {
+      let color = input => style(input, color.stack);
+      Reflect.setPrototypeOf(color, colors);
+      color.stack = this.stack ? this.stack.concat(name) : [name];
+      return color;
+    }
+  });
+};
+
+define('reset', [0, 0], 'modifier');
+define('bold', [1, 22], 'modifier');
+define('dim', [2, 22], 'modifier');
+define('italic', [3, 23], 'modifier');
+define('underline', [4, 24], 'modifier');
+define('inverse', [7, 27], 'modifier');
+define('hidden', [8, 28], 'modifier');
+define('strikethrough', [9, 29], 'modifier');
+
+define('black', [30, 39], 'color');
+define('red', [31, 39], 'color');
+define('green', [32, 39], 'color');
+define('yellow', [33, 39], 'color');
+define('blue', [34, 39], 'color');
+define('magenta', [35, 39], 'color');
+define('cyan', [36, 39], 'color');
+define('white', [37, 39], 'color');
+define('gray', [90, 39], 'color');
+define('grey', [90, 39], 'color');
+
+define('bgBlack', [40, 49], 'bg');
+define('bgRed', [41, 49], 'bg');
+define('bgGreen', [42, 49], 'bg');
+define('bgYellow', [43, 49], 'bg');
+define('bgBlue', [44, 49], 'bg');
+define('bgMagenta', [45, 49], 'bg');
+define('bgCyan', [46, 49], 'bg');
+define('bgWhite', [47, 49], 'bg');
+
+define('blackBright', [90, 39], 'bright');
+define('redBright', [91, 39], 'bright');
+define('greenBright', [92, 39], 'bright');
+define('yellowBright', [93, 39], 'bright');
+define('blueBright', [94, 39], 'bright');
+define('magentaBright', [95, 39], 'bright');
+define('cyanBright', [96, 39], 'bright');
+define('whiteBright', [97, 39], 'bright');
+
+define('bgBlackBright', [100, 49], 'bgBright');
+define('bgRedBright', [101, 49], 'bgBright');
+define('bgGreenBright', [102, 49], 'bgBright');
+define('bgYellowBright', [103, 49], 'bgBright');
+define('bgBlueBright', [104, 49], 'bgBright');
+define('bgMagentaBright', [105, 49], 'bgBright');
+define('bgCyanBright', [106, 49], 'bgBright');
+define('bgWhiteBright', [107, 49], 'bgBright');
+
+/* eslint-disable no-control-regex */
+// ansiRegex modified from node.js readline: https://git.io/fNWFP, which itself
+// is adopted from regex used for ansi escape code splitting in ansi-regex
+// Adopted from https://github.com/chalk/ansi-regex/blob/master/index.js
+// License: MIT, authors: @sindresorhus, Qix-, and arjunmehta Matches all
+// ansi escape code sequences in a string
+colors.ansiRegex = /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/gm;
+colors.hasAnsi = str => str && typeof str === 'string' && colors.ansiRegex.test(str);
+colors.unstyle = str => typeof str === 'string' ? str.replace(colors.ansiRegex, '') : str;
+colors.none = colors.clear = str => str; // noop, for programmatic usage
+colors.stripColor = colors.unstyle;
+colors.hasColor = colors.hasAnsi;
+colors.symbols = __webpack_require__(/*! ./symbols */ "./node_modules/ansi-colors/symbols.js");
+module.exports = colors;
+
+
+/***/ }),
+
+/***/ "./node_modules/ansi-colors/symbols.js":
+/*!*********************************************!*\
+  !*** ./node_modules/ansi-colors/symbols.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+const isWindows = process.platform === 'win32';
+const isLinux = process.platform === 'linux';
+
+const windows = {
+  bullet: '•',
+  check: '√',
+  cross: '×',
+  ellipsis: '...',
+  heart: '❤',
+  info: 'i',
+  line: '─',
+  middot: '·',
+  minus: '－',
+  plus: '＋',
+  question: '?',
+  questionSmall: '﹖',
+  pointer: '>',
+  pointerSmall: '»',
+  warning: '‼'
+};
+
+const other = {
+  ballotCross: '✘',
+  bullet: '•',
+  check: '✔',
+  cross: '✖',
+  ellipsis: '…',
+  heart: '❤',
+  info: 'ℹ',
+  line: '─',
+  middot: '·',
+  minus: '－',
+  plus: '＋',
+  question: '?',
+  questionFull: '？',
+  questionSmall: '﹖',
+  pointer: isLinux ? '▸' : '❯',
+  pointerSmall: isLinux ? '‣' : '›',
+  warning: '⚠'
+};
+
+module.exports = isWindows ? windows : other;
+Reflect.defineProperty(module.exports, 'windows', { enumerable: false, value: windows });
+Reflect.defineProperty(module.exports, 'other', { enumerable: false, value: other });
+
 
 /***/ }),
 
@@ -2708,6 +3024,17 @@ module.exports = require("aos");
 /***/ (function(module, exports) {
 
 module.exports = require("classnames");
+
+/***/ }),
+
+/***/ "downshift":
+/*!****************************!*\
+  !*** external "downshift" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("downshift");
 
 /***/ }),
 

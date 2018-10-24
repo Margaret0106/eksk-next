@@ -65,9 +65,9 @@ class Header extends Component {
   /**
    * Remove event listener
    */
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions.bind(this));
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.updateDimensions.bind(this));
+  // }
   
 
   changeBodyClass = (className) => {
@@ -226,8 +226,7 @@ class Header extends Component {
                   onChange={this.handleChange}
                   options={selectOptions}
                   isSearchable={false}
-                  styles={customStyles}
-                  defaultMenuIsOpen={true}
+                  styles={customStyles}                  
                 />
               )}               
                 

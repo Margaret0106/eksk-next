@@ -165,7 +165,7 @@ input:-webkit-autofill:active {
 
 .form-group {
   width: 100%;
-
+  position: relative;
   &--half {
     width: 48%;
 
@@ -257,4 +257,15 @@ input:-webkit-autofill:active {
       }
     }
   }
+}
+
+.Select-arrow {
+  display: none;
+}
+
+.no-matches {
+  position: absolute;
+  top: 100%;
+  margin-top: 10px;
+  font-size: 14px;
 }

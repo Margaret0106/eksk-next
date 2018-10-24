@@ -45,9 +45,9 @@ class Problems extends Component {
   /**
    * Remove event listener
    */
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions.bind(this));
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.updateDimensions.bind(this));
+  // }
   
   render() {
 

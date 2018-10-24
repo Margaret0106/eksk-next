@@ -79,7 +79,7 @@ class TopMain extends Component {
                           <div className="fact-item__text">
                             жильцов
                             <br/>
-                            зарегестрировано
+                            зарегистрировано
                           </div>
                         </div>
                         <div className="fact-item">

@@ -13,6 +13,11 @@
 
 .app-links {
   display: flex;
+  &--dark {
+    .app-link:last-child {
+      border-left: 1px solid rgba(255,255,255,.5)
+    }
+  }
 }
 
 
@@ -25,6 +30,17 @@
   font-size: 18px;
   font-weight: bold;
   padding: 0 20px;
+  .app-links--dark & {
+    background: #5DBB8E;
+    color: #96DBBA;    
+  }
+  .app-links--dark &:hover {
+    background: #5DBB8E;
+    color: #fff;    
+  }
+  svg {
+    margin-right: 10px;
+  }
   @media (max-width: 991px) {
     font-size: 16px;
     padding: 0 15px;
@@ -39,6 +55,8 @@
     width: 50%;
     text-align: center;
     svg {
+      position: relative;
+      top: 3px;
       margin-right: 5px;
     }
   }
