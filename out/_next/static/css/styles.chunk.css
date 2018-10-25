@@ -7183,7 +7183,8 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 transparent; }
 
 .form-group {
-  width: 100%; }
+  width: 100%;
+  position: relative; }
   .form-group--half {
     width: 48%; }
     @media (max-width: 640px) {
@@ -7248,6 +7249,15 @@ input:-webkit-autofill:active {
     outline: none !important; }
   .header ul.dropdown-menu li.active a {
     background: rgba(86, 187, 138, 0.2); }
+
+.Select-arrow {
+  display: none; }
+
+.no-matches {
+  position: absolute;
+  top: 100%;
+  margin-top: 10px;
+  font-size: 14px; }
 
 .svg-sprites {
   display: none; }
@@ -7396,6 +7406,8 @@ input:-webkit-autofill:active {
 
 .app-links {
   display: flex; }
+  .app-links--dark .app-link:last-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.5); }
 
 .app-link {
   background: #fff;
@@ -7406,6 +7418,12 @@ input:-webkit-autofill:active {
   font-size: 18px;
   font-weight: bold;
   padding: 0 20px; }
+  .app-links--dark .app-link {
+    background: #5DBB8E;
+    color: #96DBBA; }
+  .app-links--dark .app-link:hover {
+    background: #5DBB8E;
+    color: #fff; }
   .app-link svg {
     margin-right: 10px; }
   @media (max-width: 991px) {
@@ -7436,6 +7454,89 @@ input:-webkit-autofill:active {
 
 .logo {
   padding-right: 25px; }
+
+.ksk-modal {
+  opacity: 0;
+  visibility: hidden;
+  transition: .5s;
+  background: #fff;
+  box-shadow: 0px 5px 50px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 370px;
+  padding: 20px;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 26px;
+  position: absolute;
+  top: auto;
+  left: auto; }
+  .ksk-modal:after {
+    content: url("/eksk-landing/static/images/border-arrow.svg");
+    position: absolute;
+    top: -20px;
+    right: -20px; }
+  .ksk-modal--open {
+    opacity: 1;
+    visibility: visible; }
+  .ksk-modal--success span {
+    color: #56BB8A; }
+  .ksk-modal--error span {
+    color: #BB5656; }
+  .ksk-modal--city1 {
+    top: 40%;
+    right: 40%; }
+  .ksk-modal--city2 {
+    bottom: 35%;
+    right: 25%; }
+    .ksk-modal--city2:after {
+      content: url("/eksk-landing/static/images/border-arrow.svg");
+      position: absolute;
+      top: auto;
+      bottom: -20px;
+      right: -20px;
+      transform: rotate(90deg); }
+  .ksk-modal--city3 {
+    left: 18%;
+    bottom: 30%; }
+    .ksk-modal--city3:after {
+      content: url("/eksk-landing/static/images/border-arrow.svg");
+      position: absolute;
+      top: auto;
+      left: -20px;
+      bottom: -20px;
+      right: auto;
+      transform: rotate(-180deg); }
+  .ksk-modal--city4 {
+    top: 30%;
+    right: 48%; }
+  .ksk-modal--city5 {
+    top: 55%;
+    right: 35%; }
+  .ksk-modal--city6 {
+    left: 18%;
+    top: 35%; }
+    .ksk-modal--city6:after {
+      content: url("/eksk-landing/static/images/border-arrow.svg");
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      bottom: auto;
+      right: auto;
+      transform: rotate(-90deg); }
+  .ksk-modal--city7 {
+    top: 20%;
+    right: 58%; }
+  .ksk-modal--city8 {
+    left: 40%;
+    top: 45%; }
+    .ksk-modal--city8:after {
+      content: url("/eksk-landing/static/images/border-arrow.svg");
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      bottom: auto;
+      right: auto;
+      transform: rotate(-90deg); }
 
 .nav-link {
   display: inline-block;
@@ -7983,7 +8084,7 @@ h2 {
     width: 100%;
     text-align: left; }
     .check-form form .btn[type="submit"] {
-      width: 31%;
+      width: calc(35% - 100px);
       max-width: 300px;
       margin-left: 3%; }
       @media (max-width: 860px) {
@@ -7999,6 +8100,10 @@ h2 {
     width: 31%;
     max-width: 300px;
     margin: 0; }
+    .check-form .form-group--small {
+      width: 100px; }
+    .check-form .form-group--medium {
+      width: 25%; }
     @media (max-width: 860px) {
       .check-form .form-group {
         width: 43%;
@@ -8428,25 +8533,25 @@ h2 {
   to {
     opacity: 1; } }
 
-.css-10nd86i {
+.header .css-10nd86i {
   width: 250px;
   z-index: 10000; }
   @media (max-width: 480px) {
-    .css-10nd86i {
+    .header .css-10nd86i {
       width: 100%; } }
 
-.css-xp4uvy {
+.header .css-xp4uvy {
   font-weight: 500;
   padding: 10px 5px;
   font-size: 14px; }
 
-.css-vj8t7z {
+.header .css-vj8t7z {
   border-color: rgba(137, 207, 172, 0.5) !important; }
 
-.css-xp4uvy {
+.header .css-xp4uvy {
   color: #56bb8a !important; }
   @media (max-width: 480px) {
-    .css-xp4uvy {
+    .header .css-xp4uvy {
       margin: auto;
       display: block;
       position: static !important;
@@ -8456,20 +8561,20 @@ h2 {
       text-align: center;
       width: 100%; } }
 
-.css-vj8t7z:hover {
+.header .css-vj8t7z:hover {
   border-color: #56bb8a !important; }
 
-.css-2o5izw {
+.header .css-2o5izw {
   border-color: #56bb8a !important;
   box-shadow: 0 0 transparent !important; }
-  .css-2o5izw:hover {
+  .header .css-2o5izw:hover {
     border-color: #56bb8a !important;
     box-shadow: 0 0 transparent !important; }
 
-.css-15k3avv .selected {
+.header .css-15k3avv .selected {
   background: #000; }
 
-.css-d8oujb {
+.header .css-d8oujb {
   display: none; }
 
 /***  цвет иконки с ракетой. задаем отдельно от всех остальных элементов ***/
@@ -8664,6 +8769,9 @@ body {
   @media (max-width: 640px) {
     .copyright {
       font-size: 12px; } }
+
+.map {
+  position: relative; }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .container {

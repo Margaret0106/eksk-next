@@ -68,7 +68,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../store */ "./store.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash/debounce */ "./node_modules/lodash/debounce.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../store */ "./store.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -90,6 +92,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -214,6 +217,7 @@ function (_Component) {
         label: "Жителям"
       }
     };
+    _this.updateDimensionsDebounced = lodash_debounce__WEBPACK_IMPORTED_MODULE_6___default()(_this.updateDimensions.bind(_assertThisInitialized(_assertThisInitialized(_this))), 100);
     return _this;
   }
   /**
@@ -242,15 +246,17 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.updateDimensions();
-      window.addEventListener("resize", this.updateDimensions.bind(this));
+      window.addEventListener("resize", this.updateDimensionsDebounced);
     }
     /**
      * Remove event listener
      */
-    // componentWillUnmount() {
-    //   window.removeEventListener("resize", this.updateDimensions.bind(this));
-    // }
 
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener("resize", this.updateDimensionsDebounced);
+    }
   }, {
     key: "render",
     value: function render() {
@@ -388,9 +394,9 @@ function (_Component) {
   };
 }, function (dispatch) {
   return {
-    representClass: Object(redux__WEBPACK_IMPORTED_MODULE_4__["bindActionCreators"])(_store__WEBPACK_IMPORTED_MODULE_6__["representClass"], dispatch),
-    citizenClass: Object(redux__WEBPACK_IMPORTED_MODULE_4__["bindActionCreators"])(_store__WEBPACK_IMPORTED_MODULE_6__["citizenClass"], dispatch),
-    partnerClass: Object(redux__WEBPACK_IMPORTED_MODULE_4__["bindActionCreators"])(_store__WEBPACK_IMPORTED_MODULE_6__["partnerClass"], dispatch)
+    representClass: Object(redux__WEBPACK_IMPORTED_MODULE_4__["bindActionCreators"])(_store__WEBPACK_IMPORTED_MODULE_7__["representClass"], dispatch),
+    citizenClass: Object(redux__WEBPACK_IMPORTED_MODULE_4__["bindActionCreators"])(_store__WEBPACK_IMPORTED_MODULE_7__["citizenClass"], dispatch),
+    partnerClass: Object(redux__WEBPACK_IMPORTED_MODULE_4__["bindActionCreators"])(_store__WEBPACK_IMPORTED_MODULE_7__["partnerClass"], dispatch)
   };
 })(Header));
 
@@ -519,6 +525,145 @@ var RfLink = function RfLink() {
 
 /***/ }),
 
+/***/ "./app/components/Form.js":
+/*!********************************!*\
+  !*** ./app/components/Form.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Icons */ "./app/components/Icons.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_getFormData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getFormData */ "./app/utils/getFormData.js");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! isomorphic-fetch */ "./node_modules/isomorphic-fetch/fetch-npm-browserify.js");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+var FeedbackForm =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(FeedbackForm, _Component);
+
+  function FeedbackForm(props) {
+    var _this;
+
+    _classCallCheck(this, FeedbackForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(FeedbackForm).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleChange", function (event) {
+      var formData = _this.state.formData;
+
+      _this.setState({
+        formData: _objectSpread({}, formData, _defineProperty({}, event.target.getAttribute('name'), event.target.value))
+      }, function () {
+        console.log('onchange', this.state.formData);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleSubmit", function (event) {
+      event.preventDefault();
+      var formData = _this.state.formData;
+      console.log('formData', JSON.stringify(formData));
+      fetch("http://eksk-landing.rocketfirm.net/en/api/v1/feedback/create", {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: Object(_utils_getFormData__WEBPACK_IMPORTED_MODULE_3__["default"])(formData)
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        console.log('data', data);
+      });
+    });
+
+    _this.state = {
+      formData: {}
+    };
+    return _this;
+  }
+
+  _createClass(FeedbackForm, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        ref: "el => this.form = el",
+        className: "form-transparent form-flex",
+        onSubmit: this._handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group form-group--half"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this._handleChange,
+        type: "text",
+        name: "email",
+        className: "form-control",
+        placeholder: "\u041F\u043E\u0447\u0442\u0430"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group form-group--half"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this._handleChange,
+        type: "text",
+        name: "city",
+        className: "form-control",
+        placeholder: "\u0413\u043E\u0440\u043E\u0434"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this._handleChange,
+        type: "text",
+        name: "street",
+        className: "form-control",
+        placeholder: "\u0423\u043B\u0438\u0446\u0430"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn--transparent"
+      }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443 ", Object(_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('arrow')));
+    }
+  }]);
+
+  return FeedbackForm;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (FeedbackForm);
+
+/***/ }),
+
 /***/ "./app/components/Icons.js":
 /*!*********************************!*\
   !*** ./app/components/Icons.js ***!
@@ -610,12 +755,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Icons */ "./app/components/Icons.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! isomorphic-fetch */ "./node_modules/isomorphic-fetch/fetch-npm-browserify.js");
-/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_Form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Form */ "./app/components/Form.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils_getFormData__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/getFormData */ "./app/utils/getFormData.js");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! isomorphic-fetch */ "./node_modules/isomorphic-fetch/fetch-npm-browserify.js");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
@@ -644,6 +791,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+ // const getFormData = object => Object.keys(object).map((key) => {
+//     return encodeURIComponent(key) + '=' + encodeURIComponent(object[key]);
+//   }).join('&');
+
 var AddKsk =
 /*#__PURE__*/
 function (_Component) {
@@ -657,25 +808,26 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AddKsk).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleChange", function (event) {
-      var formValues = _this.state.formValues;
+      var formData = _this.state.formData;
 
       _this.setState({
-        formValues: _objectSpread({}, formValues, _defineProperty({}, event.target.getAttribute('name'), event.target.value))
+        formData: _objectSpread({}, formData, _defineProperty({}, event.target.getAttribute('name'), event.target.value))
       }, function () {
-        console.log('onchange', this.state.formValues);
+        console.log('onchange', this.state.formData);
       });
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleSubmit", function (event) {
       event.preventDefault();
-      var formData = new FormData(event.target);
-      console.log('formValues', JSON.stringify(formData));
-      fetch("http://eksk-landing.rocketfirm.net/api/v1/feedback/create", {
-        method: 'post',
+      var formData = _this.state.formData;
+      console.log('formData', JSON.stringify(formData));
+      fetch("http://eksk-landing.rocketfirm.net/en/api/v1/feedback/create", {
+        method: 'POST',
         headers: {
-          'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N'
-        } //   body: JSON.stringify(formData)
-
+          'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: Object(_utils_getFormData__WEBPACK_IMPORTED_MODULE_4__["default"])(formData)
       }).then(function (res) {
         return res.json();
       }).then(function (data) {
@@ -684,7 +836,7 @@ function (_Component) {
     });
 
     _this.state = {
-      formValues: {}
+      formData: {}
     };
     return _this;
   }
@@ -712,37 +864,7 @@ function (_Component) {
         className: "app-link"
       }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('google'), " Google Play")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C, \u0435\u0441\u043B\u0438 \u0432\u0430\u0448\u0435\u0433\u043E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u041A\u0421\u041A \u043D\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "form-transparent form-flex",
-        onSubmit: this._handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group form-group--half"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        onChange: this._handleChange,
-        type: "text",
-        name: "email",
-        className: "form-control",
-        placeholder: "\u041F\u043E\u0447\u0442\u0430"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group form-group--half"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        onChange: this._handleChange,
-        type: "text",
-        name: "city",
-        className: "form-control",
-        placeholder: "\u0413\u043E\u0440\u043E\u0434"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        onChange: this._handleChange,
-        type: "text",
-        name: "street",
-        className: "form-control",
-        placeholder: "\u0423\u043B\u0438\u0446\u0430"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit",
-        className: "btn btn--transparent"
-      }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443 ", Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('arrow'), " "))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C, \u0435\u0441\u043B\u0438 \u0432\u0430\u0448\u0435\u0433\u043E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u041A\u0421\u041A \u043D\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Form__WEBPACK_IMPORTED_MODULE_2__["default"], null)))));
     }
   }]);
 
@@ -768,15 +890,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_autosuggest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-autosuggest */ "./node_modules/react-autosuggest/dist/index.js");
 /* harmony import */ var react_autosuggest__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_autosuggest__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
-/* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Icons */ "./app/components/Icons.js");
-/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! isomorphic-fetch */ "./node_modules/isomorphic-fetch/fetch-npm-browserify.js");
-/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var downshift__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! downshift */ "./node_modules/downshift/dist/downshift.esm.js");
-/* harmony import */ var _node_modules_ansi_colors__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../node_modules/ansi-colors */ "./node_modules/ansi-colors/index.js");
-/* harmony import */ var _node_modules_ansi_colors__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ansi_colors__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Icons */ "./app/components/Icons.js");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! isomorphic-fetch */ "./node_modules/isomorphic-fetch/fetch-npm-browserify.js");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_ansi_colors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../node_modules/ansi-colors */ "./node_modules/ansi-colors/index.js");
+/* harmony import */ var _node_modules_ansi_colors__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ansi_colors__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var smoothscroll_polyfill__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! smoothscroll-polyfill */ "./node_modules/smoothscroll-polyfill/dist/smoothscroll.js");
+/* harmony import */ var smoothscroll_polyfill__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(smoothscroll_polyfill__WEBPACK_IMPORTED_MODULE_7__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
@@ -798,7 +920,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
@@ -880,7 +1001,6 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (event, _ref2) {
       var highlightedSuggestion = _ref2.highlightedSuggestion;
-      console.log('highlightedSuggestion', highlightedSuggestion);
 
       if (_this.state.noMatchesMessage) {
         _this.setState({
@@ -903,7 +1023,6 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onSuggestionSelected", function (event, _ref4) {
       var method = _ref4.method;
-      console.log('here');
 
       if (method === 'enter') {
         event.preventDefault();
@@ -921,9 +1040,7 @@ function (_Component) {
 
       _this.setState({
         formData: _objectSpread({}, formData, _defineProperty({}, event.target.getAttribute('name'), event.target.value))
-      }, function () {
-        console.log('onchange', this.state.formData.street);
-      });
+      }, function () {});
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleSubmit", function (event) {
@@ -941,23 +1058,44 @@ function (_Component) {
         return res.json();
       }).then(function (data) {
         console.log('data', data);
-        data.data && data.data.ksk ? _this.setState({
-          successKsk: true,
-          ksk: data.data.ksk.title,
-          kskCityId: data.data.city.id
-        }) : _this.setState({
-          successKsk: false,
-          ksk: null,
-          kskCityId: null
-        });
-        data.data ? _this.setState({
-          kskModalOpen: true,
-          kskCityId: lodash__WEBPACK_IMPORTED_MODULE_6___default.a.findKey(_this.props.cities, {
-            'title': 'Астана'
-          })
-        }) : _this.setState({
-          kskModalOpen: false
-        });
+
+        if (data.success) {
+          smoothscroll_polyfill__WEBPACK_IMPORTED_MODULE_7___default.a.polyfill();
+          var elmnt = document.getElementById('map');
+          elmnt.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+
+          _this.setState({
+            kskModalOpen: true
+          });
+
+          if (data.data.ksk) {
+            _this.setState({
+              successKsk: true,
+              ksk: data.data.ksk.title,
+              kskCityId: data.data.city.id
+            });
+          } else {
+            var selectedCity = _this.state.cities.find(function (city) {
+              return city.title === _this.state.value;
+            });
+
+            _this.setState({
+              successKsk: false,
+              ksk: null,
+              kskCityId: selectedCity.id
+            });
+
+            console.log(_this.state.kskCityId);
+          }
+        } else {
+          _this.setState({
+            kskModalOpen: false
+          });
+        }
+
         console.log('kskModalOpen', _this.state.kskModalOpen, _this.state.ksk);
       });
     });
@@ -987,6 +1125,7 @@ function (_Component) {
       successKsk: false,
       kskCityId: null
     };
+    _this.myRef = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     return _this;
   }
 
@@ -997,21 +1136,6 @@ function (_Component) {
     }
   }, {
     key: "render",
-    // submit (e) {
-    //   e.preventDefault()
-    //   const formData = new FormData(e.target)
-    //   console.log('data', formData)
-    // fetch(`http://dev.e-kck.kz/api/v1/landing/search`, {
-    //   method: 'get',
-    //   headers: {
-    //     'Accept': 'application/json, text/plain, */*',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(data)
-    // }).then((res) => {
-    //   res.status === 200 ? this.setState({ submitted: true }) : ''
-    // })
-    // }
     value: function render() {
       var _this$state = this.state,
           formData = _this$state.formData,
@@ -1030,7 +1154,7 @@ function (_Component) {
           ksk = _this$state2.ksk,
           successKsk = _this$state2.successKsk;
 
-      var inputClasses = lodash__WEBPACK_IMPORTED_MODULE_6___default.a.mapValues(states, function (_ref5) {
+      var inputClasses = lodash__WEBPACK_IMPORTED_MODULE_5___default.a.mapValues(states, function (_ref5) {
         var error = _ref5.error,
             success = _ref5.success;
         return classnames__WEBPACK_IMPORTED_MODULE_1___default()('input-container', {
@@ -1054,7 +1178,8 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "section section5"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "map"
+        className: "map",
+        id: "map"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "/static/images/map.png",
         alt: ""
@@ -1070,16 +1195,19 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "",
         className: "app-link"
-      }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_4__["default"])('apple'), "App Store"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_3__["default"])('apple'), "App Store"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "",
         className: "app-link"
-      }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_4__["default"])('google'), "Google Play"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0412\u0430\u0448 \u041A\u0421\u041A  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u043D\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442"), "  \u0441 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043C")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_3__["default"])('google'), "Google Play"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0412\u0430\u0448 \u041A\u0421\u041A  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u043D\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442"), "  \u0441 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "",
+        className: "btn btn--white"
+      }, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0435\u0433\u043E \u0432 \u0431\u0430\u0437\u0443")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "check-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0443", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0432 \u0432\u0430\u0448\u0435\u043C \u041A\u0421\u041A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "form-inline",
         onSubmit: this._handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
+        className: "form-group form-group--medium"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_autosuggest__WEBPACK_IMPORTED_MODULE_2___default.a, {
         suggestions: suggestions,
         onSuggestionsFetchRequested: this.onSuggestionsFetchRequested,
@@ -1100,7 +1228,7 @@ function (_Component) {
         placeholder: "\u0423\u043B\u0438\u0446\u0430",
         onChange: this._handleChange
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "form-group"
+        className: "form-group form-group--small"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "house",
         type: "text",
@@ -1272,6 +1400,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ProblemSlide_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ProblemSlide.js */ "./app/pages/MainPage/ProblemSlide.js");
 /* harmony import */ var react_id_swiper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-id-swiper */ "./node_modules/react-id-swiper/lib/index.js");
 /* harmony import */ var react_id_swiper__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_id_swiper__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash/debounce */ "./node_modules/lodash/debounce.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -1299,6 +1429,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
+
 var Problems =
 /*#__PURE__*/
 function (_Component) {
@@ -1315,6 +1446,7 @@ function (_Component) {
       activeTab: '1',
       isDesktop: true
     };
+    _this.updateDimensionsDebounced = lodash_debounce__WEBPACK_IMPORTED_MODULE_6___default()(_this.updateDimensions.bind(_assertThisInitialized(_assertThisInitialized(_this))), 100);
     return _this;
   }
 
@@ -1352,15 +1484,17 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.updateDimensions();
-      window.addEventListener("resize", this.updateDimensions.bind(this));
+      window.addEventListener("resize", this.updateDimensionsDebounced);
     }
     /**
      * Remove event listener
      */
-    // componentWillUnmount() {
-    //   window.removeEventListener("resize", this.updateDimensions.bind(this));
-    // }
 
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener("resize", this.updateDimensionsDebounced);
+    }
   }, {
     key: "render",
     value: function render() {
@@ -1988,6 +2122,25 @@ function mapStateToProps(state) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps)(TopMain));
+
+/***/ }),
+
+/***/ "./app/utils/getFormData.js":
+/*!**********************************!*\
+  !*** ./app/utils/getFormData.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var getFormData = function getFormData(object) {
+  return Object.keys(object).map(function (key) {
+    return encodeURIComponent(key) + '=' + encodeURIComponent(object[key]);
+  }).join('&');
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (getFormData);
 
 /***/ }),
 
@@ -3925,193 +4078,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	} else {}
 }());
 
-
-/***/ }),
-
-/***/ "./node_modules/compute-scroll-into-view/es/index.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/compute-scroll-into-view/es/index.js ***!
-  \***********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-function isElement(el) {
-  return el != null && typeof el === 'object' && el.nodeType === 1;
-}
-
-function canOverflow(overflow, skipOverflowHiddenElements) {
-  if (skipOverflowHiddenElements && overflow === 'hidden') {
-    return false;
-  }
-
-  return overflow !== 'visible' && overflow !== 'clip';
-}
-
-function isScrollable(el, skipOverflowHiddenElements) {
-  if (el.clientHeight < el.scrollHeight || el.clientWidth < el.scrollWidth) {
-    var style = getComputedStyle(el, null);
-    return canOverflow(style.overflowY, skipOverflowHiddenElements) || canOverflow(style.overflowX, skipOverflowHiddenElements);
-  }
-
-  return false;
-}
-
-function alignNearest(scrollingEdgeStart, scrollingEdgeEnd, scrollingSize, scrollingBorderStart, scrollingBorderEnd, elementEdgeStart, elementEdgeEnd, elementSize) {
-  if (elementEdgeStart < scrollingEdgeStart && elementEdgeEnd > scrollingEdgeEnd || elementEdgeStart > scrollingEdgeStart && elementEdgeEnd < scrollingEdgeEnd) {
-    return 0;
-  }
-
-  if (elementEdgeStart <= scrollingEdgeStart && elementSize <= scrollingSize || elementEdgeEnd >= scrollingEdgeEnd && elementSize >= scrollingSize) {
-    return elementEdgeStart - scrollingEdgeStart - scrollingBorderStart;
-  }
-
-  if (elementEdgeEnd > scrollingEdgeEnd && elementSize < scrollingSize || elementEdgeStart < scrollingEdgeStart && elementSize > scrollingSize) {
-    return elementEdgeEnd - scrollingEdgeEnd + scrollingBorderEnd;
-  }
-
-  return 0;
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (function (target, options) {
-  var scrollMode = options.scrollMode,
-      block = options.block,
-      inline = options.inline,
-      boundary = options.boundary,
-      skipOverflowHiddenElements = options.skipOverflowHiddenElements;
-  var checkBoundary = typeof boundary === 'function' ? boundary : function (node) {
-    return node !== boundary;
-  };
-
-  if (!isElement(target)) {
-    throw new TypeError('Invalid target');
-  }
-
-  var scrollingElement = document.scrollingElement || document.documentElement;
-  var frames = [];
-  var cursor = target;
-
-  while (isElement(cursor) && checkBoundary(cursor)) {
-    cursor = cursor.parentNode;
-
-    if (cursor === scrollingElement) {
-      frames.push(cursor);
-      break;
-    }
-
-    if (cursor === document.body && isScrollable(cursor) && !isScrollable(document.documentElement)) {
-      continue;
-    }
-
-    if (isScrollable(cursor, skipOverflowHiddenElements)) {
-      frames.push(cursor);
-    }
-  }
-
-  var viewportWidth = window.visualViewport ? visualViewport.width : innerWidth;
-  var viewportHeight = window.visualViewport ? visualViewport.height : innerHeight;
-  var viewportX = window.scrollX || pageXOffset;
-  var viewportY = window.scrollY || pageYOffset;
-
-  var _target$getBoundingCl = target.getBoundingClientRect(),
-      targetHeight = _target$getBoundingCl.height,
-      targetWidth = _target$getBoundingCl.width,
-      targetTop = _target$getBoundingCl.top,
-      targetRight = _target$getBoundingCl.right,
-      targetBottom = _target$getBoundingCl.bottom,
-      targetLeft = _target$getBoundingCl.left;
-
-  var targetBlock = block === 'start' || block === 'nearest' ? targetTop : block === 'end' ? targetBottom : targetTop + targetHeight / 2;
-  var targetInline = inline === 'center' ? targetLeft + targetWidth / 2 : inline === 'end' ? targetRight : targetLeft;
-  var computations = [];
-
-  for (var index = 0; index < frames.length; index++) {
-    var frame = frames[index];
-
-    var _frame$getBoundingCli = frame.getBoundingClientRect(),
-        _height = _frame$getBoundingCli.height,
-        _width = _frame$getBoundingCli.width,
-        _top = _frame$getBoundingCli.top,
-        right = _frame$getBoundingCli.right,
-        bottom = _frame$getBoundingCli.bottom,
-        _left = _frame$getBoundingCli.left;
-
-    if (scrollMode === 'if-needed' && targetTop >= 0 && targetLeft >= 0 && targetBottom <= viewportHeight && targetRight <= viewportWidth && targetTop >= _top && targetBottom <= bottom && targetLeft >= _left && targetRight <= right) {
-      return computations;
-    }
-
-    var frameStyle = getComputedStyle(frame);
-    var borderLeft = parseInt(frameStyle.borderLeftWidth, 10);
-    var borderTop = parseInt(frameStyle.borderTopWidth, 10);
-    var borderRight = parseInt(frameStyle.borderRightWidth, 10);
-    var borderBottom = parseInt(frameStyle.borderBottomWidth, 10);
-    var blockScroll = 0;
-    var inlineScroll = 0;
-    var scrollbarWidth = 'offsetWidth' in frame ? frame.offsetWidth - frame.clientWidth - borderLeft - borderRight : 0;
-    var scrollbarHeight = 'offsetHeight' in frame ? frame.offsetHeight - frame.clientHeight - borderTop - borderBottom : 0;
-
-    if (scrollingElement === frame) {
-      if (block === 'start') {
-        blockScroll = targetBlock;
-      } else if (block === 'end') {
-        blockScroll = targetBlock - viewportHeight;
-      } else if (block === 'nearest') {
-        blockScroll = alignNearest(viewportY, viewportY + viewportHeight, viewportHeight, borderTop, borderBottom, viewportY + targetBlock, viewportY + targetBlock + targetHeight, targetHeight);
-      } else {
-        blockScroll = targetBlock - viewportHeight / 2;
-      }
-
-      if (inline === 'start') {
-        inlineScroll = targetInline;
-      } else if (inline === 'center') {
-        inlineScroll = targetInline - viewportWidth / 2;
-      } else if (inline === 'end') {
-        inlineScroll = targetInline - viewportWidth;
-      } else {
-        inlineScroll = alignNearest(viewportX, viewportX + viewportWidth, viewportWidth, borderLeft, borderRight, viewportX + targetInline, viewportX + targetInline + targetWidth, targetWidth);
-      }
-
-      blockScroll = Math.max(0, blockScroll + viewportY);
-      inlineScroll = Math.max(0, inlineScroll + viewportX);
-    } else {
-      if (block === 'start') {
-        blockScroll = targetBlock - _top - borderTop;
-      } else if (block === 'end') {
-        blockScroll = targetBlock - bottom + borderBottom + scrollbarHeight;
-      } else if (block === 'nearest') {
-        blockScroll = alignNearest(_top, bottom, _height, borderTop, borderBottom + scrollbarHeight, targetBlock, targetBlock + targetHeight, targetHeight);
-      } else {
-        blockScroll = targetBlock - (_top + _height / 2) + scrollbarHeight / 2;
-      }
-
-      if (inline === 'start') {
-        inlineScroll = targetInline - _left - borderLeft;
-      } else if (inline === 'center') {
-        inlineScroll = targetInline - (_left + _width / 2) + scrollbarWidth / 2;
-      } else if (inline === 'end') {
-        inlineScroll = targetInline - right + borderRight + scrollbarWidth;
-      } else {
-        inlineScroll = alignNearest(_left, right, _width, borderLeft, borderRight + scrollbarWidth, targetInline, targetInline + targetWidth, targetWidth);
-      }
-
-      var scrollLeft = frame.scrollLeft,
-          scrollTop = frame.scrollTop;
-      blockScroll = Math.max(0, Math.min(scrollTop + blockScroll, frame.scrollHeight - _height + scrollbarHeight));
-      inlineScroll = Math.max(0, Math.min(scrollLeft + inlineScroll, frame.scrollWidth - _width + scrollbarWidth));
-      targetBlock += scrollTop - blockScroll;
-      targetInline += scrollLeft - inlineScroll;
-    }
-
-    computations.push({
-      el: frame,
-      top: blockScroll,
-      left: inlineScroll
-    });
-  }
-
-  return computations;
-});
 
 /***/ }),
 
@@ -8494,1546 +8460,6 @@ module.exports = function removeClass(element, className) {
 
 /***/ }),
 
-/***/ "./node_modules/downshift/dist/downshift.esm.js":
-/*!******************************************************!*\
-  !*** ./node_modules/downshift/dist/downshift.esm.js ***!
-  \******************************************************/
-/*! exports provided: default, resetIdCounter */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetIdCounter", function() { return resetIdCounter; });
-/* harmony import */ var compute_scroll_into_view__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! compute-scroll-into-view */ "./node_modules/compute-scroll-into-view/es/index.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/next/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/next/node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/next/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
-/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/esm/assertThisInitialized */ "./node_modules/next/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
-/* harmony import */ var react_is__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_is__WEBPACK_IMPORTED_MODULE_7__);
-
-
-
-
-
-
-
-
-
-// istanbul ignore next
-var statusDiv = typeof document === 'undefined' ? null : document.getElementById('a11y-status-message');
-var statuses = [];
-/**
- * @param {String} status the status message
- */
-
-function setStatus(status) {
-  var isSameAsLast = statuses[statuses.length - 1] === status;
-
-  if (isSameAsLast) {
-    statuses = statuses.concat([status]);
-  } else {
-    statuses = [status];
-  }
-
-  var div = getStatusDiv(); // Remove previous children
-
-  while (div.lastChild) {
-    div.removeChild(div.firstChild);
-  }
-
-  statuses.filter(Boolean).forEach(function (statusItem, index) {
-    div.appendChild(getStatusChildDiv(statusItem, index));
-  });
-}
-/**
- * @param {String} status the status message
- * @param {Number} index the index
- * @return {HTMLElement} the child node
- */
-
-
-function getStatusChildDiv(status, index) {
-  var display = index === statuses.length - 1 ? 'block' : 'none';
-  var childDiv = document.createElement('div');
-  childDiv.style.display = display;
-  childDiv.textContent = status;
-  return childDiv;
-}
-/**
- * Get the status node or create it if it does not already exist
- * @return {HTMLElement} the status node
- */
-
-
-function getStatusDiv() {
-  if (statusDiv) {
-    return statusDiv;
-  }
-
-  statusDiv = document.createElement('div');
-  statusDiv.setAttribute('id', 'a11y-status-message');
-  statusDiv.setAttribute('role', 'status');
-  statusDiv.setAttribute('aria-live', 'assertive');
-  statusDiv.setAttribute('aria-relevant', 'additions text');
-  Object.assign(statusDiv.style, {
-    border: '0',
-    clip: 'rect(0 0 0 0)',
-    height: '1px',
-    margin: '-1px',
-    overflow: 'hidden',
-    padding: '0',
-    position: 'absolute',
-    width: '1px'
-  });
-  document.body.appendChild(statusDiv);
-  return statusDiv;
-}
-
-var unknown =  true ? '__autocomplete_unknown__' : undefined;
-var mouseUp =  true ? '__autocomplete_mouseup__' : undefined;
-var itemMouseEnter =  true ? '__autocomplete_item_mouseenter__' : undefined;
-var keyDownArrowUp =  true ? '__autocomplete_keydown_arrow_up__' : undefined;
-var keyDownArrowDown =  true ? '__autocomplete_keydown_arrow_down__' : undefined;
-var keyDownEscape =  true ? '__autocomplete_keydown_escape__' : undefined;
-var keyDownEnter =  true ? '__autocomplete_keydown_enter__' : undefined;
-var clickItem =  true ? '__autocomplete_click_item__' : undefined;
-var blurInput =  true ? '__autocomplete_blur_input__' : undefined;
-var changeInput =  true ? '__autocomplete_change_input__' : undefined;
-var keyDownSpaceButton =  true ? '__autocomplete_keydown_space_button__' : undefined;
-var clickButton =  true ? '__autocomplete_click_button__' : undefined;
-var blurButton =  true ? '__autocomplete_blur_button__' : undefined;
-var controlledPropUpdatedSelectedItem =  true ? '__autocomplete_controlled_prop_updated_selected_item__' : undefined;
-var touchStart =  true ? '__autocomplete_touchstart__' : undefined;
-
-var stateChangeTypes = /*#__PURE__*/Object.freeze({
-  unknown: unknown,
-  mouseUp: mouseUp,
-  itemMouseEnter: itemMouseEnter,
-  keyDownArrowUp: keyDownArrowUp,
-  keyDownArrowDown: keyDownArrowDown,
-  keyDownEscape: keyDownEscape,
-  keyDownEnter: keyDownEnter,
-  clickItem: clickItem,
-  blurInput: blurInput,
-  changeInput: changeInput,
-  keyDownSpaceButton: keyDownSpaceButton,
-  clickButton: clickButton,
-  blurButton: blurButton,
-  controlledPropUpdatedSelectedItem: controlledPropUpdatedSelectedItem,
-  touchStart: touchStart
-});
-
-var idCounter = 0;
-/**
- * Accepts a parameter and returns it if it's a function
- * or a noop function if it's not. This allows us to
- * accept a callback, but not worry about it if it's not
- * passed.
- * @param {Function} cb the callback
- * @return {Function} a function
- */
-
-function cbToCb(cb) {
-  return typeof cb === 'function' ? cb : noop;
-}
-
-function noop() {}
-/**
- * Scroll node into view if necessary
- * @param {HTMLElement} node the element that should scroll into view
- * @param {HTMLElement} rootNode the root element of the component
- */
-
-
-function scrollIntoView(node, rootNode) {
-  if (node === null) {
-    return;
-  }
-
-  var actions = Object(compute_scroll_into_view__WEBPACK_IMPORTED_MODULE_0__["default"])(node, {
-    boundary: rootNode,
-    block: 'nearest',
-    scrollMode: 'if-needed'
-  });
-  actions.forEach(function (_ref) {
-    var el = _ref.el,
-        top = _ref.top,
-        left = _ref.left;
-    el.scrollTop = top;
-    el.scrollLeft = left;
-  });
-}
-/**
- * @param {HTMLElement} parent the parent node
- * @param {HTMLElement} child the child node
- * @return {Boolean} whether the parent is the child or the child is in the parent
- */
-
-
-function isOrContainsNode(parent, child) {
-  return parent === child || parent.contains && parent.contains(child);
-}
-/**
- * Simple debounce implementation. Will call the given
- * function once after the time given has passed since
- * it was last called.
- * @param {Function} fn the function to call after the time
- * @param {Number} time the time to wait
- * @return {Function} the debounced function
- */
-
-
-function debounce(fn, time) {
-  var timeoutId;
-
-  function cancel() {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-  }
-
-  function wrapper() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    cancel();
-    timeoutId = setTimeout(function () {
-      timeoutId = null;
-      fn.apply(void 0, args);
-    }, time);
-  }
-
-  wrapper.cancel = cancel;
-  return wrapper;
-}
-/**
- * This is intended to be used to compose event handlers.
- * They are executed in order until one of them sets
- * `event.preventDownshiftDefault = true`.
- * @param {...Function} fns the event handler functions
- * @return {Function} the event handler to add to an element
- */
-
-
-function callAllEventHandlers() {
-  for (var _len2 = arguments.length, fns = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-    fns[_key2] = arguments[_key2];
-  }
-
-  return function (event) {
-    for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-      args[_key3 - 1] = arguments[_key3];
-    }
-
-    return fns.some(function (fn) {
-      if (fn) {
-        fn.apply(void 0, [event].concat(args));
-      }
-
-      return event.preventDownshiftDefault || event.hasOwnProperty('nativeEvent') && event.nativeEvent.preventDownshiftDefault;
-    });
-  };
-}
-/**
- * This return a function that will call all the given functions with
- * the arguments with which it's called. It does a null-check before
- * attempting to call the functions and can take any number of functions.
- * @param {...Function} fns the functions to call
- * @return {Function} the function that calls all the functions
- */
-
-
-function callAll() {
-  for (var _len4 = arguments.length, fns = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-    fns[_key4] = arguments[_key4];
-  }
-
-  return function () {
-    for (var _len5 = arguments.length, args = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
-      args[_key5] = arguments[_key5];
-    }
-
-    fns.forEach(function (fn) {
-      if (fn) {
-        fn.apply(void 0, args);
-      }
-    });
-  };
-}
-/**
- * This generates a unique ID for an instance of Downshift
- * @return {String} the unique ID
- */
-
-
-function generateId() {
-  return String(idCounter++);
-}
-/**
- * Resets idCounter to 0. Used for SSR.
- */
-
-
-function resetIdCounter() {
-  idCounter = 0;
-}
-/**
- * @param {Object} param the downshift state and other relevant properties
- * @return {String} the a11y status message
- */
-
-
-function getA11yStatusMessage(_ref2) {
-  var isOpen = _ref2.isOpen,
-      highlightedItem = _ref2.highlightedItem,
-      selectedItem = _ref2.selectedItem,
-      resultCount = _ref2.resultCount,
-      previousResultCount = _ref2.previousResultCount,
-      itemToString = _ref2.itemToString;
-
-  if (!isOpen) {
-    if (selectedItem) {
-      return itemToString(selectedItem);
-    } else {
-      return '';
-    }
-  }
-
-  if (!resultCount) {
-    return 'No results.';
-  } else if (!highlightedItem || resultCount !== previousResultCount) {
-    return resultCount + " " + (resultCount === 1 ? 'result is' : 'results are') + " available, use up and down arrow keys to navigate.";
-  }
-
-  return itemToString(highlightedItem);
-}
-/**
- * Takes an argument and if it's an array, returns the first item in the array
- * otherwise returns the argument
- * @param {*} arg the maybe-array
- * @param {*} defaultValue the value if arg is falsey not defined
- * @return {*} the arg or it's first item
- */
-
-
-function unwrapArray(arg, defaultValue) {
-  arg = Array.isArray(arg) ?
-  /* istanbul ignore next (preact) */
-  arg[0] : arg;
-
-  if (!arg && defaultValue) {
-    return defaultValue;
-  } else {
-    return arg;
-  }
-}
-/**
- * @param {Object} element (P)react element
- * @return {Boolean} whether it's a DOM element
- */
-
-
-function isDOMElement(element) {
-  // then we assume this is react
-  return typeof element.type === 'string';
-}
-/**
- * @param {Object} element (P)react element
- * @return {Object} the props
- */
-
-
-function getElementProps(element) {
-  return element.props;
-}
-/**
- * Throws a helpful error message for required properties. Useful
- * to be used as a default in destructuring or object params.
- * @param {String} fnName the function name
- * @param {String} propName the prop name
- */
-
-
-function requiredProp(fnName, propName) {
-  // eslint-disable-next-line no-console
-  console.error("The property \"" + propName + "\" is required in \"" + fnName + "\"");
-}
-
-var stateKeys = ['highlightedIndex', 'inputValue', 'isOpen', 'selectedItem', 'type'];
-/**
- * @param {Object} state the state object
- * @return {Object} state that is relevant to downshift
- */
-
-function pickState(state) {
-  if (state === void 0) {
-    state = {};
-  }
-
-  var result = {};
-  stateKeys.forEach(function (k) {
-    if (state.hasOwnProperty(k)) {
-      result[k] = state[k];
-    }
-  });
-  return result;
-}
-/**
- * Normalizes the 'key' property of a KeyboardEvent in IE/Edge
- * @param {Object} event a keyboardEvent object
- * @return {String} keyboard key
- */
-
-
-function normalizeArrowKey(event) {
-  var key = event.key,
-      keyCode = event.keyCode;
-  /* istanbul ignore next (ie) */
-
-  if (keyCode >= 37 && keyCode <= 40 && key.indexOf('Arrow') !== 0) {
-    return "Arrow" + key;
-  }
-
-  return key;
-}
-/**
- * Simple check if the value passed is object literal
- * @param {*} obj any things
- * @return {Boolean} whether it's object literal
- */
-
-
-function isPlainObject(obj) {
-  return Object.prototype.toString.call(obj) === '[object Object]';
-}
-
-var Downshift =
-/*#__PURE__*/
-function (_Component) {
-  Object(_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_3__["default"])(Downshift, _Component);
-
-  function Downshift(_props) {
-    var _this = _Component.call(this, _props) || this;
-
-    _this.id = _this.props.id || "downshift-" + generateId();
-    _this.menuId = _this.props.menuId || _this.id + "-menu";
-    _this.labelId = _this.props.labelId || _this.id + "-label";
-    _this.inputId = _this.props.inputId || _this.id + "-input";
-
-    _this.getItemId = _this.props.getItemId || function (index) {
-      return _this.id + "-item-" + index;
-    };
-
-    _this.input = null;
-    _this.items = [];
-    _this.itemCount = null;
-    _this.previousResultCount = 0;
-    _this.timeoutIds = [];
-
-    _this.internalSetTimeout = function (fn, time) {
-      var id = setTimeout(function () {
-        _this.timeoutIds = _this.timeoutIds.filter(function (i) {
-          return i !== id;
-        });
-        fn();
-      }, time);
-
-      _this.timeoutIds.push(id);
-    };
-
-    _this.setItemCount = function (count) {
-      _this.itemCount = count;
-    };
-
-    _this.unsetItemCount = function () {
-      _this.itemCount = null;
-    };
-
-    _this.setHighlightedIndex = function (highlightedIndex, otherStateToSet) {
-      if (highlightedIndex === void 0) {
-        highlightedIndex = _this.props.defaultHighlightedIndex;
-      }
-
-      if (otherStateToSet === void 0) {
-        otherStateToSet = {};
-      }
-
-      otherStateToSet = pickState(otherStateToSet);
-
-      _this.internalSetState(Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({
-        highlightedIndex: highlightedIndex
-      }, otherStateToSet));
-    };
-
-    _this.clearSelection = function (cb) {
-      _this.internalSetState({
-        selectedItem: null,
-        inputValue: '',
-        highlightedIndex: _this.props.defaultHighlightedIndex,
-        isOpen: _this.props.defaultIsOpen
-      }, cb);
-    };
-
-    _this.selectItem = function (item, otherStateToSet, cb) {
-      otherStateToSet = pickState(otherStateToSet);
-
-      _this.internalSetState(Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({
-        isOpen: _this.props.defaultIsOpen,
-        highlightedIndex: _this.props.defaultHighlightedIndex,
-        selectedItem: item,
-        inputValue: _this.props.itemToString(item)
-      }, otherStateToSet), cb);
-    };
-
-    _this.selectItemAtIndex = function (itemIndex, otherStateToSet, cb) {
-      var item = _this.items[itemIndex];
-
-      if (item == null) {
-        return;
-      }
-
-      _this.selectItem(item, otherStateToSet, cb);
-    };
-
-    _this.selectHighlightedItem = function (otherStateToSet, cb) {
-      return _this.selectItemAtIndex(_this.getState().highlightedIndex, otherStateToSet, cb);
-    };
-
-    _this.internalSetState = function (stateToSet, cb) {
-      var isItemSelected, onChangeArg;
-      var onStateChangeArg = {};
-      var isStateToSetFunction = typeof stateToSet === 'function'; // we want to call `onInputValueChange` before the `setState` call
-      // so someone controlling the `inputValue` state gets notified of
-      // the input change as soon as possible. This avoids issues with
-      // preserving the cursor position.
-      // See https://github.com/paypal/downshift/issues/217 for more info.
-
-      if (!isStateToSetFunction && stateToSet.hasOwnProperty('inputValue')) {
-        _this.props.onInputValueChange(stateToSet.inputValue, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, _this.getStateAndHelpers(), stateToSet));
-      }
-
-      return _this.setState(function (state) {
-        state = _this.getState(state);
-        var newStateToSet = isStateToSetFunction ? stateToSet(state) : stateToSet; // Your own function that could modify the state that will be set.
-
-        newStateToSet = _this.props.stateReducer(state, newStateToSet); // checks if an item is selected, regardless of if it's different from
-        // what was selected before
-        // used to determine if onSelect and onChange callbacks should be called
-
-        isItemSelected = newStateToSet.hasOwnProperty('selectedItem'); // this keeps track of the object we want to call with setState
-
-        var nextState = {}; // this is just used to tell whether the state changed
-
-        var nextFullState = {}; // we need to call on change if the outside world is controlling any of our state
-        // and we're trying to update that state. OR if the selection has changed and we're
-        // trying to update the selection
-
-        if (isItemSelected && newStateToSet.selectedItem !== state.selectedItem) {
-          onChangeArg = newStateToSet.selectedItem;
-        }
-
-        newStateToSet.type = newStateToSet.type || unknown;
-        Object.keys(newStateToSet).forEach(function (key) {
-          // onStateChangeArg should only have the state that is
-          // actually changing
-          if (state[key] !== newStateToSet[key]) {
-            onStateChangeArg[key] = newStateToSet[key];
-          } // the type is useful for the onStateChangeArg
-          // but we don't actually want to set it in internal state.
-          // this is an undocumented feature for now... Not all internalSetState
-          // calls support it and I'm not certain we want them to yet.
-          // But it enables users controlling the isOpen state to know when
-          // the isOpen state changes due to mouseup events which is quite handy.
-
-
-          if (key === 'type') {
-            return;
-          }
-
-          nextFullState[key] = newStateToSet[key]; // if it's coming from props, then we don't care to set it internally
-
-          if (!_this.isControlledProp(key)) {
-            nextState[key] = newStateToSet[key];
-          }
-        }); // if stateToSet is a function, then we weren't able to call onInputValueChange
-        // earlier, so we'll call it now that we know what the inputValue state will be.
-
-        if (isStateToSetFunction && newStateToSet.hasOwnProperty('inputValue')) {
-          _this.props.onInputValueChange(newStateToSet.inputValue, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, _this.getStateAndHelpers(), newStateToSet));
-        }
-
-        return nextState;
-      }, function () {
-        // call the provided callback if it's a function
-        cbToCb(cb)(); // only call the onStateChange and onChange callbacks if
-        // we have relevant information to pass them.
-
-        var hasMoreStateThanType = Object.keys(onStateChangeArg).length > 1;
-
-        if (hasMoreStateThanType) {
-          _this.props.onStateChange(onStateChangeArg, _this.getStateAndHelpers());
-        }
-
-        if (isItemSelected) {
-          _this.props.onSelect(stateToSet.selectedItem, _this.getStateAndHelpers());
-        }
-
-        if (onChangeArg !== undefined) {
-          _this.props.onChange(onChangeArg, _this.getStateAndHelpers());
-        } // this is currently undocumented and therefore subject to change
-        // We'll try to not break it, but just be warned.
-
-
-        _this.props.onUserAction(onStateChangeArg, _this.getStateAndHelpers());
-      });
-    };
-
-    _this.rootRef = function (node) {
-      return _this._rootNode = node;
-    };
-
-    _this.getRootProps = function (_temp, _temp2) {
-      var _extends2;
-
-      var _ref = _temp === void 0 ? {} : _temp,
-          _ref$refKey = _ref.refKey,
-          refKey = _ref$refKey === void 0 ? 'ref' : _ref$refKey,
-          rest = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["refKey"]);
-
-      var _ref2 = _temp2 === void 0 ? {} : _temp2,
-          _ref2$suppressRefErro = _ref2.suppressRefError,
-          suppressRefError = _ref2$suppressRefErro === void 0 ? false : _ref2$suppressRefErro;
-
-      // this is used in the render to know whether the user has called getRootProps.
-      // It uses that to know whether to apply the props automatically
-      _this.getRootProps.called = true;
-      _this.getRootProps.refKey = refKey;
-      _this.getRootProps.suppressRefError = suppressRefError;
-
-      var _this$getState = _this.getState(),
-          isOpen = _this$getState.isOpen;
-
-      return Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])((_extends2 = {}, _extends2[refKey] = _this.rootRef, _extends2.role = 'combobox', _extends2['aria-expanded'] = isOpen, _extends2['aria-haspopup'] = 'listbox', _extends2['aria-owns'] = isOpen ? _this.menuId : null, _extends2['aria-labelledby'] = _this.labelId, _extends2), rest);
-    };
-
-    _this.keyDownHandlers = {
-      ArrowDown: function ArrowDown(event) {
-        event.preventDefault();
-        var amount = event.shiftKey ? 5 : 1;
-        this.moveHighlightedIndex(amount, {
-          type: keyDownArrowDown
-        });
-      },
-      ArrowUp: function ArrowUp(event) {
-        event.preventDefault();
-        var amount = event.shiftKey ? -5 : -1;
-        this.moveHighlightedIndex(amount, {
-          type: keyDownArrowUp
-        });
-      },
-      Enter: function Enter(event) {
-        var _this$getState2 = this.getState(),
-            isOpen = _this$getState2.isOpen,
-            highlightedIndex = _this$getState2.highlightedIndex;
-
-        if (isOpen && highlightedIndex != null) {
-          event.preventDefault();
-          var item = this.items[highlightedIndex];
-          var itemNode = this.getItemNodeFromIndex(highlightedIndex);
-
-          if (item == null || itemNode && itemNode.hasAttribute('disabled')) {
-            return;
-          }
-
-          this.selectHighlightedItem({
-            type: keyDownEnter
-          });
-        }
-      },
-      Escape: function Escape(event) {
-        event.preventDefault();
-        this.reset({
-          type: keyDownEscape
-        });
-      }
-    };
-    _this.buttonKeyDownHandlers = Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, _this.keyDownHandlers, {
-      ' ': function _(event) {
-        event.preventDefault();
-        this.toggleMenu({
-          type: keyDownSpaceButton
-        });
-      }
-    });
-
-    _this.getToggleButtonProps = function (_temp3) {
-      var _ref3 = _temp3 === void 0 ? {} : _temp3,
-          onClick = _ref3.onClick,
-          onPress = _ref3.onPress,
-          onKeyDown = _ref3.onKeyDown,
-          onKeyUp = _ref3.onKeyUp,
-          onBlur = _ref3.onBlur,
-          rest = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref3, ["onClick", "onPress", "onKeyDown", "onKeyUp", "onBlur"]);
-
-      var _this$getState3 = _this.getState(),
-          isOpen = _this$getState3.isOpen;
-
-      var enabledEventHandlers = {
-        onClick: callAllEventHandlers(onClick, _this.button_handleClick),
-        onKeyDown: callAllEventHandlers(onKeyDown, _this.button_handleKeyDown),
-        onKeyUp: callAllEventHandlers(onKeyUp, _this.button_handleKeyUp),
-        onBlur: callAllEventHandlers(onBlur, _this.button_handleBlur)
-      };
-      var eventHandlers = rest.disabled ? {} : enabledEventHandlers;
-      return Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({
-        type: 'button',
-        role: 'button',
-        'aria-label': isOpen ? 'close menu' : 'open menu',
-        'aria-haspopup': true,
-        'data-toggle': true
-      }, eventHandlers, rest);
-    };
-
-    _this.button_handleKeyUp = function (event) {
-      // Prevent click event from emitting in Firefox
-      event.preventDefault();
-    };
-
-    _this.button_handleKeyDown = function (event) {
-      var key = normalizeArrowKey(event);
-
-      if (_this.buttonKeyDownHandlers[key]) {
-        _this.buttonKeyDownHandlers[key].call(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this)), event);
-      }
-    };
-
-    _this.button_handleClick = function (event) {
-      event.preventDefault(); // handle odd case for Safari and Firefox which
-      // don't give the button the focus properly.
-
-      /* istanbul ignore if (can't reasonably test this) */
-
-      if (_this.props.environment.document.activeElement === _this.props.environment.document.body) {
-        event.target.focus();
-      } // to simplify testing components that use downshift, we'll not wrap this in a setTimeout
-      // if the NODE_ENV is test. With the proper build system, this should be dead code eliminated
-      // when building for production and should therefore have no impact on production code.
-
-
-      if (false) {} else {
-        // Ensure that toggle of menu occurs after the potential blur event in iOS
-        _this.internalSetTimeout(function () {
-          return _this.toggleMenu({
-            type: clickButton
-          });
-        });
-      }
-    };
-
-    _this.button_handleBlur = function (event) {
-      var blurTarget = event.target; // Save blur target for comparison with activeElement later
-      // Need setTimeout, so that when the user presses Tab, the activeElement is the next focused element, not body element
-
-      _this.internalSetTimeout(function () {
-        if (!_this.isMouseDown && (_this.props.environment.document.activeElement == null || _this.props.environment.document.activeElement.id !== _this.inputId) && _this.props.environment.document.activeElement !== blurTarget // Do nothing if we refocus the same element again (to solve issue in Safari on iOS)
-        ) {
-            _this.reset({
-              type: blurButton
-            });
-          }
-      });
-    };
-
-    _this.getLabelProps = function (props) {
-      return Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({
-        htmlFor: _this.inputId,
-        id: _this.labelId
-      }, props);
-    };
-
-    _this.getInputProps = function (_temp4) {
-      var _ref4 = _temp4 === void 0 ? {} : _temp4,
-          onKeyDown = _ref4.onKeyDown,
-          onBlur = _ref4.onBlur,
-          onChange = _ref4.onChange,
-          onInput = _ref4.onInput,
-          onChangeText = _ref4.onChangeText,
-          rest = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref4, ["onKeyDown", "onBlur", "onChange", "onInput", "onChangeText"]);
-
-      var onChangeKey;
-      var eventHandlers = {};
-      /* istanbul ignore next (preact) */
-
-      onChangeKey = 'onChange';
-
-      var _this$getState4 = _this.getState(),
-          inputValue = _this$getState4.inputValue,
-          isOpen = _this$getState4.isOpen,
-          highlightedIndex = _this$getState4.highlightedIndex;
-
-      if (!rest.disabled) {
-        var _eventHandlers;
-
-        eventHandlers = (_eventHandlers = {}, _eventHandlers[onChangeKey] = callAllEventHandlers(onChange, onInput, _this.input_handleChange), _eventHandlers.onKeyDown = callAllEventHandlers(onKeyDown, _this.input_handleKeyDown), _eventHandlers.onBlur = callAllEventHandlers(onBlur, _this.input_handleBlur), _eventHandlers);
-      }
-      /* istanbul ignore if (react-native) */
-
-
-      return Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({
-        'aria-autocomplete': 'list',
-        'aria-activedescendant': isOpen && typeof highlightedIndex === 'number' && highlightedIndex >= 0 ? _this.getItemId(highlightedIndex) : null,
-        'aria-controls': isOpen ? _this.menuId : null,
-        'aria-labelledby': _this.labelId,
-        // https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Turning_off_form_autocompletion
-        // revert back since autocomplete="nope" is ignored on latest Chrome and Opera
-        autoComplete: 'off',
-        value: inputValue,
-        id: _this.inputId
-      }, eventHandlers, rest);
-    };
-
-    _this.input_handleKeyDown = function (event) {
-      var key = normalizeArrowKey(event);
-
-      if (key && _this.keyDownHandlers[key]) {
-        _this.keyDownHandlers[key].call(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this)), event);
-      }
-    };
-
-    _this.input_handleChange = function (event) {
-      _this.internalSetState({
-        type: changeInput,
-        isOpen: true,
-        inputValue: event.target.value
-      });
-    };
-
-    _this.input_handleTextChange
-    /* istanbul ignore next (react-native) */
-    = function (text) {
-      _this.internalSetState({
-        type: changeInput,
-        isOpen: true,
-        inputValue: text
-      });
-    };
-
-    _this.input_handleBlur = function () {
-      // Need setTimeout, so that when the user presses Tab, the activeElement is the next focused element, not the body element
-      _this.internalSetTimeout(function () {
-        var downshiftButtonIsActive = _this.props.environment.document && _this.props.environment.document.activeElement.dataset.toggle && _this._rootNode && _this._rootNode.contains(_this.props.environment.document.activeElement);
-
-        if (!_this.isMouseDown && !downshiftButtonIsActive) {
-          _this.reset({
-            type: blurInput
-          });
-        }
-      });
-    };
-
-    _this.menuRef = function (node) {
-      _this._menuNode = node;
-    };
-
-    _this.getMenuProps = function (_temp5, _temp6) {
-      var _extends3;
-
-      var _ref5 = _temp5 === void 0 ? {} : _temp5,
-          _ref5$refKey = _ref5.refKey,
-          refKey = _ref5$refKey === void 0 ? 'ref' : _ref5$refKey,
-          ref = _ref5.ref,
-          props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref5, ["refKey", "ref"]);
-
-      var _ref6 = _temp6 === void 0 ? {} : _temp6,
-          _ref6$suppressRefErro = _ref6.suppressRefError,
-          suppressRefError = _ref6$suppressRefErro === void 0 ? false : _ref6$suppressRefErro;
-
-      _this.getMenuProps.called = true;
-      _this.getMenuProps.refKey = refKey;
-      _this.getMenuProps.suppressRefError = suppressRefError;
-      return Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])((_extends3 = {}, _extends3[refKey] = callAll(ref, _this.menuRef), _extends3.role = 'listbox', _extends3['aria-labelledby'] = props && props['aria-label'] ? null : _this.labelId, _extends3.id = _this.menuId, _extends3), props);
-    };
-
-    _this.getItemProps = function (_temp7) {
-      var _enabledEventHandlers;
-
-      var _ref7 = _temp7 === void 0 ? {} : _temp7,
-          onMouseMove = _ref7.onMouseMove,
-          onMouseDown = _ref7.onMouseDown,
-          onClick = _ref7.onClick,
-          onPress = _ref7.onPress,
-          index = _ref7.index,
-          _ref7$item = _ref7.item,
-          item = _ref7$item === void 0 ?  false ?
-      /* istanbul ignore next */
-      undefined : requiredProp('getItemProps', 'item') : _ref7$item,
-          rest = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref7, ["onMouseMove", "onMouseDown", "onClick", "onPress", "index", "item"]);
-
-      if (index === undefined) {
-        _this.items.push(item);
-
-        index = _this.items.indexOf(item);
-      } else {
-        _this.items[index] = item;
-      }
-
-      var onSelectKey = 'onClick';
-      var customClickHandler = onClick;
-      var enabledEventHandlers = (_enabledEventHandlers = {
-        // onMouseMove is used over onMouseEnter here. onMouseMove
-        // is only triggered on actual mouse movement while onMouseEnter
-        // can fire on DOM changes, interrupting keyboard navigation
-        onMouseMove: callAllEventHandlers(onMouseMove, function () {
-          if (index === _this.getState().highlightedIndex) {
-            return;
-          }
-
-          _this.setHighlightedIndex(index, {
-            type: itemMouseEnter
-          }); // We never want to manually scroll when changing state based
-          // on `onMouseMove` because we will be moving the element out
-          // from under the user which is currently scrolling/moving the
-          // cursor
-
-
-          _this.avoidScrolling = true;
-
-          _this.internalSetTimeout(function () {
-            return _this.avoidScrolling = false;
-          }, 250);
-        }),
-        onMouseDown: callAllEventHandlers(onMouseDown, function (event) {
-          // This prevents the activeElement from being changed
-          // to the item so it can remain with the current activeElement
-          // which is a more common use case.
-          event.preventDefault();
-        })
-      }, _enabledEventHandlers[onSelectKey] = callAllEventHandlers(customClickHandler, function () {
-        _this.selectItemAtIndex(index, {
-          type: clickItem
-        });
-      }), _enabledEventHandlers); // Passing down the onMouseDown handler to prevent redirect
-      // of the activeElement if clicking on disabled items
-
-      var eventHandlers = rest.disabled ? {
-        onMouseDown: enabledEventHandlers.onMouseDown
-      } : enabledEventHandlers;
-      return Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({
-        id: _this.getItemId(index),
-        role: 'option',
-        'aria-selected': _this.getState().selectedItem === item
-      }, eventHandlers, rest);
-    };
-
-    _this.clearItems = function () {
-      _this.items = [];
-    };
-
-    _this.reset = function (otherStateToSet, cb) {
-      if (otherStateToSet === void 0) {
-        otherStateToSet = {};
-      }
-
-      otherStateToSet = pickState(otherStateToSet);
-
-      _this.internalSetState(function (_ref8) {
-        var selectedItem = _ref8.selectedItem;
-        return Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({
-          isOpen: _this.props.defaultIsOpen,
-          highlightedIndex: _this.props.defaultHighlightedIndex,
-          inputValue: _this.props.itemToString(selectedItem)
-        }, otherStateToSet);
-      }, cb);
-    };
-
-    _this.toggleMenu = function (otherStateToSet, cb) {
-      if (otherStateToSet === void 0) {
-        otherStateToSet = {};
-      }
-
-      otherStateToSet = pickState(otherStateToSet);
-
-      _this.internalSetState(function (_ref9) {
-        var isOpen = _ref9.isOpen;
-        return Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({
-          isOpen: !isOpen
-        }, otherStateToSet);
-      }, function () {
-        var _this$getState5 = _this.getState(),
-            isOpen = _this$getState5.isOpen;
-
-        if (isOpen) {
-          // highlight default index
-          _this.setHighlightedIndex(undefined, otherStateToSet);
-        }
-
-        cbToCb(cb)();
-      });
-    };
-
-    _this.openMenu = function (cb) {
-      _this.internalSetState({
-        isOpen: true
-      }, cb);
-    };
-
-    _this.closeMenu = function (cb) {
-      _this.internalSetState({
-        isOpen: false
-      }, cb);
-    };
-
-    _this.updateStatus = debounce(function () {
-      var state = _this.getState();
-
-      var item = _this.items[state.highlightedIndex];
-
-      var resultCount = _this.getItemCount();
-
-      var status = _this.props.getA11yStatusMessage(Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({
-        itemToString: _this.props.itemToString,
-        previousResultCount: _this.previousResultCount,
-        resultCount: resultCount,
-        highlightedItem: item
-      }, state));
-
-      _this.previousResultCount = resultCount;
-      setStatus(status);
-    }, 200);
-
-    // fancy destructuring + defaults + aliases
-    // this basically says each value of state should either be set to
-    // the initial value or the default value if the initial value is not provided
-    var _this$props = _this.props,
-        defaultHighlightedIndex = _this$props.defaultHighlightedIndex,
-        _this$props$initialHi = _this$props.initialHighlightedIndex,
-        _highlightedIndex = _this$props$initialHi === void 0 ? defaultHighlightedIndex : _this$props$initialHi,
-        defaultIsOpen = _this$props.defaultIsOpen,
-        _this$props$initialIs = _this$props.initialIsOpen,
-        _isOpen = _this$props$initialIs === void 0 ? defaultIsOpen : _this$props$initialIs,
-        _this$props$initialIn = _this$props.initialInputValue,
-        _inputValue = _this$props$initialIn === void 0 ? '' : _this$props$initialIn,
-        _this$props$initialSe = _this$props.initialSelectedItem,
-        _selectedItem = _this$props$initialSe === void 0 ? null : _this$props$initialSe;
-
-    var _state = _this.getState({
-      highlightedIndex: _highlightedIndex,
-      isOpen: _isOpen,
-      inputValue: _inputValue,
-      selectedItem: _selectedItem
-    });
-
-    if (_state.selectedItem != null && _this.props.initialInputValue === undefined) {
-      _state.inputValue = _this.props.itemToString(_state.selectedItem);
-    }
-
-    _this.state = _state;
-    return _this;
-  }
-
-  var _proto = Downshift.prototype;
-
-  /**
-   * Clear all running timeouts
-   */
-  _proto.internalClearTimeouts = function internalClearTimeouts() {
-    this.timeoutIds.forEach(function (id) {
-      clearTimeout(id);
-    });
-    this.timeoutIds = [];
-  };
-  /**
-   * Gets the state based on internal state or props
-   * If a state value is passed via props, then that
-   * is the value given, otherwise it's retrieved from
-   * stateToMerge
-   *
-   * This will perform a shallow merge of the given state object
-   * with the state coming from props
-   * (for the controlled component scenario)
-   * This is used in state updater functions so they're referencing
-   * the right state regardless of where it comes from.
-   *
-   * @param {Object} stateToMerge defaults to this.state
-   * @return {Object} the state
-   */
-
-
-  _proto.getState = function getState(stateToMerge) {
-    var _this2 = this;
-
-    if (stateToMerge === void 0) {
-      stateToMerge = this.state;
-    }
-
-    return Object.keys(stateToMerge).reduce(function (state, key) {
-      state[key] = _this2.isControlledProp(key) ? _this2.props[key] : stateToMerge[key];
-      return state;
-    }, {});
-  };
-  /**
-   * This determines whether a prop is a "controlled prop" meaning it is
-   * state which is controlled by the outside of this component rather
-   * than within this component.
-   * @param {String} key the key to check
-   * @return {Boolean} whether it is a controlled controlled prop
-   */
-
-
-  _proto.isControlledProp = function isControlledProp(key) {
-    return this.props[key] !== undefined;
-  };
-
-  _proto.getItemCount = function getItemCount() {
-    // things read better this way. They're in priority order:
-    // 1. `this.itemCount`
-    // 2. `this.props.itemCount`
-    // 3. `this.items.length`
-    var itemCount = this.items.length;
-
-    if (this.itemCount != null) {
-      itemCount = this.itemCount;
-    } else if (this.props.itemCount !== undefined) {
-      itemCount = this.props.itemCount;
-    }
-
-    return itemCount;
-  };
-
-  _proto.getItemNodeFromIndex = function getItemNodeFromIndex(index) {
-    return this.props.environment.document.getElementById(this.getItemId(index));
-  };
-
-  _proto.scrollHighlightedItemIntoView = function scrollHighlightedItemIntoView() {
-    /* istanbul ignore else (react-native) */
-    {
-      var node = this.getItemNodeFromIndex(this.getState().highlightedIndex);
-      this.props.scrollIntoView(node, this._rootNode);
-    }
-  };
-
-  _proto.moveHighlightedIndex = function moveHighlightedIndex(amount, otherStateToSet) {
-    var _this3 = this;
-
-    if (this.getState().isOpen) {
-      this.changeHighlightedIndex(amount, otherStateToSet);
-    } else {
-      this.openMenu(function () {
-        var type = otherStateToSet.type;
-
-        var itemCount = _this3.getItemCount();
-
-        var newHighlightedIndex; // if there are items in the menu and event type is present.
-
-        if (itemCount && type) {
-          // on Arrow Down we highlight first option.
-          if (type === keyDownArrowDown) {
-            newHighlightedIndex = 0;
-          } // on Arrow Up we highlight last option
-
-
-          if (type === keyDownArrowUp) {
-            newHighlightedIndex = itemCount - 1;
-          }
-        }
-
-        _this3.setHighlightedIndex(newHighlightedIndex, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, otherStateToSet));
-      });
-    }
-  };
-
-  _proto.changeHighlightedIndex = function changeHighlightedIndex(moveAmount, otherStateToSet) {
-    var itemsLastIndex = this.getItemCount() - 1;
-
-    if (itemsLastIndex < 0) {
-      return;
-    }
-
-    var _this$getState6 = this.getState(),
-        highlightedIndex = _this$getState6.highlightedIndex;
-
-    var baseIndex = highlightedIndex;
-
-    if (baseIndex === null) {
-      baseIndex = moveAmount > 0 ? -1 : itemsLastIndex + 1;
-    }
-
-    var newIndex = baseIndex + moveAmount;
-
-    if (newIndex < 0) {
-      newIndex = itemsLastIndex;
-    } else if (newIndex > itemsLastIndex) {
-      newIndex = 0;
-    }
-
-    this.setHighlightedIndex(newIndex, otherStateToSet);
-  };
-
-  _proto.getStateAndHelpers = function getStateAndHelpers() {
-    var _this$getState7 = this.getState(),
-        highlightedIndex = _this$getState7.highlightedIndex,
-        inputValue = _this$getState7.inputValue,
-        selectedItem = _this$getState7.selectedItem,
-        isOpen = _this$getState7.isOpen;
-
-    var itemToString = this.props.itemToString;
-    var id = this.id;
-    var getRootProps = this.getRootProps,
-        getToggleButtonProps = this.getToggleButtonProps,
-        getLabelProps = this.getLabelProps,
-        getMenuProps = this.getMenuProps,
-        getInputProps = this.getInputProps,
-        getItemProps = this.getItemProps,
-        openMenu = this.openMenu,
-        closeMenu = this.closeMenu,
-        toggleMenu = this.toggleMenu,
-        selectItem = this.selectItem,
-        selectItemAtIndex = this.selectItemAtIndex,
-        selectHighlightedItem = this.selectHighlightedItem,
-        setHighlightedIndex = this.setHighlightedIndex,
-        clearSelection = this.clearSelection,
-        clearItems = this.clearItems,
-        reset = this.reset,
-        setItemCount = this.setItemCount,
-        unsetItemCount = this.unsetItemCount,
-        setState = this.internalSetState;
-    return {
-      // prop getters
-      getRootProps: getRootProps,
-      getToggleButtonProps: getToggleButtonProps,
-      getLabelProps: getLabelProps,
-      getMenuProps: getMenuProps,
-      getInputProps: getInputProps,
-      getItemProps: getItemProps,
-      // actions
-      reset: reset,
-      openMenu: openMenu,
-      closeMenu: closeMenu,
-      toggleMenu: toggleMenu,
-      selectItem: selectItem,
-      selectItemAtIndex: selectItemAtIndex,
-      selectHighlightedItem: selectHighlightedItem,
-      setHighlightedIndex: setHighlightedIndex,
-      clearSelection: clearSelection,
-      clearItems: clearItems,
-      setItemCount: setItemCount,
-      unsetItemCount: unsetItemCount,
-      setState: setState,
-      // props
-      itemToString: itemToString,
-      // derived
-      id: id,
-      // state
-      highlightedIndex: highlightedIndex,
-      inputValue: inputValue,
-      isOpen: isOpen,
-      selectedItem: selectedItem
-    };
-  }; //////////////////////////// ROOT
-
-
-  _proto.componentDidMount = function componentDidMount() {
-    var _this4 = this;
-
-    /* istanbul ignore if (react-native) */
-    if ("development" !== 'production' && !false && this.getMenuProps.called && !this.getMenuProps.suppressRefError) {
-      validateGetMenuPropsCalledCorrectly(this._menuNode, this.getMenuProps);
-    }
-    /* istanbul ignore if (react-native) */
-
-
-    {
-      var targetWithinDownshift = function (target, checkActiveElement) {
-        if (checkActiveElement === void 0) {
-          checkActiveElement = true;
-        }
-
-        var document = _this4.props.environment.document;
-        return [_this4._rootNode, _this4._menuNode].some(function (contextNode) {
-          return contextNode && (isOrContainsNode(contextNode, target) || checkActiveElement && isOrContainsNode(contextNode, document.activeElement));
-        });
-      }; // this.isMouseDown helps us track whether the mouse is currently held down.
-      // This is useful when the user clicks on an item in the list, but holds the mouse
-      // down long enough for the list to disappear (because the blur event fires on the input)
-      // this.isMouseDown is used in the blur handler on the input to determine whether the blur event should
-      // trigger hiding the menu.
-
-
-      var onMouseDown = function () {
-        _this4.isMouseDown = true;
-      };
-
-      var onMouseUp = function (event) {
-        _this4.isMouseDown = false; // if the target element or the activeElement is within a downshift node
-        // then we don't want to reset downshift
-
-        var contextWithinDownshift = targetWithinDownshift(event.target);
-
-        if (!contextWithinDownshift && _this4.getState().isOpen) {
-          _this4.reset({
-            type: mouseUp
-          }, function () {
-            return _this4.props.onOuterClick(_this4.getStateAndHelpers());
-          });
-        }
-      }; // Touching an element in iOS gives focus and hover states, but touching out of
-      // the element will remove hover, and persist the focus state, resulting in the
-      // blur event not being triggered.
-
-
-      var onTouchStart = function (event) {
-        var contextWithinDownshift = targetWithinDownshift(event.target, false);
-
-        if (!contextWithinDownshift && _this4.getState().isOpen) {
-          _this4.reset({
-            type: touchStart
-          }, function () {
-            return _this4.props.onOuterClick(_this4.getStateAndHelpers());
-          });
-        }
-      };
-
-      this.props.environment.addEventListener('mousedown', onMouseDown);
-      this.props.environment.addEventListener('mouseup', onMouseUp);
-      this.props.environment.addEventListener('touchstart', onTouchStart);
-
-      this.cleanup = function () {
-        _this4.internalClearTimeouts();
-
-        _this4.updateStatus.cancel();
-
-        _this4.props.environment.removeEventListener('mousedown', onMouseDown);
-
-        _this4.props.environment.removeEventListener('mouseup', onMouseUp);
-
-        _this4.props.environment.removeEventListener('touchstart', onTouchStart);
-      };
-    }
-  };
-
-  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
-    if (true) {
-      validateControlledUnchanged(prevProps, this.props);
-      /* istanbul ignore if (react-native) */
-
-      if (this.getMenuProps.called && !this.getMenuProps.suppressRefError) {
-        validateGetMenuPropsCalledCorrectly(this._menuNode, this.getMenuProps);
-      }
-    }
-
-    if (this.isControlledProp('selectedItem') && this.props.selectedItemChanged(prevProps.selectedItem, this.props.selectedItem)) {
-      this.internalSetState({
-        type: controlledPropUpdatedSelectedItem,
-        inputValue: this.props.itemToString(this.props.selectedItem)
-      });
-    }
-
-    var current = this.props.highlightedIndex === undefined ? this.state : this.props;
-    var prev = prevProps.highlightedIndex === undefined ? prevState : prevProps;
-
-    if (current.highlightedIndex !== prev.highlightedIndex && !this.avoidScrolling) {
-      this.scrollHighlightedItemIntoView();
-    }
-    /* istanbul ignore else (react-native) */
-
-
-    this.updateStatus();
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.cleanup(); // avoids memory leak
-  };
-
-  _proto.render = function render() {
-    var children = unwrapArray(this.props.children, noop); // because the items are rerendered every time we call the children
-    // we clear this out each render and it will be populated again as
-    // getItemProps is called.
-
-    this.clearItems(); // we reset this so we know whether the user calls getRootProps during
-    // this render. If they do then we don't need to do anything,
-    // if they don't then we need to clone the element they return and
-    // apply the props for them.
-
-    this.getRootProps.called = false;
-    this.getRootProps.refKey = undefined;
-    this.getRootProps.suppressRefError = undefined; // we do something similar for getMenuProps
-
-    this.getMenuProps.called = false;
-    this.getMenuProps.refKey = undefined;
-    this.getMenuProps.suppressRefError = undefined; // we do something similar for getLabelProps
-
-    this.getLabelProps.called = false; // and something similar for getInputProps
-
-    this.getInputProps.called = false;
-    var element = unwrapArray(children(this.getStateAndHelpers()));
-
-    if (!element) {
-      return null;
-    }
-
-    if (this.getRootProps.called || this.props.suppressRefError) {
-      if ("development" !== 'production' && !this.getRootProps.suppressRefError && !this.props.suppressRefError) {
-        validateGetRootPropsCalledCorrectly(element, this.getRootProps);
-      }
-
-      return element;
-    } else if (isDOMElement(element)) {
-      // they didn't apply the root props, but we can clone
-      // this and apply the props ourselves
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.cloneElement(element, this.getRootProps(getElementProps(element)));
-    }
-    /* istanbul ignore else */
-
-
-    if (true) {
-      // they didn't apply the root props, but they need to
-      // otherwise we can't query around the autocomplete
-      throw new Error('downshift: If you return a non-DOM element, you must use apply the getRootProps function');
-    }
-    /* istanbul ignore next */
-
-
-    return undefined;
-  };
-
-  return Downshift;
-}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
-
-Downshift.defaultProps = {
-  defaultHighlightedIndex: null,
-  defaultIsOpen: false,
-  getA11yStatusMessage: getA11yStatusMessage,
-  itemToString: function itemToString(i) {
-    if (i == null) {
-      return '';
-    }
-
-    if ("development" !== 'production' && isPlainObject(i) && !i.hasOwnProperty('toString')) {
-      // eslint-disable-next-line no-console
-      console.warn('downshift: An object was passed to the default implementation of `itemToString`. You should probably provide your own `itemToString` implementation. Please refer to the `itemToString` API documentation.', 'The object that was passed:', i);
-    }
-
-    return String(i);
-  },
-  onStateChange: noop,
-  onInputValueChange: noop,
-  onUserAction: noop,
-  onChange: noop,
-  onSelect: noop,
-  onOuterClick: noop,
-  selectedItemChanged: function selectedItemChanged(prevItem, item) {
-    return prevItem !== item;
-  },
-  environment: typeof window === 'undefined'
-  /* istanbul ignore next (ssr) */
-  ? {} : window,
-  stateReducer: function stateReducer(state, stateToSet) {
-    return stateToSet;
-  },
-  suppressRefError: false,
-  scrollIntoView: scrollIntoView
-};
-Downshift.stateChangeTypes = stateChangeTypes;
- true ? Downshift.propTypes = {
-  children: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-  defaultHighlightedIndex: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.number,
-  defaultIsOpen: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
-  initialHighlightedIndex: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.number,
-  initialSelectedItem: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.any,
-  initialInputValue: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
-  initialIsOpen: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
-  getA11yStatusMessage: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-  itemToString: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-  onChange: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-  onSelect: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-  onStateChange: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-  onInputValueChange: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-  onUserAction: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-  onOuterClick: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-  selectedItemChanged: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-  stateReducer: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-  itemCount: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.number,
-  id: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
-  environment: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.shape({
-    addEventListener: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-    removeEventListener: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-    document: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.shape({
-      getElementById: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-      activeElement: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.any,
-      body: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.any
-    })
-  }),
-  suppressRefError: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
-  scrollIntoView: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func,
-  // things we keep in state for uncontrolled components
-  // but can accept as props for controlled components
-
-  /* eslint-disable react/no-unused-prop-types */
-  selectedItem: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.any,
-  isOpen: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
-  inputValue: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
-  highlightedIndex: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.number,
-  labelId: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
-  inputId: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
-  menuId: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
-  getItemId: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func
-  /* eslint-enable react/no-unused-prop-types */
-
-} : undefined;
-
-function validateGetMenuPropsCalledCorrectly(node, _ref10) {
-  var refKey = _ref10.refKey;
-
-  if (!node) {
-    // eslint-disable-next-line no-console
-    console.error("downshift: The ref prop \"" + refKey + "\" from getMenuProps was not applied correctly on your menu element.");
-  }
-}
-
-function validateGetRootPropsCalledCorrectly(element, _ref11) {
-  var refKey = _ref11.refKey;
-  var refKeySpecified = refKey !== 'ref';
-  var isComposite = !isDOMElement(element);
-
-  if (isComposite && !refKeySpecified && !Object(react_is__WEBPACK_IMPORTED_MODULE_7__["isForwardRef"])(element)) {
-    // eslint-disable-next-line no-console
-    console.error('downshift: You returned a non-DOM element. You must specify a refKey in getRootProps');
-  } else if (!isComposite && refKeySpecified) {
-    // eslint-disable-next-line no-console
-    console.error("downshift: You returned a DOM element. You should not specify a refKey in getRootProps. You specified \"" + refKey + "\"");
-  }
-
-  if (!Object(react_is__WEBPACK_IMPORTED_MODULE_7__["isForwardRef"])(element) && !getElementProps(element)[refKey]) {
-    // eslint-disable-next-line no-console
-    console.error("downshift: You must apply the ref prop \"" + refKey + "\" from getRootProps onto your root element.");
-  }
-}
-
-function validateControlledUnchanged(prevProps, nextProps) {
-  var warningDescription = "This prop should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled Downshift element for the lifetime of the component. More info: https://github.com/paypal/downshift#control-props";
-  ['selectedItem', 'isOpen', 'inputValue', 'highlightedIndex'].forEach(function (propKey) {
-    if (prevProps[propKey] !== undefined && nextProps[propKey] === undefined) {
-      // eslint-disable-next-line no-console
-      console.error("downshift: A component has changed the controlled prop \"" + propKey + "\" to be uncontrolled. " + warningDescription);
-    } else if (prevProps[propKey] === undefined && nextProps[propKey] !== undefined) {
-      // eslint-disable-next-line no-console
-      console.error("downshift: A component has changed the uncontrolled prop \"" + propKey + "\" to be controlled. " + warningDescription);
-    }
-  });
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Downshift);
-
-
-
-/***/ }),
-
 /***/ "./node_modules/emotion/dist/index.esm.js":
 /*!************************************************!*\
   !*** ./node_modules/emotion/dist/index.esm.js ***!
@@ -11168,6 +9594,511 @@ function toNumber(value) {
 }
 
 module.exports = toNumber;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_Symbol.js":
+/*!****************************************!*\
+  !*** ./node_modules/lodash/_Symbol.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+
+/** Built-in value references. */
+var Symbol = root.Symbol;
+
+module.exports = Symbol;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_baseGetTag.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_baseGetTag.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Symbol = __webpack_require__(/*! ./_Symbol */ "./node_modules/lodash/_Symbol.js"),
+    getRawTag = __webpack_require__(/*! ./_getRawTag */ "./node_modules/lodash/_getRawTag.js"),
+    objectToString = __webpack_require__(/*! ./_objectToString */ "./node_modules/lodash/_objectToString.js");
+
+/** `Object#toString` result references. */
+var nullTag = '[object Null]',
+    undefinedTag = '[object Undefined]';
+
+/** Built-in value references. */
+var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+
+/**
+ * The base implementation of `getTag` without fallbacks for buggy environments.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+function baseGetTag(value) {
+  if (value == null) {
+    return value === undefined ? undefinedTag : nullTag;
+  }
+  return (symToStringTag && symToStringTag in Object(value))
+    ? getRawTag(value)
+    : objectToString(value);
+}
+
+module.exports = baseGetTag;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_freeGlobal.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_freeGlobal.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
+var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+module.exports = freeGlobal;
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_getRawTag.js":
+/*!*******************************************!*\
+  !*** ./node_modules/lodash/_getRawTag.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Symbol = __webpack_require__(/*! ./_Symbol */ "./node_modules/lodash/_Symbol.js");
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/** Built-in value references. */
+var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
+
+/**
+ * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the raw `toStringTag`.
+ */
+function getRawTag(value) {
+  var isOwn = hasOwnProperty.call(value, symToStringTag),
+      tag = value[symToStringTag];
+
+  try {
+    value[symToStringTag] = undefined;
+    var unmasked = true;
+  } catch (e) {}
+
+  var result = nativeObjectToString.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag] = tag;
+    } else {
+      delete value[symToStringTag];
+    }
+  }
+  return result;
+}
+
+module.exports = getRawTag;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_objectToString.js":
+/*!************************************************!*\
+  !*** ./node_modules/lodash/_objectToString.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/**
+ * Converts `value` to a string using `Object.prototype.toString`.
+ *
+ * @private
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ */
+function objectToString(value) {
+  return nativeObjectToString.call(value);
+}
+
+module.exports = objectToString;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_root.js":
+/*!**************************************!*\
+  !*** ./node_modules/lodash/_root.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var freeGlobal = __webpack_require__(/*! ./_freeGlobal */ "./node_modules/lodash/_freeGlobal.js");
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+module.exports = root;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/debounce.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/debounce.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js"),
+    now = __webpack_require__(/*! ./now */ "./node_modules/lodash/now.js"),
+    toNumber = __webpack_require__(/*! ./toNumber */ "./node_modules/lodash/toNumber.js");
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max,
+    nativeMin = Math.min;
+
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to immediately invoke them.
+ * Provide `options` to indicate whether `func` should be invoked on the
+ * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ * with the last arguments provided to the debounced function. Subsequent
+ * calls to the debounced function return the result of the last `func`
+ * invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the debounced function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=false]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {number} [options.maxWait]
+ *  The maximum time `func` is allowed to be delayed before it's invoked.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // Avoid costly calculations while the window size is in flux.
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+ * jQuery(element).on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+ * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', debounced);
+ *
+ * // Cancel the trailing debounced invocation.
+ * jQuery(window).on('popstate', debounced.cancel);
+ */
+function debounce(func, wait, options) {
+  var lastArgs,
+      lastThis,
+      maxWait,
+      result,
+      timerId,
+      lastCallTime,
+      lastInvokeTime = 0,
+      leading = false,
+      maxing = false,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  wait = toNumber(wait) || 0;
+  if (isObject(options)) {
+    leading = !!options.leading;
+    maxing = 'maxWait' in options;
+    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+
+  function invokeFunc(time) {
+    var args = lastArgs,
+        thisArg = lastThis;
+
+    lastArgs = lastThis = undefined;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+
+  function leadingEdge(time) {
+    // Reset any `maxWait` timer.
+    lastInvokeTime = time;
+    // Start the timer for the trailing edge.
+    timerId = setTimeout(timerExpired, wait);
+    // Invoke the leading edge.
+    return leading ? invokeFunc(time) : result;
+  }
+
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime,
+        timeWaiting = wait - timeSinceLastCall;
+
+    return maxing
+      ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke)
+      : timeWaiting;
+  }
+
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime;
+
+    // Either this is the first call, activity has stopped and we're at the
+    // trailing edge, the system time has gone backwards and we're treating
+    // it as the trailing edge, or we've hit the `maxWait` limit.
+    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
+      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
+  }
+
+  function timerExpired() {
+    var time = now();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    // Restart the timer.
+    timerId = setTimeout(timerExpired, remainingWait(time));
+  }
+
+  function trailingEdge(time) {
+    timerId = undefined;
+
+    // Only invoke if we have `lastArgs` which means `func` has been
+    // debounced at least once.
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = undefined;
+    return result;
+  }
+
+  function cancel() {
+    if (timerId !== undefined) {
+      clearTimeout(timerId);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timerId = undefined;
+  }
+
+  function flush() {
+    return timerId === undefined ? result : trailingEdge(now());
+  }
+
+  function debounced() {
+    var time = now(),
+        isInvoking = shouldInvoke(time);
+
+    lastArgs = arguments;
+    lastThis = this;
+    lastCallTime = time;
+
+    if (isInvoking) {
+      if (timerId === undefined) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxing) {
+        // Handle invocations in a tight loop.
+        timerId = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timerId === undefined) {
+      timerId = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+
+module.exports = debounce;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/isObject.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/isObject.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return value != null && (type == 'object' || type == 'function');
+}
+
+module.exports = isObject;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/isObjectLike.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash/isObjectLike.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && typeof value == 'object';
+}
+
+module.exports = isObjectLike;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/isSymbol.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/isSymbol.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ "./node_modules/lodash/_baseGetTag.js"),
+    isObjectLike = __webpack_require__(/*! ./isObjectLike */ "./node_modules/lodash/isObjectLike.js");
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+  return typeof value == 'symbol' ||
+    (isObjectLike(value) && baseGetTag(value) == symbolTag);
+}
+
+module.exports = isSymbol;
 
 
 /***/ }),
@@ -28283,6 +27214,117 @@ module.exports = toNumber;
 
 /***/ }),
 
+/***/ "./node_modules/lodash/now.js":
+/*!************************************!*\
+  !*** ./node_modules/lodash/now.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+
+/**
+ * Gets the timestamp of the number of milliseconds that have elapsed since
+ * the Unix epoch (1 January 1970 00:00:00 UTC).
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Date
+ * @returns {number} Returns the timestamp.
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => Logs the number of milliseconds it took for the deferred invocation.
+ */
+var now = function() {
+  return root.Date.now();
+};
+
+module.exports = now;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/toNumber.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/toNumber.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js"),
+    isSymbol = __webpack_require__(/*! ./isSymbol */ "./node_modules/lodash/isSymbol.js");
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+module.exports = toNumber;
+
+
+/***/ }),
+
 /***/ "./node_modules/memoize-one/dist/memoize-one.esm.js":
 /*!**********************************************************!*\
   !*** ./node_modules/memoize-one/dist/memoize-one.esm.js ***!
@@ -30427,101 +29469,6 @@ module.exports = __webpack_require__(/*! ./dist/lib/head */ "./node_modules/next
 
 module.exports = __webpack_require__(/*! ./dist/lib/link */ "./node_modules/next/dist/lib/link.js")
 
-
-/***/ }),
-
-/***/ "./node_modules/next/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/next/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js ***!
-  \********************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _assertThisInitialized; });
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-/***/ }),
-
-/***/ "./node_modules/next/node_modules/@babel/runtime/helpers/esm/extends.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/next/node_modules/@babel/runtime/helpers/esm/extends.js ***!
-  \******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _extends; });
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-/***/ }),
-
-/***/ "./node_modules/next/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":
-/*!************************************************************************************!*\
-  !*** ./node_modules/next/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
-  \************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _inheritsLoose; });
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-}
-
-/***/ }),
-
-/***/ "./node_modules/next/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/next/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
-  \***************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _objectWithoutPropertiesLoose; });
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
 
 /***/ }),
 
@@ -37866,240 +36813,6 @@ AutosizeInput.defaultProps = {
 };
 
 exports.default = AutosizeInput;
-
-/***/ }),
-
-/***/ "./node_modules/react-is/cjs/react-is.development.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/react-is/cjs/react-is.development.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/** @license React v16.6.0
- * react-is.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-
-
-
-
-if (true) {
-  (function() {
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
-// nor polyfill, then a plain number is used for performance.
-var hasSymbol = typeof Symbol === 'function' && Symbol.for;
-
-var REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;
-var REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;
-var REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;
-var REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;
-var REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;
-var REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;
-var REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace;
-var REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;
-var REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;
-var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
-var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
-var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
-
-function isValidElementType(type) {
-  return typeof type === 'string' || typeof type === 'function' ||
-  // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE);
-}
-
-/**
- * Forked from fbjs/warning:
- * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
- *
- * Only change is we use console.warn instead of console.error,
- * and do nothing when 'console' is not supported.
- * This really simplifies the code.
- * ---
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
-
-var lowPriorityWarning = function () {};
-
-{
-  var printWarning = function (format) {
-    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    var argIndex = 0;
-    var message = 'Warning: ' + format.replace(/%s/g, function () {
-      return args[argIndex++];
-    });
-    if (typeof console !== 'undefined') {
-      console.warn(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-
-  lowPriorityWarning = function (condition, format) {
-    if (format === undefined) {
-      throw new Error('`lowPriorityWarning(condition, format, ...args)` requires a warning ' + 'message argument');
-    }
-    if (!condition) {
-      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-        args[_key2 - 2] = arguments[_key2];
-      }
-
-      printWarning.apply(undefined, [format].concat(args));
-    }
-  };
-}
-
-var lowPriorityWarning$1 = lowPriorityWarning;
-
-function typeOf(object) {
-  if (typeof object === 'object' && object !== null) {
-    var $$typeof = object.$$typeof;
-
-    switch ($$typeof) {
-      case REACT_ELEMENT_TYPE:
-        var type = object.type;
-
-        switch (type) {
-          case REACT_CONCURRENT_MODE_TYPE:
-          case REACT_FRAGMENT_TYPE:
-          case REACT_PROFILER_TYPE:
-          case REACT_STRICT_MODE_TYPE:
-            return type;
-          default:
-            var $$typeofType = type && type.$$typeof;
-
-            switch ($$typeofType) {
-              case REACT_CONTEXT_TYPE:
-              case REACT_FORWARD_REF_TYPE:
-              case REACT_PROVIDER_TYPE:
-                return $$typeofType;
-              default:
-                return $$typeof;
-            }
-        }
-      case REACT_PORTAL_TYPE:
-        return $$typeof;
-    }
-  }
-
-  return undefined;
-}
-
-// AsyncMode alias is deprecated along with isAsyncMode
-var AsyncMode = REACT_CONCURRENT_MODE_TYPE;
-var ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
-var ContextConsumer = REACT_CONTEXT_TYPE;
-var ContextProvider = REACT_PROVIDER_TYPE;
-var Element = REACT_ELEMENT_TYPE;
-var ForwardRef = REACT_FORWARD_REF_TYPE;
-var Fragment = REACT_FRAGMENT_TYPE;
-var Profiler = REACT_PROFILER_TYPE;
-var Portal = REACT_PORTAL_TYPE;
-var StrictMode = REACT_STRICT_MODE_TYPE;
-
-var hasWarnedAboutDeprecatedIsAsyncMode = false;
-
-// AsyncMode should be deprecated
-function isAsyncMode(object) {
-  {
-    if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-      hasWarnedAboutDeprecatedIsAsyncMode = true;
-      lowPriorityWarning$1(false, 'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
-    }
-  }
-  return isConcurrentMode(object);
-}
-function isConcurrentMode(object) {
-  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;
-}
-function isContextConsumer(object) {
-  return typeOf(object) === REACT_CONTEXT_TYPE;
-}
-function isContextProvider(object) {
-  return typeOf(object) === REACT_PROVIDER_TYPE;
-}
-function isElement(object) {
-  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-}
-function isForwardRef(object) {
-  return typeOf(object) === REACT_FORWARD_REF_TYPE;
-}
-function isFragment(object) {
-  return typeOf(object) === REACT_FRAGMENT_TYPE;
-}
-function isProfiler(object) {
-  return typeOf(object) === REACT_PROFILER_TYPE;
-}
-function isPortal(object) {
-  return typeOf(object) === REACT_PORTAL_TYPE;
-}
-function isStrictMode(object) {
-  return typeOf(object) === REACT_STRICT_MODE_TYPE;
-}
-
-exports.typeOf = typeOf;
-exports.AsyncMode = AsyncMode;
-exports.ConcurrentMode = ConcurrentMode;
-exports.ContextConsumer = ContextConsumer;
-exports.ContextProvider = ContextProvider;
-exports.Element = Element;
-exports.ForwardRef = ForwardRef;
-exports.Fragment = Fragment;
-exports.Profiler = Profiler;
-exports.Portal = Portal;
-exports.StrictMode = StrictMode;
-exports.isValidElementType = isValidElementType;
-exports.isAsyncMode = isAsyncMode;
-exports.isConcurrentMode = isConcurrentMode;
-exports.isContextConsumer = isContextConsumer;
-exports.isContextProvider = isContextProvider;
-exports.isElement = isElement;
-exports.isForwardRef = isForwardRef;
-exports.isFragment = isFragment;
-exports.isProfiler = isProfiler;
-exports.isPortal = isPortal;
-exports.isStrictMode = isStrictMode;
-  })();
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/react-is/index.js":
-/*!****************************************!*\
-  !*** ./node_modules/react-is/index.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-if (false) {} else {
-  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
-}
-
 
 /***/ }),
 
@@ -54357,6 +53070,453 @@ module.exports = function shallowEqualArrays(arrA, arrB) {
 
   return true;
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/smoothscroll-polyfill/dist/smoothscroll.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/smoothscroll-polyfill/dist/smoothscroll.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* smoothscroll v0.4.0 - 2018 - Dustan Kasten, Jeremias Menichelli - MIT License */
+(function () {
+  'use strict';
+
+  // polyfill
+  function polyfill() {
+    // aliases
+    var w = window;
+    var d = document;
+
+    // return if scroll behavior is supported and polyfill is not forced
+    if (
+      'scrollBehavior' in d.documentElement.style &&
+      w.__forceSmoothScrollPolyfill__ !== true
+    ) {
+      return;
+    }
+
+    // globals
+    var Element = w.HTMLElement || w.Element;
+    var SCROLL_TIME = 468;
+
+    // object gathering original scroll methods
+    var original = {
+      scroll: w.scroll || w.scrollTo,
+      scrollBy: w.scrollBy,
+      elementScroll: Element.prototype.scroll || scrollElement,
+      scrollIntoView: Element.prototype.scrollIntoView
+    };
+
+    // define timing method
+    var now =
+      w.performance && w.performance.now
+        ? w.performance.now.bind(w.performance)
+        : Date.now;
+
+    /**
+     * indicates if a the current browser is made by Microsoft
+     * @method isMicrosoftBrowser
+     * @param {String} userAgent
+     * @returns {Boolean}
+     */
+    function isMicrosoftBrowser(userAgent) {
+      var userAgentPatterns = ['MSIE ', 'Trident/', 'Edge/'];
+
+      return new RegExp(userAgentPatterns.join('|')).test(userAgent);
+    }
+
+    /*
+     * IE has rounding bug rounding down clientHeight and clientWidth and
+     * rounding up scrollHeight and scrollWidth causing false positives
+     * on hasScrollableSpace
+     */
+    var ROUNDING_TOLERANCE = isMicrosoftBrowser(w.navigator.userAgent) ? 1 : 0;
+
+    /**
+     * changes scroll position inside an element
+     * @method scrollElement
+     * @param {Number} x
+     * @param {Number} y
+     * @returns {undefined}
+     */
+    function scrollElement(x, y) {
+      this.scrollLeft = x;
+      this.scrollTop = y;
+    }
+
+    /**
+     * returns result of applying ease math function to a number
+     * @method ease
+     * @param {Number} k
+     * @returns {Number}
+     */
+    function ease(k) {
+      return 0.5 * (1 - Math.cos(Math.PI * k));
+    }
+
+    /**
+     * indicates if a smooth behavior should be applied
+     * @method shouldBailOut
+     * @param {Number|Object} firstArg
+     * @returns {Boolean}
+     */
+    function shouldBailOut(firstArg) {
+      if (
+        firstArg === null ||
+        typeof firstArg !== 'object' ||
+        firstArg.behavior === undefined ||
+        firstArg.behavior === 'auto' ||
+        firstArg.behavior === 'instant'
+      ) {
+        // first argument is not an object/null
+        // or behavior is auto, instant or undefined
+        return true;
+      }
+
+      if (typeof firstArg === 'object' && firstArg.behavior === 'smooth') {
+        // first argument is an object and behavior is smooth
+        return false;
+      }
+
+      // throw error when behavior is not supported
+      throw new TypeError(
+        'behavior member of ScrollOptions ' +
+          firstArg.behavior +
+          ' is not a valid value for enumeration ScrollBehavior.'
+      );
+    }
+
+    /**
+     * indicates if an element has scrollable space in the provided axis
+     * @method hasScrollableSpace
+     * @param {Node} el
+     * @param {String} axis
+     * @returns {Boolean}
+     */
+    function hasScrollableSpace(el, axis) {
+      if (axis === 'Y') {
+        return el.clientHeight + ROUNDING_TOLERANCE < el.scrollHeight;
+      }
+
+      if (axis === 'X') {
+        return el.clientWidth + ROUNDING_TOLERANCE < el.scrollWidth;
+      }
+    }
+
+    /**
+     * indicates if an element has a scrollable overflow property in the axis
+     * @method canOverflow
+     * @param {Node} el
+     * @param {String} axis
+     * @returns {Boolean}
+     */
+    function canOverflow(el, axis) {
+      var overflowValue = w.getComputedStyle(el, null)['overflow' + axis];
+
+      return overflowValue === 'auto' || overflowValue === 'scroll';
+    }
+
+    /**
+     * indicates if an element can be scrolled in either axis
+     * @method isScrollable
+     * @param {Node} el
+     * @param {String} axis
+     * @returns {Boolean}
+     */
+    function isScrollable(el) {
+      var isScrollableY = hasScrollableSpace(el, 'Y') && canOverflow(el, 'Y');
+      var isScrollableX = hasScrollableSpace(el, 'X') && canOverflow(el, 'X');
+
+      return isScrollableY || isScrollableX;
+    }
+
+    /**
+     * finds scrollable parent of an element
+     * @method findScrollableParent
+     * @param {Node} el
+     * @returns {Node} el
+     */
+    function findScrollableParent(el) {
+      var isBody;
+
+      do {
+        el = el.parentNode;
+
+        isBody = el === d.body;
+      } while (isBody === false && isScrollable(el) === false);
+
+      isBody = null;
+
+      return el;
+    }
+
+    /**
+     * self invoked function that, given a context, steps through scrolling
+     * @method step
+     * @param {Object} context
+     * @returns {undefined}
+     */
+    function step(context) {
+      var time = now();
+      var value;
+      var currentX;
+      var currentY;
+      var elapsed = (time - context.startTime) / SCROLL_TIME;
+
+      // avoid elapsed times higher than one
+      elapsed = elapsed > 1 ? 1 : elapsed;
+
+      // apply easing to elapsed time
+      value = ease(elapsed);
+
+      currentX = context.startX + (context.x - context.startX) * value;
+      currentY = context.startY + (context.y - context.startY) * value;
+
+      context.method.call(context.scrollable, currentX, currentY);
+
+      // scroll more if we have not reached our destination
+      if (currentX !== context.x || currentY !== context.y) {
+        w.requestAnimationFrame(step.bind(w, context));
+      }
+    }
+
+    /**
+     * scrolls window or element with a smooth behavior
+     * @method smoothScroll
+     * @param {Object|Node} el
+     * @param {Number} x
+     * @param {Number} y
+     * @returns {undefined}
+     */
+    function smoothScroll(el, x, y) {
+      var scrollable;
+      var startX;
+      var startY;
+      var method;
+      var startTime = now();
+
+      // define scroll context
+      if (el === d.body) {
+        scrollable = w;
+        startX = w.scrollX || w.pageXOffset;
+        startY = w.scrollY || w.pageYOffset;
+        method = original.scroll;
+      } else {
+        scrollable = el;
+        startX = el.scrollLeft;
+        startY = el.scrollTop;
+        method = scrollElement;
+      }
+
+      // scroll looping over a frame
+      step({
+        scrollable: scrollable,
+        method: method,
+        startTime: startTime,
+        startX: startX,
+        startY: startY,
+        x: x,
+        y: y
+      });
+    }
+
+    // ORIGINAL METHODS OVERRIDES
+    // w.scroll and w.scrollTo
+    w.scroll = w.scrollTo = function() {
+      // avoid action when no arguments are passed
+      if (arguments[0] === undefined) {
+        return;
+      }
+
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0]) === true) {
+        original.scroll.call(
+          w,
+          arguments[0].left !== undefined
+            ? arguments[0].left
+            : typeof arguments[0] !== 'object'
+              ? arguments[0]
+              : w.scrollX || w.pageXOffset,
+          // use top prop, second argument if present or fallback to scrollY
+          arguments[0].top !== undefined
+            ? arguments[0].top
+            : arguments[1] !== undefined
+              ? arguments[1]
+              : w.scrollY || w.pageYOffset
+        );
+
+        return;
+      }
+
+      // LET THE SMOOTHNESS BEGIN!
+      smoothScroll.call(
+        w,
+        d.body,
+        arguments[0].left !== undefined
+          ? ~~arguments[0].left
+          : w.scrollX || w.pageXOffset,
+        arguments[0].top !== undefined
+          ? ~~arguments[0].top
+          : w.scrollY || w.pageYOffset
+      );
+    };
+
+    // w.scrollBy
+    w.scrollBy = function() {
+      // avoid action when no arguments are passed
+      if (arguments[0] === undefined) {
+        return;
+      }
+
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0])) {
+        original.scrollBy.call(
+          w,
+          arguments[0].left !== undefined
+            ? arguments[0].left
+            : typeof arguments[0] !== 'object' ? arguments[0] : 0,
+          arguments[0].top !== undefined
+            ? arguments[0].top
+            : arguments[1] !== undefined ? arguments[1] : 0
+        );
+
+        return;
+      }
+
+      // LET THE SMOOTHNESS BEGIN!
+      smoothScroll.call(
+        w,
+        d.body,
+        ~~arguments[0].left + (w.scrollX || w.pageXOffset),
+        ~~arguments[0].top + (w.scrollY || w.pageYOffset)
+      );
+    };
+
+    // Element.prototype.scroll and Element.prototype.scrollTo
+    Element.prototype.scroll = Element.prototype.scrollTo = function() {
+      // avoid action when no arguments are passed
+      if (arguments[0] === undefined) {
+        return;
+      }
+
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0]) === true) {
+        // if one number is passed, throw error to match Firefox implementation
+        if (typeof arguments[0] === 'number' && arguments[1] === undefined) {
+          throw new SyntaxError('Value could not be converted');
+        }
+
+        original.elementScroll.call(
+          this,
+          // use left prop, first number argument or fallback to scrollLeft
+          arguments[0].left !== undefined
+            ? ~~arguments[0].left
+            : typeof arguments[0] !== 'object' ? ~~arguments[0] : this.scrollLeft,
+          // use top prop, second argument or fallback to scrollTop
+          arguments[0].top !== undefined
+            ? ~~arguments[0].top
+            : arguments[1] !== undefined ? ~~arguments[1] : this.scrollTop
+        );
+
+        return;
+      }
+
+      var left = arguments[0].left;
+      var top = arguments[0].top;
+
+      // LET THE SMOOTHNESS BEGIN!
+      smoothScroll.call(
+        this,
+        this,
+        typeof left === 'undefined' ? this.scrollLeft : ~~left,
+        typeof top === 'undefined' ? this.scrollTop : ~~top
+      );
+    };
+
+    // Element.prototype.scrollBy
+    Element.prototype.scrollBy = function() {
+      // avoid action when no arguments are passed
+      if (arguments[0] === undefined) {
+        return;
+      }
+
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0]) === true) {
+        original.elementScroll.call(
+          this,
+          arguments[0].left !== undefined
+            ? ~~arguments[0].left + this.scrollLeft
+            : ~~arguments[0] + this.scrollLeft,
+          arguments[0].top !== undefined
+            ? ~~arguments[0].top + this.scrollTop
+            : ~~arguments[1] + this.scrollTop
+        );
+
+        return;
+      }
+
+      this.scroll({
+        left: ~~arguments[0].left + this.scrollLeft,
+        top: ~~arguments[0].top + this.scrollTop,
+        behavior: arguments[0].behavior
+      });
+    };
+
+    // Element.prototype.scrollIntoView
+    Element.prototype.scrollIntoView = function() {
+      // avoid smooth behavior if not required
+      if (shouldBailOut(arguments[0]) === true) {
+        original.scrollIntoView.call(
+          this,
+          arguments[0] === undefined ? true : arguments[0]
+        );
+
+        return;
+      }
+
+      // LET THE SMOOTHNESS BEGIN!
+      var scrollableParent = findScrollableParent(this);
+      var parentRects = scrollableParent.getBoundingClientRect();
+      var clientRects = this.getBoundingClientRect();
+
+      if (scrollableParent !== d.body) {
+        // reveal element inside parent
+        smoothScroll.call(
+          this,
+          scrollableParent,
+          scrollableParent.scrollLeft + clientRects.left - parentRects.left,
+          scrollableParent.scrollTop + clientRects.top - parentRects.top
+        );
+
+        // reveal parent in viewport unless is fixed
+        if (w.getComputedStyle(scrollableParent).position !== 'fixed') {
+          w.scrollBy({
+            left: parentRects.left,
+            top: parentRects.top,
+            behavior: 'smooth'
+          });
+        }
+      } else {
+        // reveal element in viewport
+        w.scrollBy({
+          left: clientRects.left,
+          top: clientRects.top,
+          behavior: 'smooth'
+        });
+      }
+    };
+  }
+
+  if (true) {
+    // commonjs
+    module.exports = { polyfill: polyfill };
+  } else {}
+
+}());
 
 
 /***/ }),

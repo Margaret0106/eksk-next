@@ -4,6 +4,7 @@ import Link from 'next/link'
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux' 
 import classnames from 'classnames'
+import debounce from 'lodash/debounce'
 import {representClass, citizenClass, partnerClass} from '../../store'
 
 
@@ -42,6 +43,7 @@ class Header extends Component {
       isDesktop: true, 
       selectedOption: {value: "citizen-page", label: "Жителям"}      
     };
+    this.updateDimensionsDebounced = debounce(this.updateDimensions.bind(this), 100)
   }
 
   /**
@@ -59,15 +61,15 @@ class Header extends Component {
    */
   componentDidMount() {
     this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions.bind(this));
+    window.addEventListener("resize", this.updateDimensionsDebounced);
   }
 
   /**
    * Remove event listener
    */
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.updateDimensions.bind(this));
-  // }
+ componentWillUnmount() {
+  window.removeEventListener("resize", this.updateDimensionsDebounced);
+  }
   
 
   changeBodyClass = (className) => {

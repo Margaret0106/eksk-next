@@ -524,13 +524,18 @@
         text-align: left;
 
         .btn[type="submit"] {
-            width: 31%;
+            width: calc(35% - 100px);
             max-width: 300px;
             margin-left: 3%;
+            &:focus {
+                outline: 0 none;
+		        box-shadow: 0 0 0 0.2rem transparent;
+            }
             @media (max-width: 860px) {
                 width: 43%;
                 max-width: 43%;
                 margin-left: 0%;
+                margin-bottom: 25px;
             }
             @media (max-width: 640px) {
                 width: 100%;
@@ -543,19 +548,23 @@
         width: 31%;
         max-width: 300px;
         margin: 0;
+        &--small {
+            width: 100px;
+        }
+        &--medium {
+            width: 25%;
+        }
         @media (max-width: 860px) {
             width: 43%;
             max-width: 43%;
             margin-bottom: 25px;
+            margin-right: 3%;
         }
-        @media (max-width: 767px) {
-            width: 50%;
-            max-width: 50%;
-            margin-bottom: 25px;
-        }
+   
         @media (max-width: 640px) {
             width: 100%;
             max-width: 100%;
+            margin-right: 0;
         }
         input {
             width: 100%;
@@ -564,6 +573,9 @@
 
     .form-group+.form-group {
         margin-left: 3%;
+        @media (max-width: 860px) {
+           margin-left: 0;            
+        }
         @media (max-width: 767px) {
             margin-left: 0;
         }
@@ -895,7 +907,7 @@
     }
 
     #message3 {
-        top: 490px;
+        top: 480px;
         right: 100px;
         width: 360px;
 

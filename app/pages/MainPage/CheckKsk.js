@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import classnames from 'classnames'
 import Autosuggest from 'react-autosuggest';
-import Select from 'react-select';
 import Icons from '../../components/Icons';
 import 'isomorphic-fetch'
 import _ from 'lodash'
-import Downshift from 'downshift'
 import { dim } from '../../../node_modules/ansi-colors';
+import smoothscroll from 'smoothscroll-polyfill'
+
 
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -55,6 +55,7 @@ class CheckKsk extends Component {
       successKsk: false,
       kskCityId: null
     };
+    this.myRef = React.createRef();
   }
   setStatePromise = (state) => {
       return new Promise((resolve) => {
@@ -83,8 +84,7 @@ class CheckKsk extends Component {
     } 
   };
 
-  onBlur = (event, { highlightedSuggestion }) => {    
-    console.log('highlightedSuggestion', highlightedSuggestion)    
+  onBlur = (event, { highlightedSuggestion }) => {  
     if (this.state.noMatchesMessage) {
       this.setState({value: ''});  
     }
@@ -97,8 +97,7 @@ class CheckKsk extends Component {
     this.setState({suggestions: getSuggestions(this.state.cities, value)});
   };
 
-  onSuggestionSelected = (event, { method }) => {
-    console.log('here')
+  onSuggestionSelected = (event, { method }) => {    
     if (method === 'enter') {
       event.preventDefault();
     }
@@ -118,10 +117,11 @@ class CheckKsk extends Component {
             }          
         },
         function() {
-          console.log('onchange', this.state.formData.street)
+          
         }
       )
   }
+
 
   _handleSubmit = (event) => {
     event.preventDefault(); 
@@ -135,49 +135,47 @@ class CheckKsk extends Component {
         'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N'                      
       },     
     }).then((res) => res.json()).then((data) => {
-      console.log('data', data);      
-      data.data && data.data.ksk ? 
+      console.log('data', data);
+      
+      if(data.success) {
+        smoothscroll.polyfill();
+        let elmnt = document.getElementById('map');
+        elmnt.scrollIntoView({behavior:'smooth', block: 'start'});  
         this.setState({ 
-          successKsk: true, 
-          ksk: data.data.ksk.title,
-          kskCityId: data.data.city.id  
-        }) : this.setState({ 
-          successKsk: false, 
-          ksk: null,
-          kskCityId: null         
-      }) 
-      data.data ?
-        this.setState({           
-          kskModalOpen: true,
-          kskCityId: _.findKey(this.props.cities, { 'title': 'Астана'})
-        }) : this.setState({
-          kskModalOpen: false
+          kskModalOpen: true,      
         })
+        if (data.data.ksk) {
+          this.setState({ 
+            successKsk: true, 
+            ksk: data.data.ksk.title,
+            kskCityId: data.data.city.id  
+          })
+        }
+        else {          
+          let selectedCity = this.state.cities.find(city => city.title === this.state.value)
+          this.setState({ 
+            successKsk: false, 
+            ksk: null,
+            kskCityId: selectedCity.id
+          })  
+          console.log(this.state.kskCityId)   
+        }
+      }
+      else {
+        this.setState({ 
+          kskModalOpen: false,      
+        })
+      }
+
       console.log('kskModalOpen', this.state.kskModalOpen, this.state.ksk)
     })
   };
 
-  // submit (e) {
-  //   e.preventDefault()
-  //   const formData = new FormData(e.target)
-  //   console.log('data', formData)
-
-    // fetch(`http://dev.e-kck.kz/api/v1/landing/search`, {
-    //   method: 'get',
-    //   headers: {
-    //     'Accept': 'application/json, text/plain, */*',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(data)
-    // }).then((res) => {
-    //   res.status === 200 ? this.setState({ submitted: true }) : ''
-    // })
-  // }
+  
 
   render() {
 
     const { formData,  update, loading, autoComplete} = this.state;
-
     const { selectedOption, kskCityId, noMatchesMessage, kskModalOpen, states, fetching, value, suggestions, ksk, successKsk } = this.state
     const inputClasses = _.mapValues(states, ({ error, success }) => (classnames('input-container', { error: error, success: success })))
     const buttonClass = classnames({ fetching: fetching })
@@ -194,7 +192,7 @@ class CheckKsk extends Component {
 
     return (
       <section className="section section5">
-        <div className="map">
+        <div className="map" id="map">
           <img src="/static/images/map.png" alt=""/>
             <div className={ classnames(
                 'ksk-modal',
@@ -221,6 +219,7 @@ class CheckKsk extends Component {
               ( 
                 <div>
                   <p>Ваш КСК  <br/><span>не работает</span>  с приложением</p>
+                  <a href="" className="btn btn--white">Добавить его в базу</a>
                 </div>                
               )
             }   
@@ -230,7 +229,7 @@ class CheckKsk extends Component {
           <p>Проверьте поддержку
             <br/>приложения в вашем КСК</p>
           <form className="form-inline" onSubmit={ this._handleSubmit }>
-            <div className="form-group">             
+            <div className="form-group form-group--medium">             
               <Autosuggest 
                 suggestions={suggestions}
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -252,7 +251,7 @@ class CheckKsk extends Component {
                      placeholder="Улица"
                      onChange={this._handleChange}/>
             </div>
-            <div className="form-group">
+            <div className="form-group form-group--small">
               <input name='house'
                      type="text" 
                      className="form-control" 

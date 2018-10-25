@@ -1,26 +1,35 @@
 import React, {Component} from 'react';
 import Icons from '../../components/Icons';
-import classnames from 'classnames'
+import FeedbackForm from '../../components/Form';
+import classnames from 'classnames';
+import getFormData from '../../utils/getFormData'
 import 'isomorphic-fetch'
+
 import _ from 'lodash'
 
+
+// const getFormData = object => Object.keys(object).map((key) => {
+//     return encodeURIComponent(key) + '=' + encodeURIComponent(object[key]);
+//   }).join('&');
+
+  
 class AddKsk extends Component {
     constructor(props) {
         super(props);  
         this.state = {
-            formValues: {}
+            formData: {}
         }        
     }   
     _handleChange = (event) => {
-        const {formValues} = this.state;
+        const {formData} = this.state;
             this.setState({
-                formValues: {
-                    ...formValues,
+                formData: {
+                    ...formData,
                     [event.target.getAttribute('name')]: event.target.value
                 }          
             },
             function() {
-              console.log('onchange', this.state.formValues)
+              console.log('onchange', this.state.formData)
             }
           )
       }
@@ -42,20 +51,23 @@ class AddKsk extends Component {
     
       _handleSubmit = (event) => {
         event.preventDefault(); 
-        const formData = new FormData(event.target)   
-        console.log('formValues', JSON.stringify(formData))        
-        fetch(`http://eksk-landing.rocketfirm.net/api/v1/feedback/create`, {
-          method: 'post',      
+        const formData = this.state.formData   
+        console.log('formData', JSON.stringify(formData))   
+        
+        
+        fetch(`http://eksk-landing.rocketfirm.net/en/api/v1/feedback/create`, {
+          method: 'POST',      
           headers: {        
-            'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N'                             
-          },          //   body: JSON.stringify(formData)
+            'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N',           
+            'Content-Type': 'application/x-www-form-urlencoded'                   
+          },          
+            body: getFormData(formData)
         }).then((res) => res.json()).then((data) => {
           console.log('data', data);           
         })
       }; 
      
     render() {  
-
         return (
             <section className="section section6">
                 <div className="container">
@@ -77,18 +89,7 @@ class AddKsk extends Component {
                     </div>
                     <div className="section-right">
                     <h2>Напишите нам, если вашего <br/> КСК нет в базе </h2>
-                    <form className="form-transparent form-flex" onSubmit={ this._handleSubmit }>
-                        <div className="form-group form-group--half">
-                        <input onChange={this._handleChange} type="text" name="email" className="form-control" placeholder="Почта"/>
-                        </div>
-                        <div className="form-group form-group--half">
-                        <input onChange={this._handleChange} type="text" name="city" className="form-control" placeholder="Город"/>
-                        </div>
-                        <div className="form-group">
-                        <input onChange={this._handleChange} type="text" name="street" className="form-control" placeholder="Улица"/>
-                        </div>
-                        <button type="submit" className="btn btn--transparent">Отправить заявку {Icons('arrow')} </button>
-                    </form>
+                    <FeedbackForm/>
                     </div>
                 </div>
                 </div>

@@ -52,6 +52,46 @@
 	}
 }
 
+.btn--white {
+	padding: 16px 15px 12px;
+	font-size: 18px;
+	font-weight: 500;
+	color: #56BB8A;
+	background: #fff;
+	height: 60px;
+	box-shadow: 0px 5px 0 transparent;
+	border-radius: 5px;
+	border: 2px solid #96DBBA;
+	width: 100%;
+	text-align: center;
+	&:focus {
+		color: #fff;
+		outline: 0 none;
+		box-shadow: 0 0 0 0.2rem transparent;
+	}
+	&:hover,
+	&:active {
+		color: #fff;
+		background-color: rgba(#96DBBA, 1);
+	}
+
+	&.btn--success {
+		// background-color: $color-green;
+		box-shadow: 8px 8px 16px 0 rgba(#07021E, .1);
+		&:focus {
+			color: #fff;
+		}
+		&:hover,
+		&:active {
+			color: #fff;
+			background-color: #4DBE73;
+		}
+		&:active  {
+			box-shadow: inset -1px 1px 12px rgba(#07021E, .15), 5px 5px 16px 0 rgba(#07021E, .08);
+		}
+	}
+}
+
 .btn--transparent {
 	padding: 9px 0px 9px;
 	font-size: 18px;

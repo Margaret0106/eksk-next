@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import problems from '../../../data/problems';
 import ProblemSlide from './ProblemSlide.js';
 import Swiper from 'react-id-swiper';
+import debounce from 'lodash/debounce'
 
 class Problems extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Problems extends Component {
       activeTab: '1',
       isDesktop: true
     };
+    this.updateDimensionsDebounced = debounce(this.updateDimensions.bind(this), 100)
   }
 
   toggle(tab) {
@@ -39,15 +41,15 @@ class Problems extends Component {
    */
   componentDidMount() {
     this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions.bind(this));
+    window.addEventListener("resize", this.updateDimensionsDebounced);
   }
 
   /**
    * Remove event listener
    */
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.updateDimensions.bind(this));
-  // }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateDimensionsDebounced);
+  }
   
   render() {
 
