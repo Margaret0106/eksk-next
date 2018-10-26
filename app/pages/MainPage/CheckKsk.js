@@ -6,6 +6,8 @@ import 'isomorphic-fetch'
 import _ from 'lodash'
 import { dim } from '../../../node_modules/ansi-colors';
 import smoothscroll from 'smoothscroll-polyfill'
+import FeedbackModal from '../../components/FeedbackModal';
+import { Button } from 'reactstrap';
 
 
 
@@ -53,9 +55,12 @@ class CheckKsk extends Component {
       fetching: false,
       ksk: null, 
       successKsk: false,
-      kskCityId: null
+      kskCityId: null,
+      showModal: false
     };
     this.myRef = React.createRef();
+    this.showModal = this.showModal.bind(this);    
+    this.closeModal = this.closeModal.bind(this);    
   }
   setStatePromise = (state) => {
       return new Promise((resolve) => {
@@ -69,6 +74,7 @@ class CheckKsk extends Component {
 
   componentDidMount() {   
     console.log('cities', this.state.cities)
+    // this.setState({ showModal: true }) 
   }
 
   onChange = (event, {newValue, method}) => {    
@@ -171,14 +177,35 @@ class CheckKsk extends Component {
     })
   };
 
-  
+  showModal = (e) => {
+    e.preventDefault();
+    this.setState({
+      showModal: true
+    }, function() {
+      console.log('parent showModal',this.state.showModal)
+    });
+  }
+
+  closeModal = () => {
+    this.setState({
+      showModal: false
+    }, function() {
+      console.log('parent closeModal',this.state.showModal)
+    });
+  }
+
 
   render() {
 
     const { formData,  update, loading, autoComplete} = this.state;
-    const { selectedOption, kskCityId, noMatchesMessage, kskModalOpen, states, fetching, value, suggestions, ksk, successKsk } = this.state
+    const { selectedOption, showModal, kskCityId, noMatchesMessage, kskModalOpen, states, fetching, value, suggestions, ksk, successKsk } = this.state
     const inputClasses = _.mapValues(states, ({ error, success }) => (classnames('input-container', { error: error, success: success })))
     const buttonClass = classnames({ fetching: fetching })
+
+    const modalProps = {     
+      isOpen: showModal,
+      onClose: this.closeModal
+    }
 
     const inputProps = {
       placeholder: 'Город',
@@ -219,7 +246,7 @@ class CheckKsk extends Component {
               ( 
                 <div>
                   <p>Ваш КСК  <br/><span>не работает</span>  с приложением</p>
-                  <a href="" className="btn btn--white">Добавить его в базу</a>
+                  <a href="" className="btn btn--white" onClick={this.showModal}>Добавить его в базу</a>
                 </div>                
               )
             }   
@@ -259,11 +286,10 @@ class CheckKsk extends Component {
                      placeholder="Дом"
                      onChange={this._handleChange}/>
             </div>
-
             <button type="submit" disabled={ fetching } className="btn btn--primary">Проверить</button>
           </form>
-
         </div>
+        <FeedbackModal {...modalProps} />
       </section>
     )
   }

@@ -7085,10 +7085,14 @@ a.text-dark:hover, a.text-dark:focus {
   box-shadow: none;
   border-radius: 0; }
   .btn--transparent:focus {
-    color: #fff; }
-  .btn--transparent:hover, .btn--transparent:active {
     color: #fff;
-    background-color: transparent; }
+    outline: 0 !important;
+    box-shadow: 0 0 transparent; }
+  .btn--transparent:hover, .btn--transparent:active {
+    outline: 0 !important;
+    color: #fff;
+    background-color: transparent;
+    box-shadow: 0 0 transparent; }
 
 .form-control {
   height: 48px;
@@ -7210,6 +7214,19 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   -webkit-box-shadow: 0 0 transparent; }
+
+.form-transparent input:-webkit-autofill, .form-transparent textarea:-webkit-autofill, .form-transparent select:-webkit-autofill {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: black !important; }
+
+.form-transparent input:-webkit-autofill,
+.form-transparent input:-webkit-autofill:hover,
+.form-transparent input:-webkit-autofill:focus,
+.form-transparent input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: 0px 5px 30px transparent; }
 
 .form-group {
   width: 100%;
@@ -7566,6 +7583,14 @@ input:-webkit-autofill:active {
       bottom: auto;
       right: auto;
       transform: rotate(-90deg); }
+
+.modal-dialog {
+  max-width: 685px; }
+
+.modal-content {
+  background: #56BB8A;
+  padding: 50px 60px;
+  color: #fff; }
 
 .nav-link {
   display: inline-block;

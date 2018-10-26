@@ -621,10 +621,85 @@ var RfLink = function RfLink() {
 
 /***/ }),
 
-/***/ "./app/components/Form.js":
-/*!********************************!*\
-  !*** ./app/components/Form.js ***!
-  \********************************/
+/***/ "./app/components/FeedbackModal.js":
+/*!*****************************************!*\
+  !*** ./app/components/FeedbackModal.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Formold__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Formold */ "./app/components/Formold.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
+ // import FeedbackForm from './Form';
+
+
+
+var FeedbackModal =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(FeedbackModal, _Component);
+
+  function FeedbackModal(props) {
+    var _this;
+
+    _classCallCheck(this, FeedbackModal);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(FeedbackModal).call(this, props));
+    _this.closeDialog = _this.closeDialog.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(FeedbackModal, [{
+    key: "closeDialog",
+    value: function closeDialog() {
+      this.props.onClose();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var isOpen = this.props.isOpen;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
+        isOpen: isOpen,
+        toggle: this.closeDialog
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C, \u0435\u0441\u043B\u0438 \u0432\u0430\u0448\u0435\u0433\u043E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u041A\u0421\u041A \u043D\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Formold__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+    }
+  }]);
+
+  return FeedbackModal;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (FeedbackModal);
+
+/***/ }),
+
+/***/ "./app/components/Formold.js":
+/*!***********************************!*\
+  !*** ./app/components/Formold.js ***!
+  \***********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -695,7 +770,7 @@ function (_Component) {
       event.preventDefault();
       var formData = _this.state.formData;
       console.log('formData', JSON.stringify(formData));
-      fetch("http://eksk-landing.rocketfirm.net/en/api/v1/feedback/create", {
+      fetch("http://eksk-landing.rocketfirm.net/api/v1/feedback/create", {
         method: 'POST',
         headers: {
           'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N',
@@ -710,7 +785,8 @@ function (_Component) {
     });
 
     _this.state = {
-      formData: {}
+      formData: {},
+      isValidated: false
     };
     return _this;
   }
@@ -718,17 +794,20 @@ function (_Component) {
   _createClass(FeedbackForm, [{
     key: "render",
     value: function render() {
+      var isValidated = this.state.isValidated;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        ref: "el => this.form = el",
-        className: "form-transparent form-flex",
+        //ref="el => this.form = el"
+        className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('form-transparent form-flex') //onSubmit={this._handleSubmit}           
+        ,
         onSubmit: this._handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group form-group--half"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         onChange: this._handleChange,
-        type: "text",
+        type: "email",
         name: "email",
-        className: "form-control",
+        className: "form-control email-input",
+        required: true,
         placeholder: "\u041F\u043E\u0447\u0442\u0430"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group form-group--half"
@@ -736,20 +815,25 @@ function (_Component) {
         onChange: this._handleChange,
         type: "text",
         name: "city",
+        required: true,
         className: "form-control",
-        placeholder: "\u0413\u043E\u0440\u043E\u0434"
+        placeholder: "\u0413\u043E\u0440\u043E\u0434",
+        "data-required-message": "\u041D\u0443\u0436\u043D\u043E \u0437\u0430\u043F\u043E\u043B\u043D\u0438\u0442\u044C \u0433\u043E\u0440\u043E\u0434"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         onChange: this._handleChange,
         type: "text",
         name: "street",
+        required: true,
         className: "form-control",
         placeholder: "\u0423\u043B\u0438\u0446\u0430"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn--transparent"
-      }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443 ", Object(_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('arrow')));
+      }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443 ", Object(_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('arrow')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-messages"
+      }));
     }
   }]);
 
@@ -851,7 +935,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Icons */ "./app/components/Icons.js");
-/* harmony import */ var _components_Form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Form */ "./app/components/Form.js");
+/* harmony import */ var _components_Formold__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Formold */ "./app/components/Formold.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "classnames");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _utils_getFormData__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/getFormData */ "./app/utils/getFormData.js");
@@ -861,8 +945,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -871,15 +953,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -897,44 +977,9 @@ function (_Component) {
   _inherits(AddKsk, _Component);
 
   function AddKsk(props) {
-    var _this;
-
     _classCallCheck(this, AddKsk);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(AddKsk).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleChange", function (event) {
-      var formData = _this.state.formData;
-
-      _this.setState({
-        formData: _objectSpread({}, formData, _defineProperty({}, event.target.getAttribute('name'), event.target.value))
-      }, function () {
-        console.log('onchange', this.state.formData);
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleSubmit", function (event) {
-      event.preventDefault();
-      var formData = _this.state.formData;
-      console.log('formData', JSON.stringify(formData));
-      fetch("http://eksk-landing.rocketfirm.net/en/api/v1/feedback/create", {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N',
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: Object(_utils_getFormData__WEBPACK_IMPORTED_MODULE_4__["default"])(formData)
-      }).then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        console.log('data', data);
-      });
-    });
-
-    _this.state = {
-      formData: {}
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(AddKsk).call(this, props));
   }
 
   _createClass(AddKsk, [{
@@ -960,7 +1005,7 @@ function (_Component) {
         className: "app-link"
       }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('google'), " Google Play")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C, \u0435\u0441\u043B\u0438 \u0432\u0430\u0448\u0435\u0433\u043E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u041A\u0421\u041A \u043D\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Form__WEBPACK_IMPORTED_MODULE_2__["default"], null)))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C, \u0435\u0441\u043B\u0438 \u0432\u0430\u0448\u0435\u0433\u043E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u041A\u0421\u041A \u043D\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Formold__WEBPACK_IMPORTED_MODULE_2__["default"], null)))));
     }
   }]);
 
@@ -995,6 +1040,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_ansi_colors__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ansi_colors__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var smoothscroll_polyfill__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! smoothscroll-polyfill */ "smoothscroll-polyfill");
 /* harmony import */ var smoothscroll_polyfill__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(smoothscroll_polyfill__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_FeedbackModal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/FeedbackModal */ "./app/components/FeedbackModal.js");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! reactstrap */ "reactstrap");
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_9__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
@@ -1016,6 +1064,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -1196,6 +1246,24 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "showModal", function (e) {
+      e.preventDefault();
+
+      _this.setState({
+        showModal: true
+      }, function () {
+        console.log('parent showModal', this.state.showModal);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closeModal", function () {
+      _this.setState({
+        showModal: false
+      }, function () {
+        console.log('parent closeModal', this.state.showModal);
+      });
+    });
+
     _this.inputs = {
       name: {
         error: false,
@@ -1219,16 +1287,19 @@ function (_Component) {
       fetching: false,
       ksk: null,
       successKsk: false,
-      kskCityId: null
+      kskCityId: null,
+      showModal: false
     };
     _this.myRef = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    _this.showModal = _this.showModal.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.closeModal = _this.closeModal.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(CheckKsk, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('cities', this.state.cities);
+      console.log('cities', this.state.cities); // this.setState({ showModal: true }) 
     }
   }, {
     key: "render",
@@ -1240,6 +1311,7 @@ function (_Component) {
           autoComplete = _this$state.autoComplete;
       var _this$state2 = this.state,
           selectedOption = _this$state2.selectedOption,
+          showModal = _this$state2.showModal,
           kskCityId = _this$state2.kskCityId,
           noMatchesMessage = _this$state2.noMatchesMessage,
           kskModalOpen = _this$state2.kskModalOpen,
@@ -1262,6 +1334,10 @@ function (_Component) {
       var buttonClass = classnames__WEBPACK_IMPORTED_MODULE_1___default()({
         fetching: fetching
       });
+      var modalProps = {
+        isOpen: showModal,
+        onClose: this.closeModal
+      };
       var inputProps = {
         placeholder: 'Город',
         name: 'city',
@@ -1296,7 +1372,8 @@ function (_Component) {
         className: "app-link"
       }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_3__["default"])('google'), "Google Play"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u0412\u0430\u0448 \u041A\u0421\u041A  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u043D\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442"), "  \u0441 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435\u043C"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "",
-        className: "btn btn--white"
+        className: "btn btn--white",
+        onClick: this.showModal
       }, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0435\u0433\u043E \u0432 \u0431\u0430\u0437\u0443")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "check-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\u041F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0443", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "\u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F \u0432 \u0432\u0430\u0448\u0435\u043C \u041A\u0421\u041A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -1336,7 +1413,7 @@ function (_Component) {
         type: "submit",
         disabled: fetching,
         className: "btn btn--primary"
-      }, "\u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C"))));
+      }, "\u041F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FeedbackModal__WEBPACK_IMPORTED_MODULE_8__["default"], modalProps));
     }
   }]);
 

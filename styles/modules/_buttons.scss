@@ -104,11 +104,14 @@
 
 	&:focus {
 		color: #fff;
+		outline: 0 !important;
+		box-shadow: 0 0 transparent;
 	}
 	&:hover,
 	&:active {
-		
+		outline: 0 !important;		
 		color: #fff;
 		background-color: transparent;
+		box-shadow: 0 0 transparent;
 	}
 }
