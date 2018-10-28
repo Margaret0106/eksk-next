@@ -4,99 +4,66 @@ import classnames from 'classnames';
 import getFormData from '../utils/getFormData'
 import 'isomorphic-fetch'
 import _ from 'lodash'
+import {connect} from 'react-redux';
+import { reduxForm, Field, reset, SubmissionError } from 'redux-form'
 
-
-class FeedbackForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      formData: {},
-      isValidated: false
-    }    
+const validate = values => {
+  const errors = {}
+  if (!values.username) {
+    errors.username = 'Required'
+  } else if (values.username.length > 15) {
+    errors.username = 'Must be 15 characters or less'
   }
-
-  _handleChange = (event) => {
-    const {formData} = this.state;
-    this.setState({
-      formData: {
-        ...formData,
-        [
-          event
-            .target
-            .getAttribute('name')
-        ]: event.target.value
-      }
-    }, function () {
-      console.log('onchange', this.state.formData)
-    })
+  if (!values.email) {
+    errors.email = 'Required'
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address'
   }
-
-  _handleSubmit = (event) => {
-    event.preventDefault();
-    const formData = this.state.formData
-    console.log('formData', JSON.stringify(formData))
-
-    fetch(`http://eksk-landing.rocketfirm.net/api/v1/feedback/create`, {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N',
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: getFormData(formData)
-    }).then((res) => res.json()).then((data) => {
-      console.log('data', data);
-    })
-  };  
-
-  render() {
-
-    const {isValidated} = this.state
-
-    return (
-        <form
-            //ref="el => this.form = el"
-            className={classnames('form-transparent form-flex')}
-            //onSubmit={this._handleSubmit}           
-            onSubmit={this._handleSubmit} 
-            >
-            <div className="form-group form-group--half">
-              <input
-                  onChange={this._handleChange}
-                  type="email"
-                  name="email"
-                  className="form-control email-input"
-                  required={true}
-                  placeholder="Почта" 
-                                 
-                  />               
-            </div>
-            <div className="form-group form-group--half">
-              <input
-                onChange={this._handleChange}
-                type="text"
-                name="city"
-                required={true}
-                className="form-control"
-                placeholder="Город"
-                data-required-message="Нужно заполнить город"
-                />                
-            </div>
-            <div className="form-group">
-            <input
-                onChange={this._handleChange}
-                type="text"
-                name="street"
-                required={true}
-                className="form-control"
-                placeholder="Улица"/>                
-            </div>
-            <button type="submit" className="btn btn--transparent">Отправить заявку {Icons('arrow')}
-            </button>
-            <div className="form-messages">
-
-            </div>
-        </form>
-        )
-    }
+  if (!values.age) {
+    errors.age = 'Required'
+  } else if (isNaN(Number(values.age))) {
+    errors.age = 'Must be a number'
+  } else if (Number(values.age) < 18) {
+    errors.age = 'Sorry, you must be at least 18 years old'
+  }
+  return errors
 }
-export default FeedbackForm
+
+const warn = values => {
+  const warnings = {}
+  if (values.age < 19) {
+    warnings.age = 'Hmm, you seem a bit young...'
+  }
+  return warnings
+}
+
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type}/>
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    </div>
+  </div>
+)
+
+const FeedbackForm = (props) => {
+  const { handleSubmit, pristine, reset, submitting } = props
+  return (
+    <form onSubmit={handleSubmit}>
+      <Field name="username" type="text" component={renderField} label="Username"/>
+      <Field name="email" type="email" component={renderField} label="Email"/>
+      <Field name="age" type="number" component={renderField} label="Age"/>
+      <div>
+        <button type="submit" disabled={submitting}>Submit</button>
+        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>
+      </div>
+    </form>
+  )
+}
+
+export default reduxForm({
+  form: 'syncValidation',  // a unique identifier for this form
+  validate,                // <--- validation function given to redux-form
+  warn                     // <--- warning function given to redux-form
+})(FeedbackForm)

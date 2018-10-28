@@ -3,6 +3,7 @@ import Icons from '../../components/Icons';
 import FeedbackForm from '../../components/Formold';
 import classnames from 'classnames';
 import getFormData from '../../utils/getFormData'
+import {connect} from 'react-redux';
 import 'isomorphic-fetch'
 
 import _ from 'lodash'
@@ -49,4 +50,5 @@ class AddKsk extends Component {
     }
 }
 
-export default AddKsk
+export default connect()(AddKsk)
+

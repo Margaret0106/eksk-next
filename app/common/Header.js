@@ -60,6 +60,7 @@ class Header extends Component {
    * Add event listener
    */
   componentDidMount() {
+    console.log('componentDidMount', this.props)
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensionsDebounced);
   }
@@ -254,8 +255,9 @@ class Header extends Component {
 
 export default connect(({activeClass}) => ({
   activeClass
-}), (dispatch) => ({
+}), (dispatch) => ({ 
   representClass: bindActionCreators(representClass, dispatch),
   citizenClass: bindActionCreators(citizenClass, dispatch),
-  partnerClass: bindActionCreators(partnerClass, dispatch),
+  partnerClass: bindActionCreators(partnerClass, dispatch),  
+  
 }))(Header)
