@@ -10,8 +10,6 @@ import AddKsk from '../app/pages/MainPage/AddKsk.js'
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
 import AOS from 'aos'
-import "../node_modules/aos/src/sass/aos.scss"
-import "../styles/main.scss"
 import {connect} from 'react-redux';
 
 
@@ -66,7 +64,7 @@ Page.getInitialProps = async ({ req }) => {
 }
 
 function mapStateToProps(state) {
-  return {activeClass: state.activeClass};
+  return {activeClass: state.classReducer.activeClass};
 }
 
 

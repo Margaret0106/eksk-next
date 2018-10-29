@@ -7,7 +7,6 @@ import {connect} from 'react-redux';
 class TopMain extends Component {
   // export default class TopMain extends Component {
 
-
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -16,13 +15,12 @@ class TopMain extends Component {
     };
   }
 
-
   componentDidMount() {
     console.log('state', this.state);
   }
 
   render() {
-    const { activeClass } = this.props
+    const {activeClass} = this.props
     return (
       <div className="top-main-wrapper">
         <div className="top-main">
@@ -60,15 +58,16 @@ class TopMain extends Component {
                   <h2>Присоединяйтесь к цифровизации!</h2>
                   <div className="tab-pane__content">
                     <div className="tab-pane__left">
-                      <p>Для сотрудников КСК мы разработали специальную админ-панель, удобную для
-                        отработки запросов жильцов.</p>
-                      <div className="about-text">
-                        <p>В админ-панели есть разграничение прав доступа (директор КСК видит всё, а
-                          исполнитель — только необходимое ему). Работать с заявками удобно и на
-                          настольном компьютере или ноутбуке, и через мобильный телефон.</p>
-                        <p>Для реализации государственных требований, в админ-панель встроен механизм
-                          подготовки и сдачи отчетов. Чтобы сделать отчет, достаточно нажать три кнопки!</p>
+                      <div className="big-text">
+                        <p>Для сотрудников КСК мы разработали специальную админ-панель, удобную для
+                          отработки запросов жильцов.</p>
                       </div>
+                      <p>В админ-панели есть разграничение прав доступа (директор КСК видит всё, а
+                        исполнитель — только необходимое ему). Работать с заявками удобно и на
+                        настольном компьютере или ноутбуке, и через мобильный телефон.</p>
+                      <p>Для реализации государственных требований, в админ-панель встроен механизм
+                        подготовки и сдачи отчетов. Чтобы сделать отчет, достаточно нажать три кнопки!</p>
+
                     </div>
                     <div className="tab-pane__right">
                       <div className="facts-list">
@@ -111,15 +110,15 @@ class TopMain extends Component {
                   <h2>Сотрудничаем с бизнесом</h2>
                   <div className="tab-pane__content">
                     <div className="tab-pane__left">
-                      <p>Ежедневно сервисом пользуются тысячи казахстансцев, жильцов многоквартирных
-                        домов.
-                      </p>
-                      <div className="about-text">
-                        <p>В приложении удобная сегментация пользователей по городам, районам города и
-                          даже конкретным ЖК!</p>
-                        <p>Готовы рассмотреть сотрудничество по интеграции ваших товаров или услуг в
-                          наше приложение.</p>
+                      <div className="big-text">
+                        <p>Ежедневно сервисом пользуются тысячи казахстансцев, жильцов многоквартирных
+                          домов.
+                        </p>
                       </div>
+                      <p>В приложении удобная сегментация пользователей по городам, районам города и
+                        даже конкретным ЖК!</p>
+                      <p>Готовы рассмотреть сотрудничество по интеграции ваших товаров или услуг в
+                        наше приложение.</p>
                     </div>
                     <div className="tab-pane__right">
                       <div className="facts-list">
@@ -206,7 +205,7 @@ class TopMain extends Component {
 
 }
 function mapStateToProps(state) {
-  return {activeClass: state.activeClass};
+  return {activeClass: state.classReducer.activeClass};
 }
 
 export default connect(mapStateToProps)(TopMain);

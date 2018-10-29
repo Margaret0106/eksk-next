@@ -104,7 +104,10 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _RfLink__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RfLink */ "./app/common/RfLink.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "next/link");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _RfLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RfLink */ "./app/common/RfLink.js");
+
 
 
 
@@ -119,24 +122,30 @@ var Footer = function Footer() {
     className: "copyright"
   }, "\xA9 \u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u043D\u043E\u0435 \u041A\u0421\u041A 2017\u20132018"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "footer-menu"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/contacts"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "footer-menu__item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "",
     className: "footer-menu__link"
-  }, "\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u044B")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u044B"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/faq"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "footer-menu__item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "",
     className: "footer-menu__link"
-  }, "FAQ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, "FAQ"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/about"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "footer-menu__item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: "",
     className: "footer-menu__link"
-  }, "\u041E \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0438"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "\u041E \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0438")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "copyright-logo"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RfLink__WEBPACK_IMPORTED_MODULE_1__["default"], null)))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RfLink__WEBPACK_IMPORTED_MODULE_2__["default"], null)))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -444,17 +453,16 @@ function (_Component) {
           _this2.changeBodyClass('citizen-page');
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "#"
+        href: ""
       }, "\u0416\u0438\u0442\u0435\u043B\u044F\u043C")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: classnames__WEBPACK_IMPORTED_MODULE_5___default()({
           active: activeClass === 'represent-page'
-        }),
-        onClick: function onClick() {
-          _this2.changeBodyClass('represent-page');
-        }
+        })
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
-      }, "\u041F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0435\u043B\u044F\u043C \u041A\u0421\u041A")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      }, "\u041F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0435\u043B\u044F\u043C \u041A\u0421\u041A"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: classnames__WEBPACK_IMPORTED_MODULE_5___default()({
           active: activeClass === 'partner-page'
         }),
@@ -485,7 +493,7 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(function (_ref2) {
-  var activeClass = _ref2.activeClass;
+  var activeClass = _ref2.classReducer.activeClass;
   return {
     activeClass: activeClass
   };
@@ -514,6 +522,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Footer */ "./app/common/Footer.js");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/head */ "next/head");
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_aos_src_sass_aos_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../node_modules/aos/src/sass/aos.scss */ "./node_modules/aos/src/sass/aos.scss");
+/* harmony import */ var _node_modules_aos_src_sass_aos_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_aos_src_sass_aos_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../styles/main.scss */ "./styles/main.scss");
+/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_styles_main_scss__WEBPACK_IMPORTED_MODULE_5__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -531,6 +543,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -635,7 +649,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "reactstrap");
 /* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reactstrap__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Formold__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Formold */ "./app/components/Formold.js");
+/* harmony import */ var _FormInModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormInModal */ "./app/components/FormInModal.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -686,7 +700,7 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
         isOpen: isOpen,
         toggle: this.closeDialog
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C, \u0435\u0441\u043B\u0438 \u0432\u0430\u0448\u0435\u0433\u043E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u041A\u0421\u041A \u043D\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Formold__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C, \u0435\u0441\u043B\u0438 \u0432\u0430\u0448\u0435\u0433\u043E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u041A\u0421\u041A \u043D\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInModal__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
     }
   }]);
 
@@ -697,10 +711,10 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./app/components/Formold.js":
-/*!***********************************!*\
-  !*** ./app/components/Formold.js ***!
-  \***********************************/
+/***/ "./app/components/Form.js":
+/*!********************************!*\
+  !*** ./app/components/Form.js ***!
+  \********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -712,16 +726,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "classnames");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utils_getFormData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getFormData */ "./app/utils/getFormData.js");
-/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
-/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! redux-form */ "redux-form");
-/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(redux_form__WEBPACK_IMPORTED_MODULE_7__);
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! redux-form */ "redux-form");
+/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(redux_form__WEBPACK_IMPORTED_MODULE_6__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
 
@@ -734,93 +765,455 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 var validate = function validate(values) {
   var errors = {};
 
-  if (!values.username) {
-    errors.username = 'Required';
-  } else if (values.username.length > 15) {
-    errors.username = 'Must be 15 characters or less';
+  if (!values.city) {
+    errors.city = 'Не ввели город';
   }
 
   if (!values.email) {
-    errors.email = 'Required';
+    errors.email = 'Не ввели почту';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
+    errors.email = 'Неправильно ввели почту';
   }
 
-  if (!values.age) {
-    errors.age = 'Required';
-  } else if (isNaN(Number(values.age))) {
-    errors.age = 'Must be a number';
-  } else if (Number(values.age) < 18) {
-    errors.age = 'Sorry, you must be at least 18 years old';
+  if (!values.street) {
+    errors.street = 'Не ввели улицу';
   }
 
   return errors;
 };
 
-var warn = function warn(values) {
-  var warnings = {};
-
-  if (values.age < 19) {
-    warnings.age = 'Hmm, you seem a bit young...';
-  }
-
-  return warnings;
-};
-
-var renderField = function renderField(_ref) {
+var InputHalf = function InputHalf(_ref) {
   var input = _ref.input,
       label = _ref.label,
       type = _ref.type,
+      placeholder = _ref.placeholder,
       _ref$meta = _ref.meta,
       touched = _ref$meta.touched,
-      error = _ref$meta.error,
-      warning = _ref$meta.warning;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, label), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({}, input, {
-    placeholder: label,
-    type: type
-  })), touched && (error && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, error) || warning && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, warning))));
+      error = _ref$meta.error;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('form-group form-group--half', {
+      error: touched && error,
+      success: touched && !error
+    })
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({}, input, {
+    type: type,
+    className: "form-control",
+    placeholder: placeholder
+  })));
 };
 
-var FeedbackForm = function FeedbackForm(props) {
-  var handleSubmit = props.handleSubmit,
-      pristine = props.pristine,
-      reset = props.reset,
-      submitting = props.submitting;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    onSubmit: handleSubmit
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(redux_form__WEBPACK_IMPORTED_MODULE_7__["Field"], {
-    name: "username",
-    type: "text",
-    component: renderField,
-    label: "Username"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(redux_form__WEBPACK_IMPORTED_MODULE_7__["Field"], {
-    name: "email",
-    type: "email",
-    component: renderField,
-    label: "Email"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(redux_form__WEBPACK_IMPORTED_MODULE_7__["Field"], {
-    name: "age",
-    type: "number",
-    component: renderField,
-    label: "Age"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "submit",
-    disabled: submitting
-  }, "Submit"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "button",
-    disabled: pristine || submitting,
-    onClick: reset
-  }, "Clear Values")));
+var Input = function Input(_ref2) {
+  var input = _ref2.input,
+      label = _ref2.label,
+      type = _ref2.type,
+      placeholder = _ref2.placeholder,
+      _ref2$meta = _ref2.meta,
+      touched = _ref2$meta.touched,
+      error = _ref2$meta.error;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('form-group', {
+      error: touched && error,
+      success: touched && !error
+    })
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({}, input, {
+    type: type,
+    className: "form-control",
+    placeholder: placeholder
+  })));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(redux_form__WEBPACK_IMPORTED_MODULE_7__["reduxForm"])({
+var FeedbackForm =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(FeedbackForm, _Component);
+
+  function FeedbackForm(props) {
+    var _this;
+
+    _classCallCheck(this, FeedbackForm);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(FeedbackForm).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleSubmit", function (values) {
+      // event.preventDefault();
+      console.log('onsubmit', _this.props);
+      var _this$props = _this.props,
+          dispatch = _this$props.dispatch,
+          form = _this$props.form,
+          stop = _this$props.stop;
+      var formData = values;
+      console.log('formData', JSON.stringify(formData));
+      fetch("http://eksk-landing.rocketfirm.net/api/v1/feedback/create", {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: Object(_utils_getFormData__WEBPACK_IMPORTED_MODULE_3__["default"])(formData)
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        console.log('data', data);
+
+        if (data.success) {
+          _this.setState({
+            successMessage: 'Заявка успешно отправлена'
+          }, function () {
+            var _this2 = this;
+
+            setTimeout(function () {
+              dispatch(Object(redux_form__WEBPACK_IMPORTED_MODULE_6__["reset"])(form));
+
+              _this2.setState({
+                successMessage: null
+              });
+            }, 3000);
+          });
+        } else {}
+      });
+    });
+
+    _this.state = {
+      successModalOpen: false,
+      fetching: false,
+      successMessage: null
+    };
+    return _this;
+  }
+
+  _createClass(FeedbackForm, [{
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps() {
+      console.log('componentWillReceiveProps', this.props);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          handleSubmit = _this$props2.handleSubmit,
+          pristine = _this$props2.pristine,
+          reset = _this$props2.reset,
+          submitting = _this$props2.submitting,
+          errors = _this$props2.errors,
+          isTouched = _this$props2.isTouched;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "form-transparent form-flex",
+        onSubmit: handleSubmit(this._handleSubmit)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(redux_form__WEBPACK_IMPORTED_MODULE_6__["Field"], {
+        name: "email",
+        type: "email",
+        component: InputHalf,
+        placeholder: "\u041F\u043E\u0447\u0442\u0430"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(redux_form__WEBPACK_IMPORTED_MODULE_6__["Field"], {
+        name: "city",
+        type: "text",
+        component: InputHalf,
+        placeholder: "\u0413\u043E\u0440\u043E\u0434"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(redux_form__WEBPACK_IMPORTED_MODULE_6__["Field"], {
+        name: "street",
+        type: "text",
+        component: Input,
+        placeholder: "\u0423\u043B\u0438\u0446\u0430"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        disabled: submitting,
+        className: "btn btn--transparent"
+      }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443 ", Object(_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('arrow')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-messages"
+      }, isTouched && errors && Object.keys(errors).map(function (item, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "error-message",
+          key: i
+        }, errors[item]);
+      }), this.state.successMessage && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "success-message"
+      }, this.state.successMessage)));
+    }
+  }]);
+
+  return FeedbackForm;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapStateToProps = function mapStateToProps(state) {
+  var _state$form$syncValid = state.form.syncValidation,
+      syncErrors = _state$form$syncValid.syncErrors,
+      fields = _state$form$syncValid.fields;
+  var errors = syncErrors ? Object.keys(syncErrors).reduce(function (carry, key) {
+    var item = syncErrors[key];
+
+    if (fields && fields[key]) {
+      if (!fields[key].active && (fields[key].visited || fields[key].touched)) {
+        carry[key] = item;
+      }
+    }
+
+    return carry;
+  }, {}) : {};
+  return {
+    errors: errors,
+    isTouched: state.form.syncValidation.anyTouched
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux_form__WEBPACK_IMPORTED_MODULE_6__["reduxForm"])({
   form: 'syncValidation',
   // a unique identifier for this form
-  validate: validate,
-  // <--- validation function given to redux-form
-  warn: warn // <--- warning function given to redux-form
+  validate: validate // <--- validation function given to redux-form
 
-})(FeedbackForm));
+})(Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps)(FeedbackForm)));
+
+/***/ }),
+
+/***/ "./app/components/FormInModal.js":
+/*!***************************************!*\
+  !*** ./app/components/FormInModal.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Icons */ "./app/components/Icons.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "classnames");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_getFormData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getFormData */ "./app/utils/getFormData.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! isomorphic-fetch */ "isomorphic-fetch");
+/* harmony import */ var isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(isomorphic_fetch__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! redux-form */ "redux-form");
+/* harmony import */ var redux_form__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(redux_form__WEBPACK_IMPORTED_MODULE_6__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+
+
+
+
+
+var validate = function validate(values) {
+  var errors = {};
+
+  if (!values.city) {
+    errors.city = 'Не ввели город';
+  }
+
+  if (!values.email) {
+    errors.email = 'Не ввели почту';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Неправильно ввели почту';
+  }
+
+  if (!values.street) {
+    errors.street = 'Не ввели улицу';
+  }
+
+  return errors;
+};
+
+var InputHalf = function InputHalf(_ref) {
+  var input = _ref.input,
+      label = _ref.label,
+      type = _ref.type,
+      placeholder = _ref.placeholder,
+      _ref$meta = _ref.meta,
+      touched = _ref$meta.touched,
+      error = _ref$meta.error;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('form-group form-group--half', {
+      error: touched && error,
+      success: touched && !error
+    })
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({}, input, {
+    type: type,
+    className: "form-control",
+    placeholder: placeholder
+  })));
+};
+
+var Input = function Input(_ref2) {
+  var input = _ref2.input,
+      label = _ref2.label,
+      type = _ref2.type,
+      placeholder = _ref2.placeholder,
+      _ref2$meta = _ref2.meta,
+      touched = _ref2$meta.touched,
+      error = _ref2$meta.error;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('form-group', {
+      error: touched && error,
+      success: touched && !error
+    })
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", _extends({}, input, {
+    type: type,
+    className: "form-control",
+    placeholder: placeholder
+  })));
+};
+
+var FeedbackFormModal =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(FeedbackFormModal, _Component);
+
+  function FeedbackFormModal(props) {
+    var _this;
+
+    _classCallCheck(this, FeedbackFormModal);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(FeedbackFormModal).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleSubmit", function (values) {
+      // event.preventDefault();
+      console.log('onsubmit', _this.props);
+      var _this$props = _this.props,
+          dispatch = _this$props.dispatch,
+          form = _this$props.form,
+          stop = _this$props.stop;
+      var formData = values;
+      console.log('formData', JSON.stringify(formData));
+      fetch("http://eksk-landing.rocketfirm.net/api/v1/feedback/create", {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: Object(_utils_getFormData__WEBPACK_IMPORTED_MODULE_3__["default"])(formData)
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        console.log('data', data);
+
+        if (data.success) {
+          _this.setState({
+            successMessage: 'Заявка успешно отправлена'
+          }, function () {
+            var _this2 = this;
+
+            setTimeout(function () {
+              dispatch(Object(redux_form__WEBPACK_IMPORTED_MODULE_6__["reset"])(form));
+
+              _this2.setState({
+                successMessage: null
+              });
+            }, 3000);
+          });
+        } else {}
+      });
+    });
+
+    _this.state = {
+      successModalOpen: false,
+      fetching: false,
+      successMessage: null
+    };
+    return _this;
+  }
+
+  _createClass(FeedbackFormModal, [{
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps() {
+      console.log('componentWillReceiveProps', this.props);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          handleSubmit = _this$props2.handleSubmit,
+          pristine = _this$props2.pristine,
+          reset = _this$props2.reset,
+          submitting = _this$props2.submitting,
+          errors = _this$props2.errors,
+          isTouched = _this$props2.isTouched;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "form-transparent form-flex",
+        onSubmit: handleSubmit(this._handleSubmit)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(redux_form__WEBPACK_IMPORTED_MODULE_6__["Field"], {
+        name: "email",
+        type: "email",
+        component: InputHalf,
+        placeholder: "\u041F\u043E\u0447\u0442\u0430"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(redux_form__WEBPACK_IMPORTED_MODULE_6__["Field"], {
+        name: "city",
+        type: "text",
+        component: InputHalf,
+        placeholder: "\u0413\u043E\u0440\u043E\u0434"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(redux_form__WEBPACK_IMPORTED_MODULE_6__["Field"], {
+        name: "street",
+        type: "text",
+        component: Input,
+        placeholder: "\u0423\u043B\u0438\u0446\u0430"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        disabled: submitting,
+        className: "btn btn--transparent"
+      }, "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443 ", Object(_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('arrow')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-messages"
+      }, isTouched && errors && Object.keys(errors).map(function (item, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "error-message",
+          key: i
+        }, errors[item]);
+      }), this.state.successMessage && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "success-message"
+      }, this.state.successMessage)));
+    }
+  }]);
+
+  return FeedbackFormModal;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+var mapStateToProps = function mapStateToProps(state) {
+  var _state$form$syncValid = state.form.syncValidation2,
+      syncErrors = _state$form$syncValid.syncErrors,
+      fields = _state$form$syncValid.fields;
+  var errors = syncErrors ? Object.keys(syncErrors).reduce(function (carry, key) {
+    var item = syncErrors[key];
+
+    if (fields && fields[key]) {
+      if (!fields[key].active && (fields[key].visited || fields[key].touched)) {
+        carry[key] = item;
+      }
+    }
+
+    return carry;
+  }, {}) : {};
+  return {
+    errors: errors,
+    isTouched: state.form.syncValidation2.anyTouched
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux_form__WEBPACK_IMPORTED_MODULE_6__["reduxForm"])({
+  form: 'syncValidation2',
+  // a unique identifier for this form
+  validate: validate // <--- validation function given to redux-form
+
+})(Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapStateToProps)(FeedbackFormModal)));
 
 /***/ }),
 
@@ -915,7 +1308,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Icons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Icons */ "./app/components/Icons.js");
-/* harmony import */ var _components_Formold__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Formold */ "./app/components/Formold.js");
+/* harmony import */ var _components_Form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Form */ "./app/components/Form.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "classnames");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _utils_getFormData__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/getFormData */ "./app/utils/getFormData.js");
@@ -988,7 +1381,7 @@ function (_Component) {
         className: "app-link"
       }, Object(_components_Icons__WEBPACK_IMPORTED_MODULE_1__["default"])('google'), " Google Play")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "section-right"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C, \u0435\u0441\u043B\u0438 \u0432\u0430\u0448\u0435\u0433\u043E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u041A\u0421\u041A \u043D\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Formold__WEBPACK_IMPORTED_MODULE_2__["default"], null)))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u043D\u0430\u043C, \u0435\u0441\u043B\u0438 \u0432\u0430\u0448\u0435\u0433\u043E ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " \u041A\u0421\u041A \u043D\u0435\u0442 \u0432 \u0431\u0430\u0437\u0435 "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Form__WEBPACK_IMPORTED_MODULE_2__["default"], null)))));
     }
   }]);
 
@@ -2179,9 +2572,9 @@ function (_Component) {
         className: "tab-pane__content"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "tab-pane__left"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "\u0414\u043B\u044F \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u043A\u043E\u0432 \u041A\u0421\u041A \u043C\u044B \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u0430\u043B\u0438 \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u044C\u043D\u0443\u044E \u0430\u0434\u043C\u0438\u043D-\u043F\u0430\u043D\u0435\u043B\u044C, \u0443\u0434\u043E\u0431\u043D\u0443\u044E \u0434\u043B\u044F \u043E\u0442\u0440\u0430\u0431\u043E\u0442\u043A\u0438 \u0437\u0430\u043F\u0440\u043E\u0441\u043E\u0432 \u0436\u0438\u043B\u044C\u0446\u043E\u0432."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "about-text"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "\u0412 \u0430\u0434\u043C\u0438\u043D-\u043F\u0430\u043D\u0435\u043B\u0438 \u0435\u0441\u0442\u044C \u0440\u0430\u0437\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043F\u0440\u0430\u0432 \u0434\u043E\u0441\u0442\u0443\u043F\u0430 (\u0434\u0438\u0440\u0435\u043A\u0442\u043E\u0440 \u041A\u0421\u041A \u0432\u0438\u0434\u0438\u0442 \u0432\u0441\u0451, \u0430 \u0438\u0441\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C \u2014 \u0442\u043E\u043B\u044C\u043A\u043E \u043D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u043E\u0435 \u0435\u043C\u0443). \u0420\u0430\u0431\u043E\u0442\u0430\u0442\u044C \u0441 \u0437\u0430\u044F\u0432\u043A\u0430\u043C\u0438 \u0443\u0434\u043E\u0431\u043D\u043E \u0438 \u043D\u0430 \u043D\u0430\u0441\u0442\u043E\u043B\u044C\u043D\u043E\u043C \u043A\u043E\u043C\u043F\u044C\u044E\u0442\u0435\u0440\u0435 \u0438\u043B\u0438 \u043D\u043E\u0443\u0442\u0431\u0443\u043A\u0435, \u0438 \u0447\u0435\u0440\u0435\u0437 \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u044B\u0439 \u0442\u0435\u043B\u0435\u0444\u043E\u043D."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "\u0414\u043B\u044F \u0440\u0435\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438 \u0433\u043E\u0441\u0443\u0434\u0430\u0440\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u0445 \u0442\u0440\u0435\u0431\u043E\u0432\u0430\u043D\u0438\u0439, \u0432 \u0430\u0434\u043C\u0438\u043D-\u043F\u0430\u043D\u0435\u043B\u044C \u0432\u0441\u0442\u0440\u043E\u0435\u043D \u043C\u0435\u0445\u0430\u043D\u0438\u0437\u043C \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0438 \u0438 \u0441\u0434\u0430\u0447\u0438 \u043E\u0442\u0447\u0435\u0442\u043E\u0432. \u0427\u0442\u043E\u0431\u044B \u0441\u0434\u0435\u043B\u0430\u0442\u044C \u043E\u0442\u0447\u0435\u0442, \u0434\u043E\u0441\u0442\u0430\u0442\u043E\u0447\u043D\u043E \u043D\u0430\u0436\u0430\u0442\u044C \u0442\u0440\u0438 \u043A\u043D\u043E\u043F\u043A\u0438!"))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "big-text"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "\u0414\u043B\u044F \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u043A\u043E\u0432 \u041A\u0421\u041A \u043C\u044B \u0440\u0430\u0437\u0440\u0430\u0431\u043E\u0442\u0430\u043B\u0438 \u0441\u043F\u0435\u0446\u0438\u0430\u043B\u044C\u043D\u0443\u044E \u0430\u0434\u043C\u0438\u043D-\u043F\u0430\u043D\u0435\u043B\u044C, \u0443\u0434\u043E\u0431\u043D\u0443\u044E \u0434\u043B\u044F \u043E\u0442\u0440\u0430\u0431\u043E\u0442\u043A\u0438 \u0437\u0430\u043F\u0440\u043E\u0441\u043E\u0432 \u0436\u0438\u043B\u044C\u0446\u043E\u0432.")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "\u0412 \u0430\u0434\u043C\u0438\u043D-\u043F\u0430\u043D\u0435\u043B\u0438 \u0435\u0441\u0442\u044C \u0440\u0430\u0437\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u0438\u0435 \u043F\u0440\u0430\u0432 \u0434\u043E\u0441\u0442\u0443\u043F\u0430 (\u0434\u0438\u0440\u0435\u043A\u0442\u043E\u0440 \u041A\u0421\u041A \u0432\u0438\u0434\u0438\u0442 \u0432\u0441\u0451, \u0430 \u0438\u0441\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C \u2014 \u0442\u043E\u043B\u044C\u043A\u043E \u043D\u0435\u043E\u0431\u0445\u043E\u0434\u0438\u043C\u043E\u0435 \u0435\u043C\u0443). \u0420\u0430\u0431\u043E\u0442\u0430\u0442\u044C \u0441 \u0437\u0430\u044F\u0432\u043A\u0430\u043C\u0438 \u0443\u0434\u043E\u0431\u043D\u043E \u0438 \u043D\u0430 \u043D\u0430\u0441\u0442\u043E\u043B\u044C\u043D\u043E\u043C \u043A\u043E\u043C\u043F\u044C\u044E\u0442\u0435\u0440\u0435 \u0438\u043B\u0438 \u043D\u043E\u0443\u0442\u0431\u0443\u043A\u0435, \u0438 \u0447\u0435\u0440\u0435\u0437 \u043C\u043E\u0431\u0438\u043B\u044C\u043D\u044B\u0439 \u0442\u0435\u043B\u0435\u0444\u043E\u043D."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "\u0414\u043B\u044F \u0440\u0435\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438 \u0433\u043E\u0441\u0443\u0434\u0430\u0440\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u0445 \u0442\u0440\u0435\u0431\u043E\u0432\u0430\u043D\u0438\u0439, \u0432 \u0430\u0434\u043C\u0438\u043D-\u043F\u0430\u043D\u0435\u043B\u044C \u0432\u0441\u0442\u0440\u043E\u0435\u043D \u043C\u0435\u0445\u0430\u043D\u0438\u0437\u043C \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0438 \u0438 \u0441\u0434\u0430\u0447\u0438 \u043E\u0442\u0447\u0435\u0442\u043E\u0432. \u0427\u0442\u043E\u0431\u044B \u0441\u0434\u0435\u043B\u0430\u0442\u044C \u043E\u0442\u0447\u0435\u0442, \u0434\u043E\u0441\u0442\u0430\u0442\u043E\u0447\u043D\u043E \u043D\u0430\u0436\u0430\u0442\u044C \u0442\u0440\u0438 \u043A\u043D\u043E\u043F\u043A\u0438!")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "tab-pane__right"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "facts-list"
@@ -2212,9 +2605,9 @@ function (_Component) {
         className: "tab-pane__content"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "tab-pane__left"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "\u0415\u0436\u0435\u0434\u043D\u0435\u0432\u043D\u043E \u0441\u0435\u0440\u0432\u0438\u0441\u043E\u043C \u043F\u043E\u043B\u044C\u0437\u0443\u044E\u0442\u0441\u044F \u0442\u044B\u0441\u044F\u0447\u0438 \u043A\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043D\u0441\u0446\u0435\u0432, \u0436\u0438\u043B\u044C\u0446\u043E\u0432 \u043C\u043D\u043E\u0433\u043E\u043A\u0432\u0430\u0440\u0442\u0438\u0440\u043D\u044B\u0445 \u0434\u043E\u043C\u043E\u0432."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "about-text"
-      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "\u0412 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0438 \u0443\u0434\u043E\u0431\u043D\u0430\u044F \u0441\u0435\u0433\u043C\u0435\u043D\u0442\u0430\u0446\u0438\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439 \u043F\u043E \u0433\u043E\u0440\u043E\u0434\u0430\u043C, \u0440\u0430\u0439\u043E\u043D\u0430\u043C \u0433\u043E\u0440\u043E\u0434\u0430 \u0438 \u0434\u0430\u0436\u0435 \u043A\u043E\u043D\u043A\u0440\u0435\u0442\u043D\u044B\u043C \u0416\u041A!"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "\u0413\u043E\u0442\u043E\u0432\u044B \u0440\u0430\u0441\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E \u0438\u043D\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438 \u0432\u0430\u0448\u0438\u0445 \u0442\u043E\u0432\u0430\u0440\u043E\u0432 \u0438\u043B\u0438 \u0443\u0441\u043B\u0443\u0433 \u0432 \u043D\u0430\u0448\u0435 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435."))), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "big-text"
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "\u0415\u0436\u0435\u0434\u043D\u0435\u0432\u043D\u043E \u0441\u0435\u0440\u0432\u0438\u0441\u043E\u043C \u043F\u043E\u043B\u044C\u0437\u0443\u044E\u0442\u0441\u044F \u0442\u044B\u0441\u044F\u0447\u0438 \u043A\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043D\u0441\u0446\u0435\u0432, \u0436\u0438\u043B\u044C\u0446\u043E\u0432 \u043C\u043D\u043E\u0433\u043E\u043A\u0432\u0430\u0440\u0442\u0438\u0440\u043D\u044B\u0445 \u0434\u043E\u043C\u043E\u0432.")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "\u0412 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0438 \u0443\u0434\u043E\u0431\u043D\u0430\u044F \u0441\u0435\u0433\u043C\u0435\u043D\u0442\u0430\u0446\u0438\u044F \u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u0435\u0439 \u043F\u043E \u0433\u043E\u0440\u043E\u0434\u0430\u043C, \u0440\u0430\u0439\u043E\u043D\u0430\u043C \u0433\u043E\u0440\u043E\u0434\u0430 \u0438 \u0434\u0430\u0436\u0435 \u043A\u043E\u043D\u043A\u0440\u0435\u0442\u043D\u044B\u043C \u0416\u041A!"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "\u0413\u043E\u0442\u043E\u0432\u044B \u0440\u0430\u0441\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E \u0438\u043D\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438 \u0432\u0430\u0448\u0438\u0445 \u0442\u043E\u0432\u0430\u0440\u043E\u0432 \u0438\u043B\u0438 \u0443\u0441\u043B\u0443\u0433 \u0432 \u043D\u0430\u0448\u0435 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0435.")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "tab-pane__right"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "facts-list"
@@ -2276,7 +2669,7 @@ function (_Component) {
 
 function mapStateToProps(state) {
   return {
-    activeClass: state.activeClass
+    activeClass: state.classReducer.activeClass
   };
 }
 
@@ -2947,12 +3340,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! aos */ "aos");
 /* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(aos__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _node_modules_aos_src_sass_aos_scss__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../node_modules/aos/src/sass/aos.scss */ "./node_modules/aos/src/sass/aos.scss");
-/* harmony import */ var _node_modules_aos_src_sass_aos_scss__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_node_modules_aos_src_sass_aos_scss__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../styles/main.scss */ "./styles/main.scss");
-/* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_styles_main_scss__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_13__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2976,8 +3365,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
 
 
 
@@ -3084,11 +3471,11 @@ function () {
 
 function mapStateToProps(state) {
   return {
-    activeClass: state.activeClass
+    activeClass: state.classReducer.activeClass
   };
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_15__["connect"])(mapStateToProps)(Page));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_13__["connect"])(mapStateToProps)(Page));
 
 /***/ }),
 
@@ -3186,7 +3573,7 @@ var partnerClass = function partnerClass() {
 
 function initializeStore() {
   var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(classReducer, initialState, Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2___default.a)));
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(reducers, initialState, Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2___default.a)));
 }
 
 /***/ }),

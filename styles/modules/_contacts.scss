@@ -1,0 +1,41 @@
+.contacts-list {
+    display: flex;
+    &__item {
+        width: 33.33%;
+        padding-right: 50px;
+    }
+    &__title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    &__text {
+        color: #45584F;
+        font-size: 20px;
+        line-height: 24px;
+        a {
+            display: block;
+            color: #000;
+            margin-top: 5px;
+            &:hover {
+                text-decoration: none;
+                color: #96DBBA;
+            }
+        }
+    }
+    .contact-type {
+        margin-bottom: 25px;
+        p {
+            font-size: 23px;
+            font-weight: 500;
+            margin-bottom: 0;
+            a {
+                color: #000;
+                &:hover {
+                    text-decoration: none;
+                    color: #96DBBA;
+                }
+            }
+        }
+    }
+}

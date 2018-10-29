@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Icons from '../../components/Icons';
-import FeedbackForm from '../../components/Formold';
+import FeedbackForm from '../../components/Form';
 import classnames from 'classnames';
 import getFormData from '../../utils/getFormData'
 import {connect} from 'react-redux';

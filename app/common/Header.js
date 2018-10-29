@@ -213,11 +213,13 @@ class Header extends Component {
               <div className="main-tabs">
               {isDesktop ? (
                 <ul className="main-tabs-ul">
-                  <li className={classnames({active: activeClass === 'citizen-page'})} onClick={() => {this.changeBodyClass('citizen-page')}}>                  
-                    <a href="#">Жителям</a>
+                  <li className={classnames({active: activeClass === 'citizen-page'})} onClick={() => {this.changeBodyClass('citizen-page')}}>                                     
+                    <a href="">Жителям</a>                    
                   </li>
-                  <li className={classnames({active: activeClass === 'represent-page'})}  onClick={() => {this.changeBodyClass('represent-page')}}>
-                    <a href="#">Представителям КСК</a>
+                  <li className={classnames({active: activeClass === 'represent-page'})}  >
+                    <Link href="/">
+                     <a href="#">Представителям КСК</a>
+                     </Link>
                   </li>
                   <li className={classnames({active: activeClass === 'partner-page'})}  onClick={() => {this.changeBodyClass('partner-page')}}>
                     <a href="#">Партнерам</a>
@@ -253,7 +255,7 @@ class Header extends Component {
 
 }
 
-export default connect(({activeClass}) => ({
+export default connect(({classReducer:{activeClass}}) => ({
   activeClass
 }), (dispatch) => ({ 
   representClass: bindActionCreators(representClass, dispatch),

@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Header from './Header'
 import Footer from './Footer'
 import Head from 'next/head'
+import "../../node_modules/aos/src/sass/aos.scss"
+import "../../styles/main.scss"
 
 class Layout extends Component {
   constructor(props) {

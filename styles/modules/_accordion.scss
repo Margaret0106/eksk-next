@@ -1,0 +1,63 @@
+.faq-accordion {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.09);
+    .card {
+        border: 0;
+        border-radius: 0;
+    }
+    .card + .card {
+        border-top: 1px solid rgba(#82948C, .2);
+    }
+    .card-header:first-child {
+        border-radius: 0;
+    }
+    .card-header {
+        padding: 30px 40px;
+        margin-bottom: 0;
+        background-color: #fff;
+        border-bottom:0;
+        font-size: 25px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: .3s;
+        position: relative;
+        &:hover {
+            color: #35B98E;
+        }
+        &.active {
+            color: #35B98E;
+            .card-indicator  {
+                span {
+                    background: #47BB8F;
+                }
+                span:first-child {
+                    transform: rotate(0deg);
+                }
+            }
+        }
+    }
+    .card-indicator {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        span {
+            width: 26px;
+            height: 3px;
+            background: #000;
+            display: block;
+            position: relative;
+            transition: .3s;
+        }
+        span:first-child {
+            transform: rotate(-90deg);
+            top: 3px;
+        }        
+    }
+    .card-body {
+        padding: 0 40px 30px;
+        color: #45584F;
+        font-size: 18px;
+    }
+}

@@ -4304,6 +4304,14 @@ react-redux@^5.0.7:
     loose-envify "^1.1.0"
     prop-types "^15.6.0"
 
+react-sanfona@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-sanfona/-/react-sanfona-1.4.0.tgz#9469de98eca95d0a0649c2b22e00c28bb8954db5"
+  dependencies:
+    classnames "^2.2.6"
+    prop-types "^15.6.2"
+    uuid "^3.3.2"
+
 react-scroll-to-element@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/react-scroll-to-element/-/react-scroll-to-element-0.2.0.tgz#33f3f85211d4e2a0881c9deccf42e57799c4e000"

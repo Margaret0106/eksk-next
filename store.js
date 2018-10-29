@@ -57,7 +57,7 @@ export const partnerClass = () => (
 // export const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)))
 
 export function initializeStore(initialState = initialState) {
-  return createStore(classReducer, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)))   
+  return createStore(reducers, initialState, composeWithDevTools(applyMiddleware(thunkMiddleware)))   
    
 }
 

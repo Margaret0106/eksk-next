@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Modal, ModalHeader} from 'reactstrap';
 // import FeedbackForm from './Form';
-import FeedbackForm from './Formold';
+import FeedbackFormModal from './FormInModal';
 
 class FeedbackModal extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class FeedbackModal extends Component {
         <div>            
             <Modal isOpen={isOpen} toggle={this.closeDialog}>  
               <h2>Напишите нам, если вашего <br/> КСК нет в базе </h2>
-              <FeedbackForm/>
+              <FeedbackFormModal/>
             </Modal>
         </div>
       );

@@ -71,7 +71,7 @@ const Input = ({
   </div>
 )
 
-class FeedbackForm extends Component {
+class FeedbackFormModal extends Component {
 
   constructor(props) {
     super(props)
@@ -151,7 +151,7 @@ class FeedbackForm extends Component {
 const mapStateToProps = state => { 
   const {
     form: {
-      syncValidation: {
+      syncValidation2: {
         syncErrors,
         fields
       }
@@ -168,13 +168,13 @@ const mapStateToProps = state => {
   }, {}) : {}
   return {
     errors,
-    isTouched:  state.form.syncValidation.anyTouched
+    isTouched:  state.form.syncValidation2.anyTouched
   };
 };
 
 
 export default reduxForm({
-  form: 'syncValidation', // a unique identifier for this form
+  form: 'syncValidation2', // a unique identifier for this form
   validate // <--- validation function given to redux-form
-})(connect(mapStateToProps)(FeedbackForm))
+})(connect(mapStateToProps)(FeedbackFormModal))
 
