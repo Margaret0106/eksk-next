@@ -12,10 +12,10 @@ app.prepare()
   const server = express()
 
   server.use(bodyParser.json())
-  server.use((req, res) => {
-    req.url = req.url.replace('/eksk-landing', '');
-    handle(req, res);
-  });
+  // server.use((req, res) => {
+  //   req.url = req.url.replace('/eksk-landing', '');
+  //   handle(req, res);
+  // });
 
   server.get('/p/:id', (req, res) => {
     const actualPage = '/post'
