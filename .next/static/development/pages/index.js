@@ -34,21 +34,21 @@ var Footer = function Footer() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "footer-menu__item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "",
+    href: "/contacts",
     className: "footer-menu__link"
   }, "\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u044B"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/faq"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "footer-menu__item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "",
+    href: "/faq",
     className: "footer-menu__link"
   }, "FAQ"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
     href: "/about"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "footer-menu__item"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    href: "",
+    href: "/about",
     className: "footer-menu__link"
   }, "\u041E \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u0438")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "copyright-logo"
@@ -73,13 +73,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash/debounce */ "./node_modules/lodash/debounce.js");
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../store */ "./store.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/router */ "./node_modules/next/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash/debounce */ "./node_modules/lodash/debounce.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../store */ "./store.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -109,6 +111,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+ // Router.beforePopState(({ url, as, options }) => {
+//   // I only want to allow these two routes!
+//   if (as !== "/" || as !== "/other") {
+//     // Have SSR render bad routes as a 404.
+//     window.location.href = as
+//     return false
+//   }
+//   return true
+// });
 
 var linkStyle = {
   marginRight: 15
@@ -155,30 +167,32 @@ function (_Component) {
           citizenClass = _this$props.citizenClass,
           partnerClass = _this$props.partnerClass,
           activeClass = _this$props.activeClass;
-      console.log('ACTIVE CLASS', activeClass);
-      document.body.classList.remove('partner-page', 'represent-page', 'citizen-page');
-      document.body.classList.add(className);
 
       if (_this.state.activeClass !== className) {
         _this.setState({
           activeClass: className
+        }, function () {
+          console.log('ACTIVE CLASS from state', this.state.activeClass);
         });
 
         console.log(className);
 
         if (className === 'represent-page') {
           representClass();
-          console.log('here'); // store.dispatch({type: actionTypes.REPRESENT});
-          // console.log(store.getState())
+          console.log('set represent-page');
         } else if (className === 'partner-page') {
           partnerClass();
-          console.log('there'); // store.dispatch({type: actionTypes.PARTNER});
-          // console.log(store.getState())
+          console.log('set partner-page');
         } else if (className === 'citizen-page') {
-          citizenClass(); // store.dispatch({type: actionTypes.CITIZEN});
-          // console.log(store.getState())
+          citizenClass();
+          console.log('set citizen-page');
         }
       }
+
+      console.log('ACTIVE CLASS from store', activeClass);
+      console.log('ACTIVE CLASS', className);
+      document.body.classList.remove('partner-page', 'represent-page', 'citizen-page');
+      document.body.classList.add(className);
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleChange", function (selectedOption) {
@@ -204,15 +218,12 @@ function (_Component) {
 
         if (selectedOption.value === 'represent-page') {
           representClass();
-          console.log('here'); // store.dispatch({type: actionTypes.REPRESENT});
-          // console.log(store.getState())
+          console.log('here');
         } else if (selectedOption.value === 'partner-page') {
           partnerClass();
-          console.log('there'); // store.dispatch({type: actionTypes.PARTNER});
-          // console.log(store.getState())
+          console.log('there');
         } else if (selectedOption.value === 'citizen-page') {
-          citizenClass(); // store.dispatch({type: actionTypes.CITIZEN});
-          // console.log(store.getState())
+          citizenClass();
         }
       }
     });
@@ -224,9 +235,10 @@ function (_Component) {
       selectedOption: {
         value: "citizen-page",
         label: "Жителям"
-      }
+      },
+      route: '/'
     };
-    _this.updateDimensionsDebounced = lodash_debounce__WEBPACK_IMPORTED_MODULE_6___default()(_this.updateDimensions.bind(_assertThisInitialized(_assertThisInitialized(_this))), 100);
+    _this.updateDimensionsDebounced = lodash_debounce__WEBPACK_IMPORTED_MODULE_7___default()(_this.updateDimensions.bind(_assertThisInitialized(_assertThisInitialized(_this))), 100);
     return _this;
   }
   /**
@@ -254,7 +266,9 @@ function (_Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('componentDidMount', this.props);
+      this.setState({
+        route: next_router__WEBPACK_IMPORTED_MODULE_3___default.a.route
+      });
       this.updateDimensions();
       window.addEventListener("resize", this.updateDimensionsDebounced);
     }
@@ -275,7 +289,8 @@ function (_Component) {
       var activeClass = this.props.activeClass;
       var _this$state = this.state,
           selectedOption = _this$state.selectedOption,
-          isDesktop = _this$state.isDesktop;
+          isDesktop = _this$state.isDesktop,
+          route = _this$state.route;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
         className: "header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -284,8 +299,8 @@ function (_Component) {
         className: "header-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "logo"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
         width: "100",
         height: "42",
@@ -350,32 +365,39 @@ function (_Component) {
       }, isDesktop ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "main-tabs-ul"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: classnames__WEBPACK_IMPORTED_MODULE_5___default()({
-          active: activeClass === 'citizen-page'
+        className: classnames__WEBPACK_IMPORTED_MODULE_6___default()({
+          active: activeClass === 'citizen-page' && route == '/'
         }),
         onClick: function onClick() {
           _this2.changeBodyClass('citizen-page');
         }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: ""
-      }, "\u0416\u0438\u0442\u0435\u043B\u044F\u043C")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: classnames__WEBPACK_IMPORTED_MODULE_5___default()({
-          active: activeClass === 'represent-page'
-        })
+        href: "#"
+      }, "\u0416\u0438\u0442\u0435\u043B\u044F\u043C"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: classnames__WEBPACK_IMPORTED_MODULE_6___default()({
+          active: activeClass === 'represent-page' && route == '/'
+        }),
+        onClick: function onClick() {
+          _this2.changeBodyClass('represent-page');
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
         href: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
       }, "\u041F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u0438\u0442\u0435\u043B\u044F\u043C \u041A\u0421\u041A"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: classnames__WEBPACK_IMPORTED_MODULE_5___default()({
-          active: activeClass === 'partner-page'
+        className: classnames__WEBPACK_IMPORTED_MODULE_6___default()({
+          active: activeClass === 'partner-page' && route == '/'
         }),
         onClick: function onClick() {
           _this2.changeBodyClass('partner-page');
         }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "#"
-      }, "\u041F\u0430\u0440\u0442\u043D\u0435\u0440\u0430\u043C"))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, "\u041F\u0430\u0440\u0442\u043D\u0435\u0440\u0430\u043C")))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_select__WEBPACK_IMPORTED_MODULE_1__["default"], {
         value: selectedOption,
         onChange: this.handleChange,
         options: selectOptions,
@@ -396,16 +418,16 @@ function (_Component) {
   return Header;
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(function (_ref2) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(function (_ref2) {
   var activeClass = _ref2.classReducer.activeClass;
   return {
     activeClass: activeClass
   };
 }, function (dispatch) {
   return {
-    representClass: Object(redux__WEBPACK_IMPORTED_MODULE_4__["bindActionCreators"])(_store__WEBPACK_IMPORTED_MODULE_7__["representClass"], dispatch),
-    citizenClass: Object(redux__WEBPACK_IMPORTED_MODULE_4__["bindActionCreators"])(_store__WEBPACK_IMPORTED_MODULE_7__["citizenClass"], dispatch),
-    partnerClass: Object(redux__WEBPACK_IMPORTED_MODULE_4__["bindActionCreators"])(_store__WEBPACK_IMPORTED_MODULE_7__["partnerClass"], dispatch)
+    representClass: Object(redux__WEBPACK_IMPORTED_MODULE_5__["bindActionCreators"])(_store__WEBPACK_IMPORTED_MODULE_8__["representClass"], dispatch),
+    citizenClass: Object(redux__WEBPACK_IMPORTED_MODULE_5__["bindActionCreators"])(_store__WEBPACK_IMPORTED_MODULE_8__["citizenClass"], dispatch),
+    partnerClass: Object(redux__WEBPACK_IMPORTED_MODULE_5__["bindActionCreators"])(_store__WEBPACK_IMPORTED_MODULE_8__["partnerClass"], dispatch)
   };
 })(Header));
 
@@ -472,7 +494,9 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_3___default.a, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", null, "EKSK Landing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("meta", {
         name: "viewport",
         content: "initial-scale=1.0, width=device-width"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], null), this.props.children, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        data: this.props.query
+      }), this.props.children, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
 
@@ -711,6 +735,10 @@ var Input = function Input(_ref2) {
       _ref2$meta = _ref2.meta,
       touched = _ref2$meta.touched,
       error = _ref2$meta.error;
+  console.log('meta', {
+    touched: touched,
+    error: error
+  });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('form-group', {
       error: touched && error,
@@ -737,13 +765,13 @@ function (_Component) {
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_handleSubmit", function (values) {
       // event.preventDefault();
-      console.log('onsubmit', _this.props);
+      //console.log('onsubmit', this.props)
       var _this$props = _this.props,
           dispatch = _this$props.dispatch,
           form = _this$props.form,
           stop = _this$props.stop;
-      var formData = values;
-      console.log('formData', JSON.stringify(formData));
+      var formData = values; //console.log('formData', JSON.stringify(formData))
+
       fetch("http://eksk-landing.rocketfirm.net/api/v1/feedback/create", {
         method: 'POST',
         headers: {
@@ -754,8 +782,7 @@ function (_Component) {
       }).then(function (res) {
         return res.json();
       }).then(function (data) {
-        console.log('data', data);
-
+        //console.log('data', data);
         if (data.success) {
           _this.setState({
             successMessage: 'Заявка успешно отправлена'
@@ -784,8 +811,7 @@ function (_Component) {
 
   _createClass(FeedbackForm, [{
     key: "componentWillReceiveProps",
-    value: function componentWillReceiveProps() {
-      console.log('componentWillReceiveProps', this.props);
+    value: function componentWillReceiveProps() {// console.log ('componentWillReceiveProps', this.props)
     }
   }, {
     key: "render",
@@ -2418,7 +2444,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TopMain).call(this, props, context));
     _this.state = _objectSpread({}, props, {
-      activeClass: 'citizen-page'
+      activeClass: props.activeClass
     });
     return _this;
   }
@@ -2432,6 +2458,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       var activeClass = this.props.activeClass;
+      console.log('top active class', activeClass);
       return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "top-main-wrapper"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -36131,6 +36158,18 @@ module.exports = __webpack_require__(/*! ./dist/lib/link */ "./node_modules/next
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime-module.js");
+
+
+/***/ }),
+
+/***/ "./node_modules/next/router.js":
+/*!*************************************!*\
+  !*** ./node_modules/next/router.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./dist/lib/router */ "./node_modules/next/dist/lib/router/index.js")
 
 
 /***/ }),
@@ -76632,22 +76671,22 @@ function (_Component) {
   _createClass(Page, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      console.log('props', this.props);
+      // console.log('props', this.props)
       aos__WEBPACK_IMPORTED_MODULE_12___default.a.init({
         duration: 2000
       });
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      console.log('prevProps', prevProps);
+    value: function componentDidUpdate(prevProps) {// console.log('prevProps', prevProps)
     }
   }, {
     key: "render",
     value: function render() {
-      console.log('page props', this.props.activeClass);
-      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_common_MyLayout_js__WEBPACK_IMPORTED_MODULE_2__["default"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_TopMain_js__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("main", {
-        className: "main"
+      return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_common_MyLayout_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        data: this.props.hash
+      }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_TopMain_js__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("main", {
+        className: "main main-page"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_Problems_js__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_Steps_js__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_Reviews_js__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_app_pages_MainPage_Facts_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -76669,14 +76708,15 @@ function () {
   var _ref2 = _asyncToGenerator(
   /*#__PURE__*/
   _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
-    var req, res, json;
+    var query, res, json;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            req = _ref.req;
+            query = _ref.query;
             _context.next = 3;
-            return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10___default()("http://dev.e-kck.kz/api/v1/data", {
+            return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_10___default()("https://dev.e-kck.kz/api/v1/data/", {
+              method: 'get',
               headers: {
                 'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N'
               }
@@ -76689,12 +76729,12 @@ function () {
 
           case 6:
             json = _context.sent;
-            console.log('data', json.data);
             return _context.abrupt("return", {
-              data: json.data
+              data: json.data,
+              query: query
             });
 
-          case 9:
+          case 8:
           case "end":
             return _context.stop();
         }

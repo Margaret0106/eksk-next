@@ -14,17 +14,10 @@ class AboutPage extends Component {
   }
 
   setActiveCard = (item) => {
-    if (item.id == this.state.activeCard) {
-      this.setState({
-        activeCard: null
-      })
-    }
-    else {
-      this.setState({
-        activeCard: item.id 
-      })
-    }
-    
+    const activeCard = item.id == this.state.activeCard ? null : item.id;     
+    this.setState({
+      activeCard
+    })
   }
 
   render() {

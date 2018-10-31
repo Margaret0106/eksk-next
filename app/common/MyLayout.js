@@ -16,7 +16,7 @@ class Layout extends Component {
           <title>EKSK Landing</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         </Head>
-        <Header />
+        <Header data={this.props.query}/>
         {this.props.children}
         <Footer />
       </div>

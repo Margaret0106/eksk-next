@@ -11,13 +11,13 @@ const Footer = () => (
                     </div>
                     <ul className="footer-menu">
                         <Link href="/contacts">
-                            <li className="footer-menu__item"><a href="" className="footer-menu__link">Контакты</a></li>
+                            <li className="footer-menu__item"><a href="/contacts" className="footer-menu__link">Контакты</a></li>
                         </Link>
                         <Link href="/faq">
-                            <li className="footer-menu__item"><a href="" className="footer-menu__link">FAQ</a></li>
+                            <li className="footer-menu__item"><a href="/faq" className="footer-menu__link">FAQ</a></li>
                         </Link>
                         <Link href="/about">
-                            <li className="footer-menu__item"><a href="" className="footer-menu__link">О приложении</a></li>
+                            <li className="footer-menu__item"><a href="/about" className="footer-menu__link">О приложении</a></li>
                         </Link>                    
                     </ul>
                     <div className="copyright-logo">

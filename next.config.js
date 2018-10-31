@@ -7,7 +7,10 @@ module.exports = withSass(
         // assetPrefix: "./",
         exportPathMap: function () {
           return {
-            '/': { page: '/' }
+            '/': { page: '/' },
+            '/about': { page: '/about' },
+            '/faq': { page: '/faq' },
+            '/contacts': { page: '/contacts' }
           }
         }
       }

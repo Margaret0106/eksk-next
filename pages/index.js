@@ -19,23 +19,21 @@ class Page extends Component {
     super(props);      
   }
   componentDidMount(){
-    console.log('props', this.props)
+    // console.log('props', this.props)
     AOS.init({
       duration : 2000
     })
   }
 
   componentDidUpdate(prevProps) {
-    console.log('prevProps', prevProps)
+    // console.log('prevProps', prevProps)
   }
 
-
-  render () {
-    console.log('page props', this.props.activeClass)
+  render () {   
     return (
-    <Layout>
+    <Layout data={this.props.hash}>
       <TopMain/>
-      <main className="main">
+      <main className="main main-page">
         <div className="container">
           <Problems/>
           <Steps/>
@@ -50,17 +48,18 @@ class Page extends Component {
   }  
 };
 
-Page.getInitialProps = async ({ req }) => {
+Page.getInitialProps = async ( {query} ) => {  
   
-  // const res = await fetch(`http://dev.e-kck.kz/api/v1/landing/search/?city=${ads}&address=${das}`, {
-  const res = await fetch(`http://dev.e-kck.kz/api/v1/data`, {
+  const res = await fetch(`https://dev.e-kck.kz/api/v1/data/`, {
+    method: 'get', 
     headers: {
       'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N'
     }
   })
-  const json = await res.json()
-  console.log('data', json.data)
-  return {data: json.data}
+
+  const json = await res.json() 
+  
+  return {data: json.data, query: query}
 }
 
 function mapStateToProps(state) {

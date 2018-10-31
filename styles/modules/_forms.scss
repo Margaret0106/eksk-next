@@ -8,7 +8,7 @@
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   color: #000;
-  
+
   .form-transparent & {
     background: transparent;
     box-shadow: none;
@@ -16,9 +16,6 @@
     padding: 10px 5px 12px;
     border-radius: 0;
     color: #fff;
-    .form-group.error & {
-      border-bottom: 1px solid rgba(#BB5656, .8);
-    }
 
     &::-webkit-input-placeholder {
       -webkit-font-smoothing: antialiased;
@@ -96,6 +93,35 @@
   }
 }
 
+.form-transparent .form-group.error .form-control {
+  border-bottom: 1px solid rgba(#BB5656, .8);
+  color: #BB5656;
+
+  &::-webkit-input-placeholder {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #BB5656;
+  }
+
+  &:-moz-placeholder {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #BB5656;
+  }
+
+  &::-moz-placeholder {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #BB5656;
+  }
+
+  &:-ms-input-placeholder {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #BB5656;
+  }
+}
+
 .control-label {
   margin-bottom: 5px;
   -webkit-font-smoothing: antialiased;
@@ -159,6 +185,7 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   -webkit-box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
 }
+
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
@@ -166,26 +193,31 @@ input:-webkit-autofill:active {
 }
 
 .form-transparent {
-  input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
     background-color: transparent !important;
     background-image: none !important;
     color: rgb(0, 0, 0) !important;
   }
+
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
-      transition: background-color 5000s ease-in-out 0s;
-      -webkit-text-fill-color: #fff !important;
-      -webkit-box-shadow: 0px 5px 30px transparent;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #fff !important;
+    -webkit-box-shadow: 0px 5px 30px transparent;
   }
-  
+
 }
 
 
 .form-group {
   width: 100%;
   position: relative;
+
   &--half {
     width: 48%;
 
@@ -210,6 +242,7 @@ input:-webkit-autofill:active {
     color: #56BB8A;
     font-weight: 500;
     padding: 10px 12px;
+
     &:hover,
     &:focus,
     &:active {
@@ -223,27 +256,33 @@ input:-webkit-autofill:active {
       display: block;
 
     }
+
     @media (max-width: 480px) {
       width: 100%;
 
     }
   }
+
   select {
     display: none;
   }
+
   .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
     display: none;
+
     @media (max-width: 767px) {
       display: block;
-      
+
     }
+
     @media (max-width: 480px) {
       width: 100%;
       text-align: center;
     }
   }
+
   .bootstrap-select .dropdown-toggle .filter-option-inner-inner {
-    @media (max-width: 480px) {     
+    @media (max-width: 480px) {
       text-align: center;
     }
   }
@@ -251,6 +290,7 @@ input:-webkit-autofill:active {
   .open>.btn-default.dropdown-toggle {
     background: #fff;
     outline: none !important;
+
     &:hover,
     &:focus,
     &:active {
@@ -265,11 +305,13 @@ input:-webkit-autofill:active {
 
     li {
       border: 0 !important;
+
       a {
         padding: 10px 15px;
         color: #56BB8A;
         outline: none !important;
       }
+
       &.active {
         a {
           background: rgba(#56BB8A, .2);
@@ -293,7 +335,8 @@ input:-webkit-autofill:active {
 .form-messages {
   width: 48%;
   padding-top: 16px;
+
   .error-message {
     color: #BB5656
-  }  
+  }
 }

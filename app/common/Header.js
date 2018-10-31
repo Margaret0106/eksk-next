@@ -1,12 +1,26 @@
 import React, {Component} from 'react';
 import Select from 'react-select';
 import Link from 'next/link'
+import Router from 'next/router'
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux' 
 import classnames from 'classnames'
 import debounce from 'lodash/debounce'
 import {representClass, citizenClass, partnerClass} from '../../store'
 
+
+
+
+// Router.beforePopState(({ url, as, options }) => {
+//   // I only want to allow these two routes!
+//   if (as !== "/" || as !== "/other") {
+//     // Have SSR render bad routes as a 404.
+//     window.location.href = as
+//     return false
+//   }
+
+//   return true
+// });
 
 const linkStyle = {
   marginRight: 15
@@ -41,7 +55,8 @@ class Header extends Component {
     this.state = {
       activeClass: 'citizen-page',
       isDesktop: true, 
-      selectedOption: {value: "citizen-page", label: "Жителям"}      
+      selectedOption: {value: "citizen-page", label: "Жителям"},   
+      route: '/'   
     };
     this.updateDimensionsDebounced = debounce(this.updateDimensions.bind(this), 100)
   }
@@ -59,8 +74,11 @@ class Header extends Component {
   /**
    * Add event listener
    */
+
   componentDidMount() {
-    console.log('componentDidMount', this.props)
+   
+    this.setState({route: Router.route});
+    
     this.updateDimensions();
     window.addEventListener("resize", this.updateDimensionsDebounced);
   }
@@ -75,32 +93,32 @@ class Header extends Component {
 
   changeBodyClass = (className) => {
     const { representClass, citizenClass, partnerClass, activeClass } = this.props
-    console.log('ACTIVE CLASS', activeClass)
-    document.body.classList.remove('partner-page', 'represent-page', 'citizen-page');
-    document.body.classList.add(className);
+    
     if (this.state.activeClass !== className) {
         this.setState({
             activeClass: className
+        }, function() {
+          console.log('ACTIVE CLASS from state', this.state.activeClass)
         });
         console.log(className)
         if (className === 'represent-page') {
             representClass()
-            console.log('here')
-            // store.dispatch({type: actionTypes.REPRESENT});
-            // console.log(store.getState())
+            console.log('set represent-page')            
         }
         else if (className === 'partner-page') {
             partnerClass()
-            console.log('there')
-            // store.dispatch({type: actionTypes.PARTNER});
-            // console.log(store.getState())
+            console.log('set partner-page')            
         }
         else if (className === 'citizen-page') {
-            citizenClass()
-            // store.dispatch({type: actionTypes.CITIZEN});
-            // console.log(store.getState())
+            citizenClass()   
+            console.log('set citizen-page')            
         }        
     }
+    console.log('ACTIVE CLASS from store', activeClass)
+
+    console.log('ACTIVE CLASS', className)
+    document.body.classList.remove('partner-page', 'represent-page', 'citizen-page');
+    document.body.classList.add(className);
   }
 
   handleChange = (selectedOption) => {
@@ -116,40 +134,31 @@ class Header extends Component {
         console.log(selectedOption.value)
         if (selectedOption.value === 'represent-page') {
             representClass()
-            console.log('here')
-            // store.dispatch({type: actionTypes.REPRESENT});
-            // console.log(store.getState())
+            console.log('here')            
         }
         else if (selectedOption.value === 'partner-page') {
             partnerClass()
-            console.log('there')
-            // store.dispatch({type: actionTypes.PARTNER});
-            // console.log(store.getState())
+            console.log('there')            
         }
         else if (selectedOption.value === 'citizen-page') {
-            citizenClass()
-            // store.dispatch({type: actionTypes.CITIZEN});
-            // console.log(store.getState())
+            citizenClass()            
         }        
     } 
   }
 
   render() {
     const {activeClass} = this.props;
-    const { selectedOption, isDesktop } = this.state;    
+    const { selectedOption, isDesktop, route } = this.state;    
+    
     return (
       <div>
-        {/* <Link href="/">
-                <a style={linkStyle}>Home</a>
-                </Link>
-                <Link href="/about">
-                <a style={linkStyle}>About</a>
-                </Link> */}
+        
         <header className="header">
           <div className="container">
             <div className="header-content">
               <div className="logo">
-                <a href="">
+              <Link href="/">
+              
                   <svg
                     width="100"
                     height="42"
@@ -203,9 +212,8 @@ class Header extends Component {
                         <stop offset="1" stopColor="#47BB8F"/>
                       </linearGradient>
                     </defs>
-                  </svg>
-
-                </a>
+                  </svg>               
+              </Link>
               </div>
               <div className="slogan">
                 Зу-зу етiп жөндейміз
@@ -213,16 +221,20 @@ class Header extends Component {
               <div className="main-tabs">
               {isDesktop ? (
                 <ul className="main-tabs-ul">
-                  <li className={classnames({active: activeClass === 'citizen-page'})} onClick={() => {this.changeBodyClass('citizen-page')}}>                                     
-                    <a href="">Жителям</a>                    
+                  <li className={classnames({active: activeClass === 'citizen-page' && route == '/'})} onClick={() => {this.changeBodyClass('citizen-page')}}>                                     
+                      <Link href="/">
+                        <a href="#">Жителям</a>
+                      </Link>                       
                   </li>
-                  <li className={classnames({active: activeClass === 'represent-page'})}  >
-                    <Link href="/">
-                     <a href="#">Представителям КСК</a>
-                     </Link>
+                  <li className={classnames({active: activeClass === 'represent-page' && route == '/'})} onClick={() => {this.changeBodyClass('represent-page')}}>
+                      <Link href="/">
+                        <a href="#">Представителям КСК</a> 
+                      </Link>     
                   </li>
-                  <li className={classnames({active: activeClass === 'partner-page'})}  onClick={() => {this.changeBodyClass('partner-page')}}>
-                    <a href="#">Партнерам</a>
+                  <li className={classnames({active: activeClass === 'partner-page' && route == '/'})}  onClick={() => {this.changeBodyClass('partner-page')}}>
+                      <Link href="/">
+                        <a href="#">Партнерам</a> 
+                      </Link>     
                   </li>
                 </ul>
               ) : (

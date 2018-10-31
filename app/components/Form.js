@@ -56,7 +56,11 @@ const Input = ({
     touched,
     error
   }
-}) => (
+}) => {
+
+  console.log('meta', {touched, error})
+  
+  return (
 
   <div
     className={classnames('form-group', {
@@ -69,7 +73,7 @@ const Input = ({
       className="form-control"
       placeholder={placeholder}/>
   </div>
-)
+)}
 
 class FeedbackForm extends Component {
 
@@ -83,16 +87,16 @@ class FeedbackForm extends Component {
   }
 
   componentWillReceiveProps () {
-    console.log ('componentWillReceiveProps', this.props)
+    // console.log ('componentWillReceiveProps', this.props)
   }
 
   _handleSubmit = (values) => {
     
     // event.preventDefault();
-    console.log('onsubmit', this.props)
+    //console.log('onsubmit', this.props)
     const { dispatch, form, stop } = this.props
     const formData = values
-    console.log('formData', JSON.stringify(formData))
+    //console.log('formData', JSON.stringify(formData))
 
     fetch(`http://eksk-landing.rocketfirm.net/api/v1/feedback/create`, {
       method: 'POST',
@@ -102,7 +106,7 @@ class FeedbackForm extends Component {
       },
       body: getFormData(formData)
     }).then((res) => res.json()).then((data) => {
-      console.log('data', data);
+      //console.log('data', data);
       if (data.success) {
         this.setState({
           successMessage: 'Заявка успешно отправлена'
@@ -118,8 +122,7 @@ class FeedbackForm extends Component {
         
       } else {
 
-      }      
-       
+      } 
         
     })
   };
@@ -171,7 +174,6 @@ const mapStateToProps = state => {
     isTouched:  state.form.syncValidation.anyTouched
   };
 };
-
 
 export default reduxForm({
   form: 'syncValidation', // a unique identifier for this form

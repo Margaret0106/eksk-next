@@ -11,7 +11,7 @@ class TopMain extends Component {
     super(props, context);
     this.state = {
       ...props,
-      activeClass: 'citizen-page'
+      activeClass: props.activeClass
     };
   }
 
@@ -21,6 +21,7 @@ class TopMain extends Component {
 
   render() {
     const {activeClass} = this.props
+    console.log ('top active class', activeClass)
     return (
       <div className="top-main-wrapper">
         <div className="top-main">
