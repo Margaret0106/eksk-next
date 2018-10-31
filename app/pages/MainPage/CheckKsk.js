@@ -23,6 +23,7 @@ const validate = (values) => {
   return errors
 }
 
+
 const InputAutosuggest = ({  
   input,  
   suggestions,
@@ -37,8 +38,10 @@ const InputAutosuggest = ({
     touched,
     error
   }
-}) => (
-  <div className={classnames('form-group form-group--medium', {
+}) => {
+  console.log(input.onChange)
+  return (
+    <div className={classnames('form-group form-group--medium', {
     error: touched && error,
     success: touched && !error
     })}>
@@ -48,7 +51,10 @@ const InputAutosuggest = ({
         onSuggestionsFetchRequested={onSuggestionsFetchRequested}
         onSuggestionsClearRequested={onSuggestionsClearRequested}
         onSuggestionSelected={onSuggestionSelected}
-        getSuggestionValue={getSuggestionValue}
+        getSuggestionValue={(suggestion) => {
+          input.onChange(suggestion.value);
+          return suggestion.title;
+        }}
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}                 
       />
@@ -58,7 +64,9 @@ const InputAutosuggest = ({
       {touched &&
         (error && <div className="help-block">{error}</div>)}
   </div>
-)
+  )
+  
+}
 
 const Input = ({
   input, 
@@ -178,7 +186,8 @@ class CheckKsk extends Component {
 
   onChange = (event, {newValue, method}) => {    
     this.setState({value: newValue}, function(){
-          console.log('autosuggest onchange', this.state.value);
+          console.log('autosuggest onchange', this.props);
+          this.props.change('city', newValue);
     });
     if (getSuggestions(this.state.cities, newValue).length) {
       this.setState({noMatchesMessage: false})
@@ -231,12 +240,12 @@ class CheckKsk extends Component {
   }
 
 
-  _handleSubmit = (event) => {
+  _handleSubmit = (values) => {
     // event.preventDefault(); 
-    console.log('beforesend', this.state.value, this.state.formData.street)   
+    console.log('beforesend', values)   
     let city = encodeURI(this.state.value)
-    let street = encodeURI(this.state.formData.street)
-    let number = encodeURI(this.state.formData.house)
+    let street = encodeURI(values.street)
+    let number = encodeURI(values.house)
     fetch(`https://dev.e-kck.kz/api/v1/landing/search/?city=${city}&street=${street}&number=${number}`, {
       method: 'get',      
       headers: {        
@@ -357,7 +366,7 @@ class CheckKsk extends Component {
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 onSuggestionSelected={this.onSuggestionSelected}
-                getSuggestionValue={getSuggestionValue}
+                // getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
                 inputProps={inputProps}  
                 noMatchesMessage={noMatchesMessage} />
@@ -372,6 +381,7 @@ class CheckKsk extends Component {
     )
   }
 }
+
 
 
 export default reduxForm({

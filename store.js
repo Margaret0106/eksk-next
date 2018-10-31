@@ -4,12 +4,14 @@ import thunkMiddleware from 'redux-thunk'
 import { reducer as formReducer } from 'redux-form'
 
 const initialState = {
-  activeClass: 'citizen-page'
+  activeClass: 'citizen-page',
+  suggestoins: {}
 }
 export const actionTypes = {
   REPRESENT: 'REPRESENT',
   PARTNER: 'PARTNER',
-  CITIZEN: 'CITIZEN'
+  CITIZEN: 'CITIZEN',
+  LOAD_SUGGESTIONS: 'LOAD_SUGGESTIONS'
 }
 
 // reducer
@@ -25,6 +27,15 @@ export const classReducer = (state = initialState, action) => {
       return state
   }
 }
+
+// export const suggestReducer = (state = [], action) => {
+//   switch (action.type) {
+//     case actionTypes.REPRESENT:
+//       return {activeClass: 'represent-page'}   
+//     default:
+//       return state
+//   }
+// }
 
 
 const reducers = combineReducers({
