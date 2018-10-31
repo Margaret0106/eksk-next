@@ -9,19 +9,6 @@ import debounce from 'lodash/debounce'
 import {representClass, citizenClass, partnerClass} from '../../store'
 
 
-
-
-// Router.beforePopState(({ url, as, options }) => {
-//   // I only want to allow these two routes!
-//   if (as !== "/" || as !== "/other") {
-//     // Have SSR render bad routes as a 404.
-//     window.location.href = as
-//     return false
-//   }
-
-//   return true
-// });
-
 const linkStyle = {
   marginRight: 15
 }
@@ -94,7 +81,7 @@ class Header extends Component {
   changeBodyClass = (className) => {
     const { representClass, citizenClass, partnerClass, activeClass } = this.props
     
-    if (this.state.activeClass !== className) {
+    // if (this.state.activeClass !== className) {
         this.setState({
             activeClass: className
         }, function() {
@@ -113,7 +100,7 @@ class Header extends Component {
             citizenClass()   
             console.log('set citizen-page')            
         }        
-    }
+    // }
     console.log('ACTIVE CLASS from store', activeClass)
 
     console.log('ACTIVE CLASS', className)
@@ -158,7 +145,7 @@ class Header extends Component {
             <div className="header-content">
               <div className="logo">
               <Link href="/">
-              
+                <a href="">
                   <svg
                     width="100"
                     height="42"
@@ -212,7 +199,8 @@ class Header extends Component {
                         <stop offset="1" stopColor="#47BB8F"/>
                       </linearGradient>
                     </defs>
-                  </svg>               
+                  </svg>   
+                 </a>            
               </Link>
               </div>
               <div className="slogan">

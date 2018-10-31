@@ -51,6 +51,7 @@ class Page extends Component {
 Page.getInitialProps = async ( {query} ) => {  
   
   const res = await fetch(`https://dev.e-kck.kz/api/v1/data/`, {
+  // const res = await fetch(`https://eksk-landing.rocketfirm.net/api/v1/page/index`, {
     method: 'get', 
     headers: {
       'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N'

@@ -4,12 +4,111 @@ import Autosuggest from 'react-autosuggest';
 import Icons from '../../components/Icons';
 import 'isomorphic-fetch'
 import _ from 'lodash'
-import { dim } from '../../../node_modules/ansi-colors';
+import {connect} from 'react-redux';
 import smoothscroll from 'smoothscroll-polyfill'
 import FeedbackModal from '../../components/FeedbackModal';
-import { Button } from 'reactstrap';
+import {Field, reduxForm, reset, SubmissionError} from 'redux-form'
 
+const validate = (values) => {  
+  const errors = {}
+  if (!values.city) {
+    errors.city = 'Не ввели город'
+  }  
+  if (!values.street) {
+    errors.street = 'Не ввели улицу'
+  }
+  if (!values.house) {
+    errors.house = 'Не ввели дом'
+  }
+  return errors
+}
 
+const InputAutosuggest = ({  
+  input,  
+  suggestions,
+  onSuggestionsFetchRequested,
+  onSuggestionsClearRequested,
+  onSuggestionSelected,
+  getSuggestionValue,
+  renderSuggestion,
+  inputProps,
+  noMatchesMessage,
+  meta: {
+    touched,
+    error
+  }
+}) => (
+  <div className={classnames('form-group form-group--medium', {
+    error: touched && error,
+    success: touched && !error
+    })}>
+      <Autosuggest 
+        {...input}
+        suggestions={suggestions}
+        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+        onSuggestionsClearRequested={onSuggestionsClearRequested}
+        onSuggestionSelected={onSuggestionSelected}
+        getSuggestionValue={getSuggestionValue}
+        renderSuggestion={renderSuggestion}
+        inputProps={inputProps}                 
+      />
+      {noMatchesMessage && 
+        <div className="no-matches">Города нет в списке</div>
+      } 
+      {touched &&
+        (error && <div className="help-block">{error}</div>)}
+  </div>
+)
+
+const Input = ({
+  input, 
+  type,
+  placeholder,
+  meta: {
+    touched,
+    error
+  }
+}) => {  
+  return (
+    <div
+      className={classnames('form-group', {
+      error: touched && error,
+      success: touched && !error
+    })}>
+      <input
+        {...input}
+        type={type}
+        className="form-control"
+        placeholder={placeholder}/>
+      {touched &&
+        (error && <div className="help-block">{error}</div>)}
+    </div>  
+)}
+
+const InputSmall = ({
+  input, 
+  type,
+  placeholder,
+  meta: {
+    touched,
+    error
+  }
+}) => {  
+  return (
+    <div
+      className={classnames('form-group  form-group--small', {
+      error: touched && error,
+      success: touched && !error
+    })}>
+      <input
+        {...input}
+        type={type}
+        className="form-control"
+        placeholder={placeholder}/>
+      {touched &&
+        (error && <div className="help-block">{error}</div>)}
+    </div>  
+)}
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
 const getSuggestions = (data, value) => {
@@ -78,7 +177,9 @@ class CheckKsk extends Component {
   }
 
   onChange = (event, {newValue, method}) => {    
-    this.setState({value: newValue});
+    this.setState({value: newValue}, function(){
+          console.log('autosuggest onchange', this.state.value);
+    });
     if (getSuggestions(this.state.cities, newValue).length) {
       this.setState({noMatchesMessage: false})
     }
@@ -88,6 +189,7 @@ class CheckKsk extends Component {
     if (newValue.length == 0) {
       this.setState({noMatchesMessage: false})
     } 
+
   };
 
   onBlur = (event, { highlightedSuggestion }) => {  
@@ -114,7 +216,7 @@ class CheckKsk extends Component {
     this.setState({suggestions: []});
   };  
 
-  _handleChange = (event) => {
+  _handleChange = (values) => {
     const {formData} = this.state;
         this.setState({
             formData: {
@@ -130,7 +232,7 @@ class CheckKsk extends Component {
 
 
   _handleSubmit = (event) => {
-    event.preventDefault(); 
+    // event.preventDefault(); 
     console.log('beforesend', this.state.value, this.state.formData.street)   
     let city = encodeURI(this.state.value)
     let street = encodeURI(this.state.formData.street)
@@ -172,7 +274,6 @@ class CheckKsk extends Component {
           kskModalOpen: false,      
         })
       }
-
       console.log('kskModalOpen', this.state.kskModalOpen, this.state.ksk)
     })
   };
@@ -194,13 +295,9 @@ class CheckKsk extends Component {
     });
   }
 
-
   render() {
-
-    const { formData,  update, loading, autoComplete} = this.state;
-    const { selectedOption, showModal, kskCityId, noMatchesMessage, kskModalOpen, states, fetching, value, suggestions, ksk, successKsk } = this.state
-    const inputClasses = _.mapValues(states, ({ error, success }) => (classnames('input-container', { error: error, success: success })))
-    const buttonClass = classnames({ fetching: fetching })
+    const {handleSubmit, pristine, reset, submitting, errors, isTouched} = this.props   
+    const { showModal, kskCityId, noMatchesMessage, kskModalOpen, fetching, value, suggestions, ksk, successKsk } = this.state
 
     const modalProps = {     
       isOpen: showModal,
@@ -255,37 +352,18 @@ class CheckKsk extends Component {
         <div className="check-form">
           <p>Проверьте поддержку
             <br/>приложения в вашем КСК</p>
-          <form className="form-inline" onSubmit={ this._handleSubmit }>
-            <div className="form-group form-group--medium">             
-              <Autosuggest 
-                suggestions={suggestions}
+          <form className="form-inline" onSubmit={handleSubmit(this._handleSubmit)}>
+            <Field name="city" component={InputAutosuggest} suggestions={suggestions}
                 onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 onSuggestionSelected={this.onSuggestionSelected}
                 getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
-                inputProps={inputProps}                 
-                />
-                {noMatchesMessage && 
-                  <div className="no-matches">Города нет в списке</div>
-                } 
-            </div>
-            <div className="form-group">
-              <input name='street'
-                     type="text" 
-                     className="form-control" 
-                     id="" 
-                     placeholder="Улица"
-                     onChange={this._handleChange}/>
-            </div>
-            <div className="form-group form-group--small">
-              <input name='house'
-                     type="text" 
-                     className="form-control" 
-                     id="" 
-                     placeholder="Дом"
-                     onChange={this._handleChange}/>
-            </div>
+                inputProps={inputProps}  
+                noMatchesMessage={noMatchesMessage} />
+            <Field name='street' type="text" placeholder="Улица" component={Input} />  
+            <Field name='house' type="text" placeholder="Дом" component={InputSmall} />   
+
             <button type="submit" disabled={ fetching } className="btn btn--primary">Проверить</button>
           </form>
         </div>
@@ -295,4 +373,8 @@ class CheckKsk extends Component {
   }
 }
 
-export default CheckKsk
+
+export default reduxForm({
+  form: 'checkForm', // a unique identifier for this form
+  validate // <--- validation function given to redux-form
+})(connect()(CheckKsk))

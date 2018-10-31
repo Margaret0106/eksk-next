@@ -171,7 +171,7 @@ const mapStateToProps = state => {
   }, {}) : {}
   return {
     errors,
-    isTouched:  state.form.syncValidation.anyTouched
+    isTouched: state.form.syncValidation.anyTouched
   };
 };
 

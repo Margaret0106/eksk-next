@@ -30,8 +30,15 @@ class Reviews extends Component {
     if (this.swiper) 
       this.swiper.slidePrev()
   }
+ 
+  
+  componentWillReceiveProps() {
+    this.swiper.update()   
+  }
+  
+  
 
-  componentDidMount() {
+  componentDidMount() {    
     this.setState({
         activeIndex: this.swiper.activeIndex, 
         imagesLoaded: this.swiper.imagesLoaded, 
@@ -40,6 +47,7 @@ class Reviews extends Component {
   }
 
   render() {
+    console.log('render reviews')
     const params = {
       slidesPerView: 3,
       slidesPerGroup: 3,
@@ -64,7 +72,6 @@ class Reviews extends Component {
     }
 
     return (
-
       <section className="section section3">
         <h2>Отзывы от реальных жильцов ЖК</h2>
         <div className="reviews-list">
