@@ -1,0 +1,14 @@
+version: '3.2'
+
+services: 
+
+  next:
+      build:
+        context: .
+      image: rocketfirmcom/eksk-next:0.0.1
+      ports:
+        - "3000:3000"
+
+
+
+      
