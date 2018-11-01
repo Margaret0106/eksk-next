@@ -18,6 +18,23 @@
 	position: absolute;
 	top: auto;
 	left: auto;
+	@media (max-width: 767px) {
+		width: 300px;
+		font-size: 18px;
+		line-height: 22px;
+		br {
+			display: none;
+		}
+	}
+	@media (max-width: 640px) {
+		left: 50% !important;
+		top: 50% !important;
+		right: auto !important;
+		transform: translate(-50%, -50%);
+		&:after {
+			display: none;
+		}
+	}
 	&:after {
 		content: url('/static/images/border-arrow.svg');
 		position: absolute;

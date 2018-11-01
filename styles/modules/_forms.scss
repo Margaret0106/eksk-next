@@ -330,6 +330,10 @@ input:-webkit-autofill:active {
   top: 100%;
   margin-top: 10px;
   font-size: 14px;
+  @media (max-width: 860px) {
+    margin-top: 5px;
+    font-size: 12px;
+  }
 }
 
 .form-messages {

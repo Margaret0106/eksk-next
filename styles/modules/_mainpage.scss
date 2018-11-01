@@ -535,7 +535,21 @@
     width: 100%;
     padding: 0 60px;
     margin: 50px 0 40px;
-
+    .help-block {
+        position: absolute;
+        top: 100%;
+        margin-top: 10px;
+        font-size: 14px;
+        @media (max-width: 860px) {
+            margin-top: 5px;
+            font-size: 12px;
+        }
+    }
+    .error {
+        .help-block {
+            color: #BB5656
+        }
+    }
     @media (max-width: 991px) {
         padding: 0 0px;
     }
@@ -575,7 +589,7 @@
                 width: 43%;
                 max-width: 43%;
                 margin-left: 0%;
-                margin-bottom: 25px;
+                margin-bottom: 30px;
             }
 
             @media (max-width: 640px) {
@@ -601,7 +615,7 @@
         @media (max-width: 860px) {
             width: 43%;
             max-width: 43%;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             margin-right: 3%;
         }
 
