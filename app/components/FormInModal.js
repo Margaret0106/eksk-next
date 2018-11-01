@@ -83,16 +83,14 @@ class FeedbackFormModal extends Component {
   }
 
   componentWillReceiveProps () {
-    console.log ('componentWillReceiveProps', this.props)
+    // console.log ('componentWillReceiveProps', this.props)
   }
 
   _handleSubmit = (values) => {
     
     // event.preventDefault();
-    console.log('onsubmit', this.props)
     const { dispatch, form, stop } = this.props
-    const formData = values
-    console.log('formData', JSON.stringify(formData))
+    const formData = values   
 
     fetch(`http://eksk-landing.rocketfirm.net/api/v1/feedback/create`, {
       method: 'POST',
@@ -102,7 +100,7 @@ class FeedbackFormModal extends Component {
       },
       body: getFormData(formData)
     }).then((res) => res.json()).then((data) => {
-      console.log('data', data);
+      // console.log('data', data);
       if (data.success) {
         this.setState({
           successMessage: 'Заявка успешно отправлена'

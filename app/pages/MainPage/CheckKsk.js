@@ -39,7 +39,7 @@ const InputAutosuggest = ({
     error
   }
 }) => {
-  console.log(input.onChange)
+  // console.log(input.onChange)
   return (
     <div className={classnames('form-group form-group--medium', {
     error: touched && error,
@@ -182,6 +182,7 @@ class CheckKsk extends Component {
   componentDidMount() {   
     console.log('cities', this.state.cities)
     // this.setState({ showModal: true }) 
+    
   }
 
   onChange = (event, {newValue, method}) => {    

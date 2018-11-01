@@ -58,10 +58,7 @@ const Input = ({
   }
 }) => {
 
-  console.log('meta', {touched, error})
-  
   return (
-
   <div
     className={classnames('form-group', {
     error: touched && error,

@@ -38,7 +38,7 @@ class Page extends Component {
           <Problems/>
           <Steps/>
           <Reviews/>
-          <Facts data={this.props.data}/>
+          <Facts data={this.props.pageData}/>
           <CheckKsk data={this.props.data}/>        
         </div>
         <AddKsk/>
@@ -48,19 +48,26 @@ class Page extends Component {
   }  
 };
 
-Page.getInitialProps = async ( {query} ) => {  
+Page.getInitialProps = async ( {query} ) => {    
+
+  const ekskRes = await fetch(`https://dev.e-kck.kz/api/v1/data/`, {  
+    method: 'get', 
+    headers: {
+      'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N'
+    }
+  })
+  const ekskJson = await ekskRes.json() 
+
   
-  const res = await fetch(`https://dev.e-kck.kz/api/v1/data/`, {
-  // const res = await fetch(`https://eksk-landing.rocketfirm.net/api/v1/page/index`, {
+  const contentRes = await fetch(`https://eksk-landing.rocketfirm.net/api/v1/page/index`, {
     method: 'get', 
     headers: {
       'Authorization': 'Bearer GZavaFROL7WLxUEISqQRv-9_9XHfG01N'
     }
   })
 
-  const json = await res.json() 
-  
-  return {data: json.data, query: query}
+  const contentJson = await contentRes.json()   
+  return {data: ekskJson.data, pageData: contentJson.data, query: query}
 }
 
 function mapStateToProps(state) {
@@ -68,4 +75,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps) (Page);
+export default connect(mapStateToProps)(Page);
