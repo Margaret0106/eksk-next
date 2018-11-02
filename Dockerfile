@@ -16,4 +16,8 @@ COPY . .
 RUN yarn build
 
 EXPOSE 32772
+<<<<<<< HEAD
 CMD [ "yarn", "start", "-p", "32772" ] 
+=======
+CMD [ "yarn", "start", "-p", "32772" ]
+>>>>>>> e0f5c605c56a3390eda2edd6ad3901ca9c145743

@@ -4,7 +4,7 @@ const next = require('next')
 const bodyParser = require('body-parser')
 
 const dev = process.env.NODE_ENV !== 'production'
-const port = parseInt(process.env.PORT, 10) || 3000
+const port = 32772
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
