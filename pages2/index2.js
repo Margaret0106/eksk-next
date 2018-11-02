@@ -12,51 +12,51 @@ import Link from 'next/link'
 import AOS from 'aos'
 import {connect} from 'react-redux';
 import { withI18next } from '../lib/withI18next'
+import { withNamespaces } from 'react-i18next';
+
+
 
 class Page extends Component {
-
+  
   constructor(props){
     super(props);      
-  } 
+  }  
 
   componentDidMount(){
-    console.log('componentDidMount', this.props)   
+    console.log('componentDidMount', this.props)
+    // console.log('props', this.props)
     AOS.init({
       duration : 2000
     })
   }
-  
-  render () {
-    const {t} = this.props
-    return (
-      <Layout data={this.props.hash}>
-        <div>
-          <h1>{t('welcome')}</h1>
-          <p>{t('common:integrates_react-i18next')}</p>
-          <p>{t('sample_test')}</p>          
-          <Link href='/page2'>
-            <a>{t('link.gotoPage2')}</a>
-          </Link>
-          <br />
-          <Link href='/page3'>
-            <a>{t('link.gotoPage3')}</a>
-          </Link>          
-        </div>
-        <TopMain/>
-        <main className="main main-page">
-          <div className="container">
-            <Problems/>
-            <Steps/>
-            <Reviews/>
-            <Facts data={this.props.pageData}/>
-            <CheckKsk data={this.props.data}/>        
-          </div>
-          <AddKsk/>
-        </main>
-      </Layout>
-    )
+
+  componentDidUpdate(prevProps) {
+    // console.log('prevProps', prevProps)
   }
-}
+
+  render () {  
+    const {t} = this.props
+    console.log(this.props.i18n.language)
+    return (      
+    <Layout data={this.props.hash}>
+      <h1>{t('welcome')}</h1>
+      <p>{t('common:integrates_react-i18next')}</p>
+      <p>{t('sample_test')}</p>
+      <TopMain/>
+      <main className="main main-page">
+        <div className="container">
+          <Problems/>
+          <Steps/>
+          <Reviews/>
+          <Facts data={this.props.pageData}/>
+          <CheckKsk data={this.props.data}/>        
+        </div>
+        <AddKsk/>
+      </main>
+    </Layout>
+    )    
+  }  
+};
 
 Page.getInitialProps = async ( {query} ) => {    
 
@@ -83,5 +83,6 @@ Page.getInitialProps = async ( {query} ) => {
 function mapStateToProps(state) {
   return {activeClass: state.classReducer.activeClass};
 }
+
 
 export default  connect(mapStateToProps)(withI18next(['home', 'common'])(Page));

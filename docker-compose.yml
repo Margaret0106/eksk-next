@@ -7,8 +7,4 @@ services:
         context: .
       image: rocketfirmcom/eksk-next:0.0.1
       ports:
-        - "3000:3000"
-
-
-
-      
+        - "32772:32772"    

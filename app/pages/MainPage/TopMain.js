@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {store, representClass, citizenClass, partnerClass} from '../../../store'
 import classnames from 'classnames'
 import {connect} from 'react-redux';
+import { translate } from 'react-i18next'
 
 class TopMain extends Component {
   // export default class TopMain extends Component {
@@ -20,8 +21,10 @@ class TopMain extends Component {
   }
 
   render() {
-    const {activeClass} = this.props
+    const {activeClass, t} = this.props
     console.log('top active class', activeClass)
+    console.log('top main props', this.props)
+
     return (
       <div className="top-main-wrapper">
         <div className="top-main">
@@ -31,6 +34,8 @@ class TopMain extends Component {
                 {activeClass === 'citizen-page'
                   ? (
                     <div className='tab-pane citizen-block active' id="citizen-page">
+                      <h1>{t('welcome')}</h1>
+                      <p>{t('common:integrates_react-i18next')}</p>
                       <h2>Упрощаем общение
                         <br/>
                         между КСК и жителями</h2>
@@ -203,4 +208,4 @@ function mapStateToProps(state) {
   return {activeClass: state.classReducer.activeClass};
 }
 
-export default connect(mapStateToProps)(TopMain);
+export default translate(['home', 'common'])(connect(mapStateToProps)(TopMain));

@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux'
 import classnames from 'classnames'
 import debounce from 'lodash/debounce'
 import {representClass, citizenClass, partnerClass} from '../../store'
+import LanguageSwitch from '../components/LanguageSwitch'
 
 
 const linkStyle = {
@@ -84,26 +85,18 @@ class Header extends Component {
     // if (this.state.activeClass !== className) {
         this.setState({
             activeClass: className
-        }, function() {
-          console.log('ACTIVE CLASS from state', this.state.activeClass)
         });
-        console.log(className)
+       
         if (className === 'represent-page') {
-            representClass()
-            console.log('set represent-page')            
+            representClass()            
         }
         else if (className === 'partner-page') {
-            partnerClass()
-            console.log('set partner-page')            
+            partnerClass()            
         }
         else if (className === 'citizen-page') {
-            citizenClass()   
-            console.log('set citizen-page')            
-        }        
-    // }
-    console.log('ACTIVE CLASS from store', activeClass)
+            citizenClass()                       
+        }       
 
-    console.log('ACTIVE CLASS', className)
     document.body.classList.remove('partner-page', 'represent-page', 'citizen-page');
     document.body.classList.add(className);
   }
@@ -236,16 +229,9 @@ class Header extends Component {
               )}               
                 
               </div>
-              <div className="lang-menu">
-                <ul>
-                  <li className="active">
-                    <a href="">Ру</a>
-                  </li>
-                  <li>
-                    <a href="">Ққ</a>
-                  </li>
-                </ul>
-              </div>
+
+              <LanguageSwitch />
+              
             </div>
           </div>
         </header>
