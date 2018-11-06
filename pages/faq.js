@@ -4,12 +4,13 @@ import faqs from '../data/faqs';
 import classnames from 'classnames';
 import {Accordion, AccordionItem} from 'react-sanfona';
 import Layout from '../app/common/MyLayout.js'
+import { translate } from 'react-i18next'
 
-class AboutPage extends Component {
+class FaqPage extends Component {
   constructor(props) {
     super(props);   
     this.state = {
-      activeCard: '1'
+      activeCard: 1
     };
   }
 
@@ -21,6 +22,8 @@ class AboutPage extends Component {
   }
 
   render() {
+    const faqs = this.props.lng == 'ru' ? this.props.pageData.RU.faqs : this.props.pageData.KZ.faqs
+    console.log('faqs' ,this.props)
     return (
       <Layout>
         <main className="main inner-page">
@@ -34,7 +37,7 @@ class AboutPage extends Component {
                     <Card key={el.id}>
                       <CardHeader className={classnames({active: this.state.activeCard === el.id})} 
                                   onClick={this.setActiveCard.bind(this, el)}>
-                        {el.question} 
+                        {el.id}. {el.question}
                         <div className="card-indicator">
                           <span></span>
                           <span></span>
@@ -42,7 +45,7 @@ class AboutPage extends Component {
                       </CardHeader>
                       <Collapse isOpen={this.state.activeCard === el.id }>
                         <CardBody>
-                          {el.answer}
+                          <div dangerouslySetInnerHTML= {{__html: el.answer}} />
                         </CardBody>
                       </Collapse>
                     </Card>
@@ -59,4 +62,4 @@ class AboutPage extends Component {
   }
 }
 
-export default AboutPage
+export default translate(['home', 'common'])(FaqPage)

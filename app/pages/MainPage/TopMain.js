@@ -34,7 +34,7 @@ class TopMain extends Component {
                 {activeClass === 'citizen-page'
                   ? (
                     <div className='tab-pane citizen-block active' id="citizen-page">
-                      <h1>{t('welcome')}</h1>
+                      <h2>{t('welcome')}</h2>
                       <p>{t('common:integrates_react-i18next')}</p>
                       <h2>Упрощаем общение
                         <br/>

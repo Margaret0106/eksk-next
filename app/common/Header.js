@@ -8,7 +8,8 @@ import classnames from 'classnames'
 import debounce from 'lodash/debounce'
 import {representClass, citizenClass, partnerClass} from '../../store'
 import LanguageSwitch from '../components/LanguageSwitch'
-
+import i18n from '../../i18n'
+import { translate } from 'react-i18next'
 
 const linkStyle = {
   marginRight: 15
@@ -29,8 +30,7 @@ const customStyles = {
       backgroundColor:  isDisabled
       ? null
       : isSelected ? color : isFocused ? color : null,
-    }  
-   
+    }    
   }  
 }
 
@@ -41,6 +41,7 @@ class Header extends Component {
       .changeBodyClass
       .bind(this);
     this.state = {
+      ...props,      
       activeClass: 'citizen-page',
       isDesktop: true, 
       selectedOption: {value: "citizen-page", label: "Жителям"},   
@@ -64,11 +65,10 @@ class Header extends Component {
    */
 
   componentDidMount() {
-   
-    this.setState({route: Router.route});
-    
+    console.log('header state', this.state);
+    this.setState({route: Router.route});    
     this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensionsDebounced);
+    window.addEventListener("resize", this.updateDimensionsDebounced);  
   }
 
   /**
@@ -129,10 +129,10 @@ class Header extends Component {
   render() {
     const {activeClass} = this.props;
     const { selectedOption, isDesktop, route } = this.state;    
-    
+    const lang = i18n.language
+    console.log('layout lang' , this.props.lng)
     return (
-      <div>
-        
+      <div>        
         <header className="header">
           <div className="container">
             <div className="header-content">
@@ -230,7 +230,7 @@ class Header extends Component {
                 
               </div>
 
-              <LanguageSwitch />
+              <LanguageSwitch language={this.props.lng} />
               
             </div>
           </div>
@@ -241,11 +241,11 @@ class Header extends Component {
 
 }
 
-export default connect(({classReducer:{activeClass}}) => ({
+export default translate(['home', 'common'])(connect(({classReducer:{activeClass}}) => ({
   activeClass
 }), (dispatch) => ({ 
   representClass: bindActionCreators(representClass, dispatch),
   citizenClass: bindActionCreators(citizenClass, dispatch),
   partnerClass: bindActionCreators(partnerClass, dispatch),  
   
-}))(Header)
+}))(Header))

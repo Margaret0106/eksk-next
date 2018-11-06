@@ -10,6 +10,7 @@ class Layout extends Component {
     super(props);
   }
   render () {
+    console.log('LanguageSwitch layout', this.props)
     return (
       <div>
         <Head>

@@ -10,6 +10,7 @@ import AddKsk from '../app/pages/MainPage/AddKsk.js'
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
 import AOS from 'aos'
+import {setContent} from '../store'
 import {connect} from 'react-redux';
 import { withI18next } from '../lib/withI18next'
 
@@ -21,6 +22,7 @@ class Page extends Component {
 
   componentDidMount(){
     console.log('componentDidMount', this.props)   
+    const {dispatch} = this.props
     AOS.init({
       duration : 2000
     })
@@ -29,19 +31,7 @@ class Page extends Component {
   render () {
     const {t} = this.props
     return (
-      <Layout data={this.props.hash}>
-        <div>
-          <h1>{t('welcome')}</h1>
-          <p>{t('common:integrates_react-i18next')}</p>
-          <p>{t('sample_test')}</p>          
-          <Link href='/page2'>
-            <a>{t('link.gotoPage2')}</a>
-          </Link>
-          <br />
-          <Link href='/page3'>
-            <a>{t('link.gotoPage3')}</a>
-          </Link>          
-        </div>
+      <Layout data={this.props.hash}>        
         <TopMain/>
         <main className="main main-page">
           <div className="container">
@@ -58,7 +48,7 @@ class Page extends Component {
   }
 }
 
-Page.getInitialProps = async ( {query} ) => {    
+Page.getInitialProps = async ( {store, query} ) => {    
 
   const ekskRes = await fetch(`https://dev.e-kck.kz/api/v1/data/`, {  
     method: 'get', 
@@ -67,7 +57,6 @@ Page.getInitialProps = async ( {query} ) => {
     }
   })
   const ekskJson = await ekskRes.json() 
-
   
   const contentRes = await fetch(`https://eksk-landing.rocketfirm.net/api/v1/page/index`, {
     method: 'get', 
@@ -76,7 +65,10 @@ Page.getInitialProps = async ( {query} ) => {
     }
   })
 
-  const contentJson = await contentRes.json()   
+  const contentJson = await contentRes.json() 
+
+  store.dispatch(setContent(contentJson.data))
+
   return {data: ekskJson.data, pageData: contentJson.data, query: query}
 }
 
